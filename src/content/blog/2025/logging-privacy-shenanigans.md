@@ -98,11 +98,11 @@ To create a working profile, you need to customize it for your specific logging 
             <key>PayloadEnabled</key>
             <true/>
             <key>PayloadIdentifier</key>
-            <string>com.example.logging.EnablePrivateData</string>
+            <string>com.yourapp.logging.EnablePrivateData</string>
             <key>PayloadType</key>
             <string>com.apple.system.logging</string>
             <key>PayloadUUID</key>
-            <string>YOUR-UUID-HERE</string>
+            <string>GENERATE-UUID-1</string>
             <key>PayloadVersion</key>
             <integer>1</integer>
             <key>System</key>
@@ -112,7 +112,6 @@ To create a working profile, you need to customize it for your specific logging 
             </dict>
             <key>Subsystems</key>
             <dict>
-                <!-- ADD YOUR SUBSYSTEMS HERE -->
                 <key>your.app.subsystem</key>
                 <dict>
                     <key>DEFAULT-OPTIONS</key>
@@ -125,17 +124,19 @@ To create a working profile, you need to customize it for your specific logging 
         </dict>
     </array>
     <key>PayloadDescription</key>
-    <string>Enable private data logging for debugging</string>
+    <string>This profile enables logging of private data for debugging.</string>
     <key>PayloadDisplayName</key>
-    <string>Private Data Logging</string>
+    <string>Your App Private Data Logging</string>
     <key>PayloadIdentifier</key>
-    <string>com.example.PrivateDataLogging</string>
+    <string>com.yourapp.PrivateDataLogging</string>
+    <key>PayloadOrganization</key>
+    <string>Your Organization</string>
     <key>PayloadRemovalDisallowed</key>
     <false/>
     <key>PayloadType</key>
     <string>Configuration</string>
     <key>PayloadUUID</key>
-    <string>ANOTHER-UUID-HERE</string>
+    <string>GENERATE-UUID-2</string>
     <key>PayloadVersion</key>
     <integer>1</integer>
 </dict>
@@ -149,17 +150,21 @@ To create a working profile, you need to customize it for your specific logging 
 <details>
 <summary><strong>Customizing the Profile</strong></summary>
 
-**Important**: You must replace the placeholder values:
+**Critical Components to Replace:**
 
-1. **UUIDs**: Replace `YOUR-UUID-HERE` and `ANOTHER-UUID-HERE` with actual UUIDs. You can generate them with `uuidgen` command.
+1. **UUIDs**: Two unique identifiers are required:
+   - Replace `GENERATE-UUID-1` and `GENERATE-UUID-2` with actual UUIDs
+   - Generate with: `uuidgen` (run twice for two different UUIDs)
 
-2. **Subsystems**: This is the critical part! The `Subsystems` dictionary needs one entry for each logging subsystem you want to unmask. The subsystem is what you specify when creating a Swift Logger:
+2. **Organization**: Replace `Your Organization` with your actual organization or app name
+
+3. **Subsystems**: The most critical part! Replace `your.app.subsystem` with your actual logging subsystem(s):
    ```swift
    let logger = Logger(subsystem: "com.mycompany.myapp", category: "Network")
    ```
-   In this example, `"com.mycompany.myapp"` is the subsystem.
+   In this example, `"com.mycompany.myapp"` is the subsystem you need to add.
 
-3. **Multiple Subsystems**: To enable private data for multiple subsystems, add more entries:
+4. **Multiple Subsystems**: To enable private data for multiple subsystems, duplicate the subsystem structure:
    ```xml
    <key>Subsystems</key>
    <dict>
@@ -181,6 +186,13 @@ To create a working profile, you need to customize it for your specific logging 
        </dict>
    </dict>
    ```
+
+**Key Implementation Details:**
+
+- **PayloadType values**: The top-level PayloadType must be `Configuration`, while the inner PayloadType (in PayloadContent) must be `com.apple.system.logging`
+- **PayloadRemovalDisallowed**: Keep this as `false` so you can easily remove the profile after debugging
+- **System section**: Enables private data for system-level logs
+- **DEFAULT-OPTIONS**: Required wrapper for subsystem options
 
 Save the customized file as `EnablePrivateLogging.mobileconfig`.
 

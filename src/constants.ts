@@ -10,21 +10,14 @@ export const SOCIALS = [
   },
   {
     name: "X",
-    href: "https://x.com/steipete",
+    href: "https://x.com/sudomarchy",
     linkTitle: `${SITE.title} on X`,
     icon: "twitter",
     active: true,
   },
   {
-    name: "BlueSky",
-    href: "https://bsky.app/profile/my.omarchy.blog",
-    linkTitle: `${SITE.title} on BlueSky`,
-    icon: "bluesky",
-    active: true,
-  },
-  {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/steipete/",
+    href: "https://www.linkedin.com/in/pomartel/",
     linkTitle: `${SITE.title} on LinkedIn`,
     icon: "linkedin",
     active: true,
@@ -44,12 +37,6 @@ export const SHARE_LINKS = [
     href: "https://x.com/intent/post?url=",
     linkTitle: `Share this post on X`,
     icon: "twitter",
-  },
-  {
-    name: "BlueSky",
-    href: "https://bsky.app/intent/compose?text=",
-    linkTitle: `Share this post on BlueSky`,
-    icon: "bluesky",
   },
   {
     name: "LinkedIn",

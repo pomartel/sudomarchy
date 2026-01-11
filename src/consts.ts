@@ -34,7 +34,7 @@ export const SITE: Site = {
   website: "https://my.omarchy.blog/",
   author: "Peter Steinberger",
   profile: "https://my.omarchy.blog/about",
-  desc: "AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.",
+  desc: "My Omarchy and Hyprland customization",
   title: "sudomarchy",
   ogImage: "avatar.jpg",
   lightAndDarkMode: true,
@@ -75,12 +75,8 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: "GitHub",
   },
   {
-    href: "https://twitter.com/steipete",
+    href: "https://x.com/sudomarchy",
     label: "Twitter",
-  },
-  {
-    href: "https://bsky.app/profile/my.omarchy.blog",
-    label: "BlueSky",
   },
   {
     href: "/rss.xml",
@@ -92,7 +88,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const ICON_MAP: Record<string, string> = {
   GitHub: "github",
   Twitter: "twitter",
-  BlueSky: "bsky",
   RSS: "rss",
   Email: "mail",
 };

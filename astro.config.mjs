@@ -59,11 +59,7 @@ export default defineConfig({
           item.lastmod = new Date().toISOString();
         }
         // Main section pages
-        else if (
-          url.endsWith("/posts") ||
-          url.endsWith("/about") ||
-          url.endsWith("/search")
-        ) {
+        else if (url.endsWith("/posts") || url.endsWith("/about") || url.endsWith("/search")) {
           item.priority = 0.9;
           item.changefreq = ChangeFreqEnum.WEEKLY;
         }
@@ -107,12 +103,11 @@ export default defineConfig({
     react(),
     AstroPWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.png", "avatar.jpg"],
+      includeAssets: ["favicon.ico", "avatar.jpg"],
       manifest: {
         name: "sudomarchy",
         short_name: "sudomarchy",
-        description:
-          "AI-powered tools from Swift roots to web frontiers. Everything I build is open source.",
+        description: "My Omarchy and Hyprland customization",
         theme_color: "#006cac",
         background_color: "#fdfdfd",
         display: "standalone",
@@ -121,9 +116,9 @@ export default defineConfig({
         start_url: "/",
         icons: [
           {
-            src: "favicon.png",
+            src: "favicon.ico",
             sizes: "48x48",
-            type: "image/png",
+            type: "image/x-icon",
           },
           {
             src: "avatar.jpg",
@@ -141,9 +136,7 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: "/404",
-        globPatterns: [
-          "**/*.{css,js,html,svg,png,jpg,jpeg,gif,webp,woff,woff2,ttf,eot,ico}",
-        ],
+        globPatterns: ["**/*.{css,js,html,svg,png,jpg,jpeg,gif,webp,woff,woff2,ttf,eot,ico}"],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,

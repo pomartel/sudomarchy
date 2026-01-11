@@ -17,7 +17,7 @@ if (type === "BlogPosting") {
     author: {
       "@type": "Person",
       name: data.author || "Peter Steinberger",
-      url: "https://steipete.me/about",
+      url: "https://my.omarchy.blog/about",
     },
     datePublished: data.pubDatetime.toISOString(),
     dateModified: data.modDatetime?.toISOString() || data.pubDatetime.toISOString(),
@@ -26,14 +26,14 @@ if (type === "BlogPosting") {
       name: "Peter Steinberger",
       logo: {
         "@type": "ImageObject",
-        url: "https://steipete.me/peter-avatar.jpg",
+        url: "https://my.omarchy.blog/avatar.jpg",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": data.url,
     },
-    image: data.ogImage || "https://steipete.me/peter-avatar.jpg",
+    image: data.ogImage || "https://my.omarchy.blog/avatar.jpg",
     articleSection: data.tags?.[0] || "Technology",
     keywords: data.tags?.join(", ") || "",
     wordCount: data.wordCount,
@@ -44,12 +44,12 @@ if (type === "BlogPosting") {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Peter Steinberger",
-    url: "https://steipete.me",
-    image: "https://steipete.me/peter-avatar.jpg",
+    url: "https://my.omarchy.blog",
+    image: "https://my.omarchy.blog/avatar.jpg",
     sameAs: [
-      "https://github.com/steipete",
+      "https://github.com/pomartel",
       "https://twitter.com/steipete",
-      "https://bsky.app/profile/steipete.me",
+      "https://bsky.app/profile/my.omarchy.blog",
     ],
     jobTitle: "Software Engineer",
     description:
@@ -60,7 +60,7 @@ if (type === "BlogPosting") {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Peter Steinberger",
-    url: "https://steipete.me",
+    url: "https://my.omarchy.blog",
     description:
       "AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.",
     author: {
@@ -69,7 +69,7 @@ if (type === "BlogPosting") {
     },
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://steipete.me/search?q={search_term_string}",
+      target: "https://my.omarchy.blog/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

@@ -31,12 +31,12 @@ interface Site {
 
 // Site configuration
 export const SITE: Site = {
-  website: "https://steipete.me/",
+  website: "https://my.omarchy.blog/",
   author: "Peter Steinberger",
-  profile: "https://steipete.me/about",
+  profile: "https://my.omarchy.blog/about",
   desc: "AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.",
-  title: "Peter Steinberger",
-  ogImage: "peter-avatar.jpg",
+  title: "sudomarchy",
+  ogImage: "avatar.jpg",
   lightAndDarkMode: true,
   postPerIndex: 10,
   postPerPage: 10,
@@ -46,7 +46,7 @@ export const SITE: Site = {
   editPost: {
     enabled: true,
     text: "Edit on GitHub",
-    url: "https://github.com/steipete/steipete.me/edit/main/",
+    url: "https://github.com/pomartel/sudomarchy/edit/main/",
   },
   dynamicOgImage: true,
   lang: "en",
@@ -71,7 +71,7 @@ export const NAV_LINKS: SocialLink[] = [
 // Social media links
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    href: "https://github.com/steipete",
+    href: "https://github.com/pomartel",
     label: "GitHub",
   },
   {
@@ -79,7 +79,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: "Twitter",
   },
   {
-    href: "https://bsky.app/profile/steipete.me",
+    href: "https://bsky.app/profile/my.omarchy.blog",
     label: "BlueSky",
   },
   {

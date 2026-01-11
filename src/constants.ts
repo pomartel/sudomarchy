@@ -3,7 +3,7 @@ import { SITE } from "./consts";
 export const SOCIALS = [
   {
     name: "Github",
-    href: "https://github.com/steipete",
+    href: "https://github.com/pomartel",
     linkTitle: ` ${SITE.title} on Github`,
     icon: "github",
     active: true,
@@ -17,7 +17,7 @@ export const SOCIALS = [
   },
   {
     name: "BlueSky",
-    href: "https://bsky.app/profile/steipete.me",
+    href: "https://bsky.app/profile/my.omarchy.blog",
     linkTitle: `${SITE.title} on BlueSky`,
     icon: "bluesky",
     active: true,
@@ -31,7 +31,7 @@ export const SOCIALS = [
   },
   {
     name: "Mail",
-    href: "mailto:peter@steipete.me",
+    href: "mailto:pomartel@coderubik.com",
     linkTitle: `Send an email to ${SITE.title}`,
     icon: "mail",
     active: true,

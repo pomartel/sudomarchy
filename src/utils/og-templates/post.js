@@ -7,7 +7,7 @@ import loadGoogleFonts from "../loadGoogleFont";
  *
  * This template generates social media preview cards for blog posts.
  *
- * CUSTOMIZATION: We override the default behavior to show "steipete.me"
+ * CUSTOMIZATION: We override the default behavior to show "my.omarchy.blog"
  * on the right side instead of the author name (Peter Steinberger).
  * This avoids redundancy since the author name already appears on the left
  * with "by Peter Steinberger".
@@ -213,7 +213,7 @@ export default async (post) => {
                             type: "span",
                             props: {
                               style: { overflow: "hidden", fontWeight: "bold" },
-                              children: "steipete.me",
+                              children: "my.omarchy.blog",
                             },
                           },
                         ],
@@ -231,7 +231,7 @@ export default async (post) => {
       width: 1200,
       height: 630,
       embedFont: true,
-      fonts: await loadGoogleFonts(post.data.title + post.data.author + "steipete.me" + "by"),
+      fonts: await loadGoogleFonts(post.data.title + post.data.author + "my.omarchy.blog" + "by"),
     }
   );
 };

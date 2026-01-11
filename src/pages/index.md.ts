@@ -15,12 +15,12 @@ AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub
 ## Links
 
 - Twitter: [@steipete](https://twitter.com/steipete)
-- GitHub: [@steipete](https://github.com/steipete)
-- Email: steipete@gmail.com
+- GitHub: [@steipete](https://github.com/pomartel)
+- Email: pomartel@coderubik.com
 
 ---
 
-*This is the markdown-only version of steipete.me. Visit [steipete.me](https://steipete.me) for the full experience.*`;
+*This is the markdown-only version of my.omarchy.blog. Visit [my.omarchy.blog](https://my.omarchy.blog) for the full experience.*`;
 
   return new Response(markdownContent, {
     status: 200,

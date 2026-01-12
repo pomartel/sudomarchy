@@ -8,7 +8,6 @@
   "redirects": [],
   "rewrites": [],
   "headers": [
-    {},
     {
       "source": "/(|about|archives|posts|posts/.*)",
       "headers": [

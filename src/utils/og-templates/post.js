@@ -8,9 +8,9 @@ import loadGoogleFonts from "../loadGoogleFont";
  * This template generates social media preview cards for blog posts.
  *
  * CUSTOMIZATION: We override the default behavior to show "my.omarchy.blog"
- * on the right side instead of the author name (Peter Steinberger).
+ * on the right side instead of the author name (Pierre Olivier Martel).
  * This avoids redundancy since the author name already appears on the left
- * with "by Peter Steinberger".
+ * with "by Pierre Olivier Martel".
  */
 
 // const markup = html`<div

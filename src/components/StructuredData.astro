@@ -16,14 +16,14 @@ if (type === "BlogPosting") {
     description: data.description,
     author: {
       "@type": "Person",
-      name: data.author || "Peter Steinberger",
+      name: data.author || "Pierre Olivier Martel",
       url: "https://my.omarchy.blog/about",
     },
     datePublished: data.pubDatetime.toISOString(),
     dateModified: data.modDatetime?.toISOString() || data.pubDatetime.toISOString(),
     publisher: {
       "@type": "Person",
-      name: "Peter Steinberger",
+      name: "Pierre Olivier Martel",
       logo: {
         "@type": "ImageObject",
         url: "https://my.omarchy.blog/avatar.jpg",
@@ -43,7 +43,7 @@ if (type === "BlogPosting") {
   structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Peter Steinberger",
+    name: "Pierre Olivier Martel",
     url: "https://my.omarchy.blog",
     image: "https://my.omarchy.blog/avatar.jpg",
     sameAs: [
@@ -63,7 +63,7 @@ if (type === "BlogPosting") {
     description: "My Omarchy and Hyprland customization",
     author: {
       "@type": "Person",
-      name: "Peter Steinberger",
+      name: "Pierre Olivier Martel",
     },
     potentialAction: {
       "@type": "SearchAction",

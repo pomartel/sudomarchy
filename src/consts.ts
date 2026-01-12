@@ -32,7 +32,7 @@ interface Site {
 // Site configuration
 export const SITE: Site = {
   website: "https://my.omarchy.blog/",
-  author: "Peter Steinberger",
+  author: "Pierre Olivier Martel",
   profile: "https://my.omarchy.blog/about",
   desc: "My Omarchy and Hyprland customization",
   title: "sudomarchy",

@@ -1,8 +1,8 @@
 ---
-title: "How to to improve battery life on your Omarchy laptop with TLP"
+title: "Improve Battery Life on your Omarchy Laptop with TLP"
 description: "A quick procedure to replace power-profiles-daemon with TLP in Omarchy to improve battery life."
 pubDatetime: "2025-12-16"
-tags: ["howto", "tlp"]
+tags: ["howto", "tlp", "battery"]
 draft: false
 ---
 

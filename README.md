@@ -4,7 +4,9 @@ This is the source code for my personal website, built with [Astro](https://astr
 
 ## About
 
-I'm Pierre Olivier Martel, an iOS developer, entrepreneur, and open source contributor. This website hosts my personal blog and information about my work.
+I'm Pierre Olivier Martel, an entrepreneur, teacher and Linux enthusiast. This blog hosts my personal Omarchy and Hyprland customizations.
+
+.
 
 ## Project Structure
 

@@ -50,7 +50,7 @@ export const SITE: Site = {
   },
   dynamicOgImage: true,
   lang: "en",
-  timezone: "America/Los_Angeles",
+  timezone: "America/Toronto",
 };
 
 export const SITE_TITLE = SITE.title;

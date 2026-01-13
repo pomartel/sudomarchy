@@ -30,7 +30,7 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-  --background: #1a1b26;
+  --background: #212737;
   --foreground: #eaedf3;
   --accent: #9ece6a;
   --muted: #343f60bf;

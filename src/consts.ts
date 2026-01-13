@@ -44,7 +44,7 @@ export const SITE: Site = {
   showArchives: false,
   showBackButton: false,
   editPost: {
-    enabled: true,
+    enabled: false,
     text: "Edit on GitHub",
     url: "https://github.com/pomartel/sudomarchy/edit/main/",
   },

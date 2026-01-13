@@ -1,5 +1,5 @@
 ---
-title: "Stream Audio to Airplay Devices (Sonos, Homepod, etc.)"
+title: "Stream Audio to Airplay Devices"
 description: "A guide on how to stream audio from Omarchy to AirPlay speakers like Sonos or HomePod."
 pubDatetime: "2025-12-19"
 tags: ["howto", "audio", "airplay"]

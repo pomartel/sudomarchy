@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   - Blog posts: `/posts/YEAR/post-slug.md`
   - Root pages: `/about.md`
 - Raw markdown served with `Content-Type: text/plain` and proper caching headers
-- Redirect from my.omarchy.blog/*.md URLs to steipete.md/* (#133)
+- Redirect from sudomarchy.com/*.md URLs to steipete.md/* (#133)
 
 ### Fixed
 - Slow theme switching animation on iPhone Safari (#122)
@@ -67,7 +67,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [2025-01-04]
 
 ### Technical Infrastructure
-- Migrated from steipete.com to my.omarchy.blog
+- Migrated from steipete.com to sudomarchy.com
 - Set up modern Astro-based static site architecture
 - Implemented automatic builds and deployments via Vercel
 - Added PWA support with service worker

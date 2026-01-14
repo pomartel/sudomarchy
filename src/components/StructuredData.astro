@@ -17,7 +17,7 @@ if (type === "BlogPosting") {
     author: {
       "@type": "Person",
       name: data.author || "Pierre Olivier Martel",
-      url: "https://my.omarchy.blog/about",
+      url: "https://sudomarchy.com/about",
     },
     datePublished: data.pubDatetime.toISOString(),
     dateModified: data.modDatetime?.toISOString() || data.pubDatetime.toISOString(),
@@ -26,14 +26,14 @@ if (type === "BlogPosting") {
       name: "Pierre Olivier Martel",
       logo: {
         "@type": "ImageObject",
-        url: "https://my.omarchy.blog/avatar.jpg",
+        url: "https://sudomarchy.com/avatar.jpg",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": data.url,
     },
-    image: data.ogImage || "https://my.omarchy.blog/avatar.jpg",
+    image: data.ogImage || "https://sudomarchy.com/avatar.jpg",
     articleSection: data.tags?.[0] || "Technology",
     keywords: data.tags?.join(", ") || "",
     wordCount: data.wordCount,
@@ -44,12 +44,12 @@ if (type === "BlogPosting") {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Pierre Olivier Martel",
-    url: "https://my.omarchy.blog",
-    image: "https://my.omarchy.blog/avatar.jpg",
+    url: "https://sudomarchy.com",
+    image: "https://sudomarchy.com/avatar.jpg",
     sameAs: [
       "https://github.com/pomartel",
       "https://x.com/sudomarchy",
-      "https://bsky.app/profile/my.omarchy.blog",
+      "https://bsky.app/profile/sudomarchy.com",
     ],
     jobTitle: "Software Engineer",
     description: "My Omarchy and Hyprland customization",
@@ -59,7 +59,7 @@ if (type === "BlogPosting") {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "sudomarchy",
-    url: "https://my.omarchy.blog",
+    url: "https://sudomarchy.com",
     description: "My Omarchy and Hyprland customization",
     author: {
       "@type": "Person",
@@ -67,7 +67,7 @@ if (type === "BlogPosting") {
     },
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://my.omarchy.blog/search?q={search_term_string}",
+      target: "https://sudomarchy.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

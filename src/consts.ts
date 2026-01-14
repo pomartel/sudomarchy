@@ -31,9 +31,9 @@ interface Site {
 
 // Site configuration
 export const SITE: Site = {
-  website: "https://my.omarchy.blog/",
+  website: "https://sudomarchy.com/",
   author: "Pierre Olivier Martel",
-  profile: "https://my.omarchy.blog/about",
+  profile: "https://sudomarchy.com/about",
   desc: "My Omarchy and Hyprland customization",
   title: "sudomarchy",
   ogImage: "avatar.jpg",

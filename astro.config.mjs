@@ -107,7 +107,7 @@ export default defineConfig({
       manifest: {
         name: "sudomarchy",
         short_name: "sudomarchy",
-        description: "My Omarchy and Hyprland customization",
+        description: "My Omarchy & Hyprland tweaks",
         theme_color: "#006cac",
         background_color: "#fdfdfd",
         display: "standalone",

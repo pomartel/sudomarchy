@@ -11,6 +11,7 @@ interface Site {
   author: string;
   profile: string;
   desc: string;
+  longDesc: string;
   title: string;
   ogImage: string;
   lightAndDarkMode: boolean;
@@ -34,7 +35,8 @@ export const SITE: Site = {
   website: "https://sudomarchy.com/",
   author: "Pierre Olivier Martel",
   profile: "https://sudomarchy.com/about",
-  desc: "My Omarchy and Hyprland customization",
+  desc: "My Omarchy & Hyprland tweaks",
+  longDesc: "A blog where I share my Omarchy & Hyprland tips and customizations.",
   title: "sudomarchy",
   ogImage: "avatar.jpg",
   lightAndDarkMode: true,

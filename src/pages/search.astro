@@ -9,7 +9,7 @@ import Main from "@/layouts/Main.astro";
 const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
 ---
 
-<Layout title={`Search | ${SITE.title}`} description="Search through Pierre Olivier Martel's blog posts on Linux, Omarchy and Hyprland.">
+<Layout title={`Search | ${SITE.title}`} description="Search through sudomarchy's blog posts on Linux, Omarchy and Hyprland.">
   <Header />
   <Main pageTitle="Search" pageDesc="Search any article ...">
     <div id="pagefind-search" transition:persist data-backurl={backUrl}></div>

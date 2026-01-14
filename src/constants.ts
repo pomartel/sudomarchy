@@ -45,6 +45,12 @@ export const SHARE_LINKS = [
     icon: "linkedin",
   },
   {
+    name: "Bluesky",
+    href: "https://bsky.app/intent/compose?text=",
+    linkTitle: `Share this post on Bluesky`,
+    icon: "bluesky",
+  },
+  {
     name: "WhatsApp",
     href: "https://wa.me/?text=",
     linkTitle: `Share this post via WhatsApp`,

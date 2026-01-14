@@ -9,7 +9,6 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import ShareLinks from "@/components/ShareLinks.astro";
 import StructuredData from "@/components/StructuredData.astro";
-import Tag from "@/components/Tag.astro";
 import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
 import { getPath } from "@/utils/getPath";
@@ -32,7 +31,6 @@ const {
   pubDatetime,
   modDatetime,
   timezone,
-  tags,
   hideEditPost,
   heroImage,
 } = post.data;
@@ -101,7 +99,6 @@ const wordCount = (post.body ?? "").split(/\s+/).length;
       modDatetime,
       url: Astro.url.href,
       ogImage,
-      tags,
       wordCount,
       readingTime
     }} 
@@ -153,10 +150,6 @@ const wordCount = (post.body ?? "").split(/\s+/).length;
     <hr class="my-8 border-dashed" />
 
     <EditPost class="sm:hidden" {hideEditPost} {post} />
-
-    <ul class="mt-4 mb-8 sm:my-8">
-      {tags.map((tag) => <Tag tag={slugifyStr(tag)} tagName={tag} />)}
-    </ul>
 
     <div
       class="flex flex-col items-center justify-between gap-6 sm:flex-row sm:items-end sm:gap-4"

@@ -34,8 +34,8 @@ if (type === "BlogPosting") {
       "@id": data.url,
     },
     image: data.ogImage || "https://sudomarchy.com/avatar.jpg",
-    articleSection: data.tags?.[0] || "Technology",
-    keywords: data.tags?.join(", ") || "",
+    articleSection: "Technology",
+    keywords: "",
     wordCount: data.wordCount,
     timeRequired: data.readingTime,
   };

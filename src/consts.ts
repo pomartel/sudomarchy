@@ -16,7 +16,6 @@ interface Site {
   ogImage: string;
   lightAndDarkMode: boolean;
   postPerIndex: number;
-  postPerPage: number;
   scheduledPostMargin: number;
   showBackButton: boolean;
   editPost: {
@@ -40,7 +39,6 @@ export const SITE: Site = {
   ogImage: "avatar.jpg",
   lightAndDarkMode: true,
   postPerIndex: 5,
-  postPerPage: 10,
   scheduledPostMargin: 15 * 60 * 1000,
   showBackButton: false,
   editPost: {

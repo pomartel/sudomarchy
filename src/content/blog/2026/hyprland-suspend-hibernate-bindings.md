@@ -2,7 +2,6 @@
 title: "Add Suspend and Hibernate Keybindings to Omarchy"
 description: "Two lines of code you can add to your Hyprland bindings.conf file to suspend or hibernate the system with a keyboard shortcut."
 pubDatetime: "2026-01-13"
-tags: ["howto", "hyprland", "suspend", "hibernate"]
 draft: false
 ---
 

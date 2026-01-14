@@ -71,7 +71,7 @@ const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
       // Auto-focus the search input and add placeholder
       if (searchInput) {
         searchInput.focus();
-        searchInput.placeholder = "Search posts, e.g. 'bindings'";
+        searchInput.placeholder = "Search posts, e.g. 'hyprland'";
       }
       searchInput?.addEventListener("input", resetSearchParam);
       clearButton?.addEventListener("click", resetSearchParam);

@@ -18,7 +18,6 @@ interface Site {
   postPerIndex: number;
   postPerPage: number;
   scheduledPostMargin: number;
-  showArchives: boolean;
   showBackButton: boolean;
   editPost: {
     enabled: boolean;
@@ -43,7 +42,6 @@ export const SITE: Site = {
   postPerIndex: 10,
   postPerPage: 10,
   scheduledPostMargin: 15 * 60 * 1000,
-  showArchives: false,
   showBackButton: false,
   editPost: {
     enabled: false,

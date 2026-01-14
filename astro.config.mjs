@@ -6,7 +6,6 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
-import { remarkLazyLoadImages } from "./src/utils/remarkLazyLoadImages.mjs";
 import { SITE } from "./src/config";
 import AstroPWA from "@vite-pwa/astro";
 
@@ -19,7 +18,6 @@ export default defineConfig({
       remarkToc,
       // @ts-ignore - TypeScript has issues with remark plugin tuple syntax
       [remarkCollapse, { test: "Table of contents" }],
-      remarkLazyLoadImages,
     ],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
@@ -31,13 +29,6 @@ export default defineConfig({
     mdx(),
     sitemap({
       filter: (page) => {
-        // Always exclude archives if not showing them
-        if (!SITE.showArchives && page.endsWith("/archives")) return false;
-
-        // Optionally exclude tag pages to reduce sitemap bloat
-        // Uncomment the following line to exclude all tag pages:
-        // if (page.includes("/tags/")) return false;
-
         return true;
       },
       serialize: (item) => {
@@ -87,11 +78,6 @@ export default defineConfig({
         else if (url.includes("/tags/")) {
           item.priority = 0.1;
           item.changefreq = ChangeFreqEnum.YEARLY;
-        }
-        // Pagination pages
-        else if (url.match(/\/page\/\d+$/)) {
-          item.priority = 0.4;
-          item.changefreq = ChangeFreqEnum.WEEKLY;
         }
 
         // Note: lastmod dates for individual posts would need to be set

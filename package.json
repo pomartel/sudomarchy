@@ -41,7 +41,6 @@
     "pagefind": "^1.4.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "reading-time": "^1.5.0",
     "remark-collapse": "^0.1.2",
     "remark-github-blockquote-alert": "^2.0.1",
     "remark-toc": "^9.0.0",

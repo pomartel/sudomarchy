@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getPath } from "@/utils/getPath";
-import { calculateReadingTime } from "@/utils/readingTime";
 import { slugifyStr } from "@/utils/slugify";
 import Datetime from "./Datetime.astro";
 
@@ -14,7 +13,6 @@ export interface Props extends CollectionEntry<"blog"> {
 const { variant = "h2", data, id, filePath, body, showImage = true } = Astro.props;
 
 const { title, description, pubDatetime, modDatetime, timezone, heroImage } = data;
-const readingTime = calculateReadingTime(body ?? "");
 
 const headerProps = {
   style: { viewTransitionName: slugifyStr(title) },
@@ -38,7 +36,6 @@ const headerProps = {
     </a>
     <div class="flex items-center gap-3 mb-3">
       <Datetime {pubDatetime} {modDatetime} {timezone} />
-      <span class="text-sm italic opacity-80">• {readingTime}</span>
     </div>
     <div class="flex gap-4 items-start">
       {showImage && heroImage && (

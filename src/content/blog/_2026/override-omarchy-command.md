@@ -2,12 +2,12 @@
 title: "Safely Override Any Omarchy Command"
 description: "If you need to change the behaviour of an Omarchy command, here is how to do it safely."
 pubDatetime: "2026-01-15"
-draft: true
+draft: false
 ---
 
-At its core, Omarchy is just a Git repository living in your `~/.local/share/omarchy` directory. That's where the magic happens. When you update your system, Omarchy pulls the latest changes from the [Github repo](https://github.com/basecamp/omarchy/).
+At its core, Omarchy is just a Git repository living in the `~/.local/share/omarchy` directory. That's where the magic happens. When you update your system, Omarchy pulls the latest changes from the [Github repo](https://github.com/basecamp/omarchy/) into that folder.
 
-You should avoid making changes to the Omarchy directory at all costs. Otherwise this will prevent future pull requests and thus updates to succeed. But what if you need to make changes to the way Omarchy works? Fortunately, Omarchy is fully extendable and you can pretty much override any settings.
+You should avoid making changes to the Omarchy directory at all costs. Otherwise it could prevent future updates to succeed due to merge conflicts. But what if you need to make changes to the way Omarchy works? Fortunately, Omarchy is fully extensible and you can pretty much override any setting.
 
 In this post, we'll focus on overriding Omarchy's bash commands. For every **SUPER + ALT** menu items, there is a underlying `omarchy-` command that gets executed (just a bash script really). For a list of all commands, you can open a terminal and type `omarchy` followed by the **TAB** key. You can also view them in the `~/.local/share/omarchy/bin` directory.
 
@@ -45,3 +45,13 @@ To add your bin folder to the PATH in the UWSM env file, edit your `~/.config/uw
 # Add user scripts to PATH
 export PATH=$HOME/bin:$PATH # [!code ++]
 ```
+## Restart the system and test the command
+
+You need to restart your system for the changes to take effect. After restarting, you can test the `which` command by running it in a terminal:
+
+```bash
+which omarchy-launch-wifi
+# output: /home/your_username/bin/omarchy-launch-wifi
+```
+
+Now your command should override the default Omarchy command and execute your custom script instead. You can override any omarchy command by creating a script with the same name in your bin folder and making it executable.

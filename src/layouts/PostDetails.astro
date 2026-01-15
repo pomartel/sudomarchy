@@ -89,8 +89,8 @@ const wordCount = (post.body ?? "").split(/\s+/).length;
 ---
 
 <Layout {...layoutProps}>
-  <StructuredData 
-    type="BlogPosting" 
+  <StructuredData
+    type="BlogPosting"
     data={{
       title,
       description,
@@ -101,7 +101,7 @@ const wordCount = (post.body ?? "").split(/\s+/).length;
       ogImage,
       wordCount,
       readingTime
-    }} 
+    }}
   />
   <Header />
   <BackButton />
@@ -149,27 +149,9 @@ const wordCount = (post.body ?? "").split(/\s+/).length;
 
     <hr class="my-8 border-dashed" />
 
-    <EditPost class="sm:hidden" {hideEditPost} {post} />
-
-    <div
-      class="flex flex-col items-center justify-between gap-6 sm:flex-row sm:items-end sm:gap-4"
-    >
-      <ShareLinks />
-
-      <button
-        id="back-to-top"
-        class="focus-outline py-1 whitespace-nowrap hover:opacity-75"
-      >
-        <IconChevronLeft class="inline-block rotate-90" />
-        <span>Back to Top</span>
-      </button>
-    </div>
-
-    <hr class="my-6 border-dashed" />
-
     <!-- Previous/Next Post Buttons -->
-    <div 
-      data-pagefind-ignore 
+    <div
+      data-pagefind-ignore
       class="flex flex-col sm:flex-row justify-between gap-6"
       data-prev-url={prevPost ? `/posts/${prevPost.slug}` : ''}
       data-next-url={nextPost ? `/posts/${nextPost.slug}` : ''}
@@ -334,7 +316,7 @@ const wordCount = (post.body ?? "").split(/\s+/).length;
   function addLazyLoading() {
     const article = document.querySelector("#article");
     if (!article) return;
-    
+
     const images = article.querySelectorAll("img:not([loading])");
     images.forEach((img) => {
       img.setAttribute("loading", "lazy");
@@ -346,14 +328,14 @@ const wordCount = (post.body ?? "").split(/\s+/).length;
   function setupKeyboardNavigation() {
     const navContainer = document.querySelector('[data-prev-url]');
     if (!navContainer) return;
-    
+
     const prevUrl = navContainer.getAttribute('data-prev-url');
     const nextUrl = navContainer.getAttribute('data-next-url');
-    
+
     document.addEventListener('keydown', (e) => {
       // Ignore if user is typing in an input, textarea, or contenteditable
       if (e.target.matches('input, textarea, [contenteditable="true"]')) return;
-      
+
       // J key for next post
       if (e.key === 'j' && nextUrl) {
         window.location.href = nextUrl;
@@ -373,9 +355,9 @@ const wordCount = (post.body ?? "").split(/\s+/).length;
 
     // Look for YouTube embeds
     const youtubeEmbedRegex = /\{% youtube (https:\/\/[^\s]+|[a-zA-Z0-9_-]+) %\}/g;
-    
+
     let foundYoutubeEmbeds = false;
-    
+
     // Helper to extract a YouTube video ID from various URL formats
     const extractYouTubeId = (input) => {
       let videoId = input;
@@ -474,7 +456,7 @@ const wordCount = (post.body ?? "").split(/\s+/).length;
 
   // Run the embed processing
   processEmbeds();
-  
+
   // Also run after astro navigation
   document.addEventListener("astro:page-load", processEmbeds);
 </script>

@@ -34,7 +34,7 @@ export const transformerFileName = ({ style = "v2", hideDot = false } = {}) => (
 
     node.children.push({
       type: "element",
-      tagName: "div",
+      tagName: "span",
       properties: {
         class: [
           "absolute text-foreground text-xs font-medium leading-4",

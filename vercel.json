@@ -5,7 +5,18 @@
   "installCommand": "npm install",
   "framework": "astro",
   "trailingSlash": false,
-  "redirects": [],
+  "redirects": [
+    {
+      "source": "/posts/2025/:slug*",
+      "destination": "/posts/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/posts/2026/:slug*",
+      "destination": "/posts/:slug*",
+      "permanent": true
+    }
+  ],
   "rewrites": [],
   "headers": [
     {

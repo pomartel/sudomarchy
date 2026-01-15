@@ -1,0 +1,97 @@
+:root {
+  --alert-border-default: #d1d9e0;
+  --alert-note-border: #0969da;
+  --alert-note-title: #0969da;
+  --alert-tip-border: #1a7f37;
+  --alert-tip-title: #1a7f37;
+  --alert-caution-border: #cf222e;
+  --alert-caution-title: #d1242f;
+  --alert-important-border: #8250df;
+  --alert-important-title: #8250df;
+  --alert-warning-border: #9a6700;
+  --alert-warning-title: #9a6700;
+}
+
+html[data-theme="dark"] {
+  --alert-border-default: #3d444d;
+  --alert-note-border: #1f6feb;
+  --alert-note-title: #4493f8;
+  --alert-tip-border: #238636;
+  --alert-tip-title: #3fb950;
+  --alert-caution-border: #da3633;
+  --alert-caution-title: #f85149;
+  --alert-important-border: #8957e5;
+  --alert-important-title: #ab7df8;
+  --alert-warning-border: #9e6a03;
+  --alert-warning-title: #d29922;
+}
+
+@layer components {
+  .markdown-alert {
+    @apply px-4 py-3 mb-5 border-l-4 text-[0.95em] leading-relaxed;
+    color: inherit;
+    border-left-color: var(--alert-border-default);
+  }
+
+  .markdown-alert > :first-child {
+    @apply mt-0;
+  }
+
+  .markdown-alert > :last-child {
+    @apply mb-0;
+  }
+
+  .markdown-alert > p {
+    @apply m-0 font-normal;
+  }
+
+  .markdown-alert .markdown-alert-title {
+    @apply flex items-center gap-2 font-semibold text-[0.95em] mb-1.5;
+    font-family: inherit;
+  }
+
+  .markdown-alert .markdown-alert-title svg.octicon {
+    @apply size-4;
+    fill: currentColor;
+  }
+
+  .markdown-alert-note {
+    border-left-color: var(--alert-note-border);
+  }
+
+  .markdown-alert-note .markdown-alert-title {
+    color: var(--alert-note-title);
+  }
+
+  .markdown-alert-tip {
+    border-left-color: var(--alert-tip-border);
+  }
+
+  .markdown-alert-tip .markdown-alert-title {
+    color: var(--alert-tip-title);
+  }
+
+  .markdown-alert-caution {
+    border-left-color: var(--alert-caution-border);
+  }
+
+  .markdown-alert-caution .markdown-alert-title {
+    color: var(--alert-caution-title);
+  }
+
+  .markdown-alert-important {
+    border-left-color: var(--alert-important-border);
+  }
+
+  .markdown-alert-important .markdown-alert-title {
+    color: var(--alert-important-title);
+  }
+
+  .markdown-alert-warning {
+    border-left-color: var(--alert-warning-border);
+  }
+
+  .markdown-alert-warning .markdown-alert-title {
+    color: var(--alert-warning-title);
+  }
+}

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "./typography.css";
-@import "remark-github-blockquote-alert/alert.css";
+@import "./alerts.css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
@@ -46,6 +46,7 @@ html[data-theme="dark"] {
   --color-muted: var(--muted);
   --color-border: var(--border);
 }
+
 
 @layer base {
   * {

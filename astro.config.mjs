@@ -6,6 +6,7 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
+import remarkGithubBlockquoteAlert, { remarkAlert } from "remark-github-blockquote-alert";
 import { SITE } from "./src/config";
 import AstroPWA from "@vite-pwa/astro";
 
@@ -15,6 +16,7 @@ export default defineConfig({
   trailingSlash: "never",
   markdown: {
     remarkPlugins: [
+      remarkAlert,
       remarkToc,
       // @ts-ignore - TypeScript has issues with remark plugin tuple syntax
       [remarkCollapse, { test: "Table of contents" }],

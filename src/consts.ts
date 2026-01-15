@@ -38,7 +38,7 @@ export const SITE: Site = {
   title: "sudomarchy",
   ogImage: "avatar.jpg",
   lightAndDarkMode: true,
-  postPerIndex: 5,
+  postPerIndex: 10,
   scheduledPostMargin: 15 * 60 * 1000,
   showBackButton: false,
   editPost: {

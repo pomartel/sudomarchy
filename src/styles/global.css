@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./typography.css";
+@import "remark-github-blockquote-alert/alert.css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 

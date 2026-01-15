@@ -37,19 +37,27 @@ const date = datetime.format("D MMM, YYYY"); // e.g., '22 Mar, 2025'
 <div class:list={["flex items-center gap-x-2 opacity-80", className]}>
   <IconCalendar
     class:list={[
-      "inline-block size-6 min-w-5.5",
+      "inline-block size-6 min-w-5.5 self-center",
       { "scale-90": size === "sm" },
     ]}
   />
   {
     isModified && (
-      <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>
+      <span
+        class:list={[
+          "text-sm pt-1",
+          { "sm:text-base": size === "lg" },
+        ]}
+      >
         Updated:
       </span>
     )
   }
   <time
-    class:list={["text-sm", { "sm:text-base": size === "lg" }]}
+    class:list={[
+      "text-sm pt-1",
+      { "sm:text-base": size === "lg" },
+    ]}
     datetime={datetime.toISOString()}>{date}</time
   >
 </div>

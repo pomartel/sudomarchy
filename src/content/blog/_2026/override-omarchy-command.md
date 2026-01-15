@@ -25,7 +25,6 @@ Next, create a script in that folder that will override the default Omarchy comm
 
 ```bash file=omarchy-launch-wifi
 #!/bin/bash
-
 rfkill unblock wifi
 omarchy-launch-or-focus-tui nmtui-connect
 ```
@@ -34,24 +33,15 @@ This overrides the `omarchy-launch-wifi` command but it could be any other one. 
 
 **Don't forget to also make the file executable to be able to run it as a command.**
 
-## Add the bin folder to the PATH
-
-The PATH variable is an environment variable used by operating systems to determine where to look for executable programs when you run a command. To add your bin folder to the PATH, you can edit your `~/.bashrc` configuration file and add the following line:
-
-```bash file=~/.bashrc
-export PATH="$HOME/bin:$PATH"
-```
-
-This will add your `~/bin` folder to the beginning of the PATH variable, ensuring that your custom scripts are found before any Omarchy commands.
-
 ## Add the bin folder to the UWSM env file
 
 The UWSM env file is a configuration file used by UWSM (Universal Wayland Session Manager) to define environment variables that must be set before a Wayland compositor and the user session start.
 
-To add your bin folder to the UWSM env file, you can edit your `~/.config/uwsm/env` configuration file and add the following line below the `OMARCHY_PATH` line :
+The PATH variable is an environment variable used by operating systems to determine where to look for executable programs when you run a command.
+
+To add your bin folder to the PATH in the UWSM env file, edit your `~/.config/uwsm/env` configuration  and add the following line at the end of the file :
 
 ```bash file=~/.config/uwsm/env
-# Ensure Omarchy bins are in the path
-export OMARCHY_PATH=$HOME/.local/share/omarchy
-export PATH=$OMARCHY_PATH/bin:$PATH // [!code ++]
+# Add user scripts to PATH
+export PATH=$HOME/bin:$PATH # [!code ++]
 ```

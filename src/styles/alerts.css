@@ -28,26 +28,12 @@ html[data-theme="dark"] {
 
 @layer components {
   .markdown-alert {
-    @apply px-4 py-3 mb-5 border-l-4 text-[0.95em] leading-relaxed;
-    color: inherit;
+    @apply px-4 py-0.5 mb-5 border-l-4 text-sm leading-relaxed;
     border-left-color: var(--alert-border-default);
   }
 
-  .markdown-alert > :first-child {
-    @apply mt-0;
-  }
-
-  .markdown-alert > :last-child {
-    @apply mb-0;
-  }
-
-  .markdown-alert > p {
-    @apply m-0 font-normal;
-  }
-
   .markdown-alert .markdown-alert-title {
-    @apply flex items-center gap-2 font-semibold text-[0.95em] mb-1.5;
-    font-family: inherit;
+    @apply flex items-center gap-2 font-semibold text-sm mb-1.5;
   }
 
   .markdown-alert .markdown-alert-title svg.octicon {

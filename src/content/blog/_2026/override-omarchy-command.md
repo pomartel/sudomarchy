@@ -9,7 +9,7 @@ At its core, Omarchy is a Git repository living in the `~/.local/share/omarchy` 
 
 You should avoid editing the Omarchy directory. Otherwise, future updates can fail due to merge conflicts. But what if you need to change how Omarchy behaves? Fortunately, Omarchy is fully extensible and you can override almost any setting.
 
-In this post, we'll focus on overriding Omarchy's bash commands. Each **SUPER + ALT** menu item maps to an `omarchy-` command (just a bash script). To list them, open a terminal and type `omarchy` followed by the **TAB** key. You can also browse them in `~/.local/share/omarchy/bin` or on the [Github repo](https://github.com/basecamp/omarchy/tree/master/bin).
+In this post, we'll focus on overriding Omarchy's bash scripts. Each **SUPER + ALT** menu item maps to an `omarchy-*` command. To list them, open a terminal and type `omarchy` followed by the **TAB** key. You can also browse them in `~/.local/share/omarchy/bin` or on the [Github repo](https://github.com/basecamp/omarchy/tree/master/bin).
 
 ## Why override Omarchy commands?
 
@@ -29,24 +29,26 @@ rfkill unblock wifi
 omarchy-launch-or-focus-tui nmtui-connect
 ```
 
-This overrides the `omarchy-launch-wifi` command, but it could be any other one. I also override `omarchy-lock-screen` to prevent the system from locking 1Password automatically.
-
 Don't forget to make the file executable so you can run it as a command:
 
 ```bash
 chmod +x ~/bin/omarchy-launch-wifi
 ```
 
+This overrides the `omarchy-launch-wifi` command to use a different TUI.
+
+I also override `omarchy-lock-screen` to prevent the system from locking 1Password automatically.
+
 ## Add the bin folder to the UWSM env file
 
-The `~/.config/uwsm/env` file is a configuration file where Wayland environment variables a set.
+The `~/.config/uwsm/env` file is a configuration file where Wayland environment variables are defined.
 
-The PATH variable is used by the OS to determine where to look for executable programs when you run a command.
+The `PATH` variable is used by the OS to determine where to look for executable programs when you run a command.
 
-Omarchy already adds its own bin directory to the PATH in that file. You just need to add your own bin directory to the PATH at the end of the file:
+Omarchy already adds its own bin directory to the `PATH` in this file. Add your bin directory to the `PATH` at the end of the file:
 
 ```bash file=~/.config/uwsm/env
-# Add user scripts to PATH
+# Add custom user scripts to PATH
 export PATH=$HOME/bin:$PATH # [!code ++]
 ```
 ## Reboot and test the command
@@ -58,4 +60,4 @@ which omarchy-launch-wifi
 # output: /home/your_username/bin/omarchy-launch-wifi
 ```
 
-You can override any Omarchy command by creating a script with the same name in your bin folder and making it executable. Just remember that if the command gets updated, your script will not receive the same updates.
+You can override any Omarchy command by creating a script with the same name in your `bin` folder. Just remember that if the command gets updated, you will need to update your script manually.

@@ -13,7 +13,7 @@ Since Omarchy reserves **SUPER + CTRL** for utilities bindings, it would be an a
 
 Add the following to `~/.config/hypr/bindings.conf`:
 
-```ini
+```ini file=~/.config/hypr/bindings.conf
 binddl = SUPER CTRL, Escape, Suspend system, exec, systemctl suspend
 binddl = SUPER CTRL ALT, Escape, Hibernate system, exec, systemctl hibernate
 ```

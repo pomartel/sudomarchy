@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import remarkGithubBlockquoteAlert, { remarkAlert } from "remark-github-blockquote-alert";
+import { transformerFileName } from "./src/utils/transformers/fileName";
 import { SITE } from "./src/config";
 import AstroPWA from "@vite-pwa/astro";
 
@@ -25,6 +26,7 @@ export default defineConfig({
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },
       wrap: true,
+      transformers: [transformerFileName({ style: "v2", hideDot: true })],
     },
   },
   integrations: [

@@ -22,7 +22,7 @@ sudo pacman -S pipewire-zeroconf
 
 Copy the following code to `/etc/pipewire/pipewire.conf.d/raop-discover.conf` or `~/.config/pipewire/pipewire.conf.d/raop-discover.conf`. Personnally I prefer to put things in my home config directory and back it up with [YADM](https://yadm.io/) :
 
-```js
+```js file=raop-discover.conf
 context.modules = [
    {
        name = libpipewire-module-raop-discover

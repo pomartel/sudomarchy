@@ -5,7 +5,6 @@ import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconX from "@/assets/icons/IconX.svg";
 import { SITE } from "@/config";
-import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
 
 const { pathname } = Astro.url;
@@ -115,7 +114,9 @@ const isActive = (path: string) => {
       </nav>
     </div>
   </div>
-  <Hr />
+  <div class="max-w-3xl mx-auto px-4">
+    <hr class="border-border" aria-hidden="true" />
+  </div>
 </header>
 
 <script>

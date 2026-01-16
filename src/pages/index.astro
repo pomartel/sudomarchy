@@ -5,7 +5,6 @@ import IconRss from "@/assets/icons/IconRss.svg";
 import Card from "@/components/Card.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
-import Hr from "@/components/Hr.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import Socials from "@/components/Socials.astro";
 import StructuredData from "@/components/StructuredData.astro";
@@ -69,7 +68,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       </div>
     </section>
 
-    <Hr />
+    <div class="max-w-3xl mx-auto px-4">
+      <hr class="border-border" aria-hidden="true" />
+    </div>
 
     {
       featuredPosts.length > 0 && (
@@ -82,7 +83,11 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
               ))}
             </ul>
           </section>
-          {recentPosts.length > 0 && <Hr />}
+          {recentPosts.length > 0 && (
+            <div class="max-w-3xl mx-auto px-4">
+              <hr class="border-border" aria-hidden="true" />
+            </div>
+          )}
         </>
       )
     }

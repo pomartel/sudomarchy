@@ -2,7 +2,7 @@
 
 // Get theme data from local storage
 let currentTheme = localStorage.getItem("theme");
-let themeSetTimestamp = localStorage.getItem("themeSetTimestamp");
+const themeSetTimestamp = localStorage.getItem("themeSetTimestamp");
 let userHasManuallySetTheme = false;
 
 // Check if manual theme preference has expired (24 hours)
@@ -10,7 +10,7 @@ if (themeSetTimestamp) {
   const now = Date.now();
   const setTime = parseInt(themeSetTimestamp);
   const hoursSinceSet = (now - setTime) / (1000 * 60 * 60);
-  
+
   if (hoursSinceSet < 24) {
     userHasManuallySetTheme = true;
   } else {
@@ -30,7 +30,7 @@ function getPreferredTheme() {
   if (userHasManuallySetTheme && currentTheme) {
     return currentTheme;
   }
-  
+
   // Otherwise, follow system preference
   return getSystemTheme();
 }
@@ -76,14 +76,14 @@ window.onload = () => {
     // now this script can find and listen for clicks on the control
     document.querySelector("#theme-btn")?.addEventListener("click", () => {
       themeValue = themeValue === "light" ? "dark" : "light";
-      
+
       // Use View Transitions API if available
       if (!document.startViewTransition) {
         // Fallback for browsers that don't support View Transitions
         setPreference(true); // true = manual change
         return;
       }
-      
+
       // Use View Transitions for smooth theme switching
       document.startViewTransition(() => {
         setPreference(true); // true = manual change
@@ -102,7 +102,7 @@ window
   .matchMedia("(prefers-color-scheme: dark)")
   .addEventListener("change", ({ matches: isDark }) => {
     const newSystemTheme = isDark ? "dark" : "light";
-    
+
     // If user hasn't manually set theme, follow system
     if (!userHasManuallySetTheme) {
       themeValue = newSystemTheme;

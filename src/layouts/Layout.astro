@@ -3,6 +3,7 @@ import { ViewTransitions } from "astro:transitions";
 import { SITE } from "@/config";
 import "@/styles/global.css";
 import Analytics from "@/components/Analytics.astro";
+import toggleTheme from "@/scripts/toggle-theme.js?raw";
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
@@ -129,7 +130,7 @@ const structuredData = {
 
     <ViewTransitions />
 
-    <script is:inline src="/toggle-theme.js"></script>
+    <script is:inline set:html={toggleTheme} />
 
     
     <!-- Twitter Widget Script -->

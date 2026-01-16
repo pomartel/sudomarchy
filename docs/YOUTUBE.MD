@@ -32,10 +32,6 @@ Using a youtu.be short URL:
 {% youtube https://youtu.be/dQw4w9WgXcQ %}
 ```
 
-## How It Works
-
-The site uses the `MDXTwitterTransform.astro` component to scan for these patterns in blog post content and replace them with proper YouTube embeds. The component detects special tags using regex and inserts responsive iframes.
-
 ## Twitter Embeds for Comparison
 
 Twitter embeds work in a similar way:

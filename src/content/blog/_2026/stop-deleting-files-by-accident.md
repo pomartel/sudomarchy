@@ -3,7 +3,7 @@ title: "Stop deleting files by accident!"
 description: "Make rm safer by sending deletes to the Trash."
 pubDatetime: "2026-01-19"
 draft: true
-heroImage: ../../../assets/images/2026/stop-deleting-files-by-accident/header.png
+heroImage: ../../../assets/images/2026/stop-deleting-files-by-accident/header.jpg
 heroImageAlt: "Terminal-style banner showing rm to trash"
 ---
 
@@ -21,15 +21,13 @@ sudo pacman -S trash-cli
 
 Then alias `rm` to `trash` in your shell config (for bash, that’s `~/.bashrc`):
 
-```bash
+```bash file=~/.bashrc
 alias rm='trash'
 ```
 
-From now on, `rm some-file` sends the file to:
+From now on, `rm some-file` sends the file to `~/.local/share/Trash`.
 
-- `~/.local/share/Trash`
-
-That’s the same trash location used by Nautilus.
+That’s the same trash location used by Nautilus, the file explorer in Omarchy.
 
 ## Permanently delete when you really mean it
 
@@ -47,11 +45,14 @@ The Trash doesn’t empty itself. You can purge items older than N days:
 trash-empty 30 # delete files older than 30 days
 ```
 
-You can run that manually, or automate it. If you’re on Hyprland, one simple option is to add it to `~/.config/hypr/autostart.conf`:
+You can run that manually, or automate it. On Hyprland, one simple option is to add it to `~/.config/hypr/autostart.conf`:
 
-```ini file=autostart.conf
+```ini file=~/.config/hypr/autostart.conf
 # Empty the trash once every day
 exec-once = trash-empty 30
 ```
+
+> [!NOTE]
+> `exec-once` only runs when Hyprland starts, so it won’t run daily unless you restart daily.
 
 That’s it — safer deletes, and a much smaller chance of a “well… crap” moment.

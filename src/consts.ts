@@ -17,7 +17,6 @@ interface Site {
   lightAndDarkMode: boolean;
   postPerIndex: number;
   scheduledPostMargin: number;
-  showBackButton: boolean;
   editPost: {
     enabled: boolean;
     text: string;
@@ -40,7 +39,6 @@ export const SITE: Site = {
   lightAndDarkMode: true,
   postPerIndex: 10,
   scheduledPostMargin: 15 * 60 * 1000,
-  showBackButton: false,
   editPost: {
     enabled: false,
     text: "Edit on GitHub",

@@ -2,7 +2,6 @@
 import { type CollectionEntry, render } from "astro:content";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
-import BackButton from "@/components/BackButton.astro";
 import Datetime from "@/components/Datetime.astro";
 import EditPost from "@/components/EditPost.astro";
 import Footer from "@/components/Footer.astro";
@@ -101,13 +100,9 @@ const wordCount = (post.body ?? "").split(/\s+/).length;
     }}
   />
   <Header />
-  <BackButton />
   <main
     id="main-content"
-    class:list={[
-      "mx-auto w-full max-w-3xl px-4 pb-12",
-      { "mt-8": !SITE.showBackButton },
-    ]}
+    class="mx-auto w-full max-w-3xl px-4 pb-12 mt-8"
     data-pagefind-body
   >
     <h1

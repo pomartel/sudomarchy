@@ -1,1 +1,1 @@
-export const onRequest = async (context, next) => {};
+export const onRequest = async (context, next) => next();

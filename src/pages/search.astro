@@ -5,14 +5,12 @@ import Header from "@/components/Header.astro";
 import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
 import Main from "@/layouts/Main.astro";
-
-const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
 ---
 
 <Layout title={`Search | ${SITE.title}`} description="Search through sudomarchy's blog posts on Linux, Omarchy and Hyprland.">
   <Header />
   <Main pageTitle="Search" pageDesc="Search any article ...">
-    <div id="pagefind-search" transition:persist data-backurl={backUrl}></div>
+    <div id="pagefind-search" transition:persist></div>
   </Main>
   <Footer />
 </Layout>
@@ -50,9 +48,6 @@ const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
         processTerm: function (term: string) {
           params.set("q", term); // Update the `q` parameter in the URL
           history.replaceState(history.state, "", "?" + params.toString()); // Push the new URL without reloading
-
-          const backUrl = pageFindSearch?.dataset?.backurl;
-          sessionStorage.setItem("backUrl", backUrl + "?" + params.toString());
 
           return term;
         },

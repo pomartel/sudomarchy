@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { type CollectionEntry, render } from "astro:content";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
@@ -32,6 +33,15 @@ const {
 } = post.data;
 
 const { Content } = await render(post);
+
+const heroImageAlt = (post.data as Record<string, unknown>).heroImageAlt as
+  | string
+  | undefined;
+const heroImageAsset = typeof heroImage === "string" ? undefined : heroImage;
+const heroImageUrl =
+  typeof heroImage === "string"
+    ? heroImage
+    : (heroImage as { src: string } | undefined)?.src;
 
 let ogImageUrl: string | undefined;
 
@@ -102,13 +112,27 @@ const nextPost = currentPostIndex !== allPosts.length ? allPosts[currentPostInde
     </div>
     <article id="article" class="mx-auto prose mt-6 max-w-3xl">
       {
-        heroImage && (
-          <img
-            src={heroImage}
-            alt=""
-            class="mb-8 aspect-video w-full rounded-md object-cover"
-            loading="lazy"
-          />
+        heroImageUrl && (
+          heroImageAsset ? (
+            <Image
+              src={heroImageAsset}
+              alt={heroImageAlt || title}
+              width={1200}
+              height={675}
+              class="mb-8 aspect-video w-full rounded-md object-cover"
+              format="webp"
+              quality={80}
+              loading="lazy"
+              sizes="(min-width: 1024px) 768px, 100vw"
+            />
+          ) : (
+            <img
+              src={heroImageUrl}
+              alt={heroImageAlt || title}
+              class="mb-8 aspect-video w-full rounded-md object-cover"
+              loading="lazy"
+            />
+          )
         )
       }
       <Content />

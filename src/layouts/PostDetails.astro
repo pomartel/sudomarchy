@@ -6,7 +6,6 @@ import Datetime from "@/components/Datetime.astro";
 import EditPost from "@/components/EditPost.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
-import StructuredData from "@/components/StructuredData.astro";
 import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
 import { getPath } from "@/utils/getPath";
@@ -80,24 +79,9 @@ const currentPostIndex = allPosts.findIndex((a) => a.slug === post.id);
 const prevPost = currentPostIndex !== 0 ? allPosts[currentPostIndex - 1] : null;
 const nextPost = currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null;
 
-// Calculate word count for structured data
-const wordCount = (post.body ?? "").split(/\s+/).length;
 ---
 
 <Layout {...layoutProps}>
-  <StructuredData
-    type="BlogPosting"
-    data={{
-      title,
-      description,
-      author,
-      pubDatetime,
-      modDatetime,
-      url: Astro.url.href,
-      ogImage,
-      wordCount
-    }}
-  />
   <Header />
   <main
     id="main-content"

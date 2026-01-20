@@ -2,18 +2,18 @@
 title: "Turn Caps Lock Into Escape + App Launcher with keyd"
 description: "Use keyd to make Caps Lock tap as Esc and hold as Super+Shift (the Omarchy app-launcher modifier)."
 pubDatetime: "2026-01-21"
-draft: true
-heroImage: header.png
-heroImageAlt: "Caps Lock remapped to Escape on tap and Super+Shift on hold"
+draft: false
+heroImage: capslock-to-super-shift.png
+heroImageAlt: "Caps Lock remapped to Super+Shift"
 ---
 
-You can already find a lot of posts online that will teach you how to remap your **Caps Lock** key in Linux. This is common practice since—unless you shout a lot at people on the internet—this key is pretty useless.
+You can already find a lot of posts online that will teach you how to remap your **Caps Lock** key in Linux. This is common practice since, unless you shout a lot at people on the internet, this key is pretty useless.
 
 Omarchy already remaps **Caps Lock** to **XCompose**. I don’t have much use for XCompose, and I prefer to use [Espanso](https://espanso.org/) for text expansion instead.
 
 So let’s make Caps Lock do something *actually* useful.
 
-## Just Keyding...
+## Just Keyding
 
 One of the most powerful key remapping tools on Linux is a utility called [keyd](https://github.com/rvaiya/keyd). It goes beyond what you can do with key mappings in Hyprland.
 
@@ -32,7 +32,7 @@ Install the package from the Arch repository:
 sudo pacman -S keyd
 ```
 
-## 2. Configure `/etc/keyd/default.conf`
+## 2. Configure keyd
 
 Copy the following into `/etc/keyd/default.conf`:
 

@@ -54,7 +54,16 @@ if (typeof initOgImage === "string") {
   ogImageUrl = initOgImage.src; // Local asset
 }
 
-// Use dynamic OG image if enabled and no remote|local ogImage
+// Fall back to hero image if no explicit ogImage
+if (!ogImageUrl) {
+  if (resolvedHeroImage.kind === "asset") {
+    ogImageUrl = resolvedHeroImage.asset.src;
+  } else if (resolvedHeroImage.kind === "url") {
+    ogImageUrl = resolvedHeroImage.url;
+  }
+}
+
+// Use dynamic OG image if enabled and no explicit ogImage/hero image
 if (!ogImageUrl && SITE.dynamicOgImage) {
   ogImageUrl = `${getPath(post.id, post.filePath)}/index.png`;
 }

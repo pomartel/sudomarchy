@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getPath } from "@/utils/getPath";
+import { resolveHeroImage } from "@/utils/resolveHeroImage";
 import { slugifyStr } from "@/utils/slugify";
 import Datetime from "./Datetime.astro";
 
@@ -13,6 +14,8 @@ export interface Props extends CollectionEntry<"blog"> {
 const { variant = "h2", data, id, filePath, body, showImage = true } = Astro.props;
 
 const { title, description, pubDatetime, modDatetime, timezone, heroImage } = data;
+
+const resolvedHeroImage = resolveHeroImage({ heroImage, pubDatetime, id });
 
 const headerProps = {
   style: { viewTransitionName: slugifyStr(title) },
@@ -38,22 +41,34 @@ const headerProps = {
       <Datetime {pubDatetime} {modDatetime} {timezone} />
     </div>
     <div class="flex gap-4 items-start">
-      {showImage && heroImage && (
-        <a 
+      {showImage && resolvedHeroImage.kind !== "none" && (
+        <a
           href={getPath(id, filePath)}
           class="flex-shrink-0 hidden sm:block group"
         >
-          <Image
-            src={heroImage}
-            alt={title}
-            width={140}
-            height={79}
-            class="rounded shadow-sm transition-all duration-200 group-hover:shadow-md group-hover:scale-105 object-cover"
-            format="webp"
-            quality={80}
-            loading="lazy"
-            densities={[1, 2]}
-          />
+          {resolvedHeroImage.kind === "asset" ? (
+            <Image
+              src={resolvedHeroImage.asset}
+              alt={title}
+              width={140}
+              height={79}
+              class="rounded shadow-sm transition-all duration-200 group-hover:shadow-md group-hover:scale-105 object-cover"
+              format="webp"
+              quality={80}
+              loading="lazy"
+              densities={[1, 2]}
+            />
+          ) : (
+            <img
+              src={resolvedHeroImage.url}
+              alt={title}
+              width={140}
+              height={79}
+              class="rounded shadow-sm transition-all duration-200 group-hover:shadow-md group-hover:scale-105 object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
         </a>
       )}
       <p class="opacity-80 flex-1">{description}</p>

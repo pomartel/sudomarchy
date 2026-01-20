@@ -10,6 +10,7 @@ import Header from "@/components/Header.astro";
 import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
 import { getPath } from "@/utils/getPath";
+import { resolveHeroImage } from "@/utils/resolveHeroImage";
 import { slugifyStr } from "@/utils/slugify";
 
 export interface Props {
@@ -37,11 +38,12 @@ const { Content } = await render(post);
 const heroImageAlt = (post.data as Record<string, unknown>).heroImageAlt as
   | string
   | undefined;
-const heroImageAsset = typeof heroImage === "string" ? undefined : heroImage;
-const heroImageUrl =
-  typeof heroImage === "string"
-    ? heroImage
-    : (heroImage as { src: string } | undefined)?.src;
+
+const resolvedHeroImage = resolveHeroImage({
+  heroImage,
+  pubDatetime,
+  id: post.id,
+});
 
 let ogImageUrl: string | undefined;
 
@@ -116,10 +118,10 @@ const nextPost =
     </div>
     <article id="article" class="mx-auto prose mt-6 max-w-3xl">
       {
-        heroImageUrl && (
-          heroImageAsset ? (
+        resolvedHeroImage.kind !== "none" &&
+          (resolvedHeroImage.kind === "asset" ? (
             <Image
-              src={heroImageAsset}
+              src={resolvedHeroImage.asset}
               alt={heroImageAlt || title}
               width={1200}
               height={675}
@@ -131,13 +133,12 @@ const nextPost =
             />
           ) : (
             <img
-              src={heroImageUrl}
+              src={resolvedHeroImage.url}
               alt={heroImageAlt || title}
               class="mb-8 aspect-video w-full rounded-md object-cover"
               loading="lazy"
             />
-          )
-        )
+          ))
       }
       <Content />
     </article>

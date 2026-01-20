@@ -1,10 +1,10 @@
 ---
 title: "Stop deleting files by accident!"
-description: "Make rm safer by sending deletes to the Trash."
-pubDatetime: "2026-01-19"
-draft: true
-heroImage: ../../../assets/images/2026/stop-deleting-files-by-accident/header.jpg
-heroImageAlt: "Terminal-style banner showing rm to trash"
+description: "Make rm safer by sending deleted files to the Trash."
+pubDatetime: "2026-01-20"
+draft: false
+heroImage: simpsons-meme.jpg
+heroImageAlt: "0 days without deleting a file by acident"
 ---
 
 If you come from Windows, the first time you use `rm` can be a bit of a shock: there’s no Recycle Bin. The file is just… gone.
@@ -31,10 +31,10 @@ That’s the same trash location used by Nautilus, the file explorer in Omarchy.
 
 ## Permanently delete when you really mean it
 
-Sometimes you *do* want a permanent delete. In that case, call the real `rm` directly:
+Sometimes you *do* want a permanent delete. In that case, call the real `rm` command directly:
 
 ```bash
-/bin/rm some_file.doc
+command rm some_file.doc
 ```
 
 ## Empty the trash automatically

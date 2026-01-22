@@ -1,7 +1,7 @@
 ---
 title: "Turn Caps Lock Into Escape + App Launcher with keyd"
 description: "Use keyd to make Caps Lock tap as Esc and hold as Super+Shift (the Omarchy app-launcher modifier)."
-pubDatetime: "2026-01-21"
+pubDatetime: "2026-01-22"
 draft: false
 heroImage: capslock-to-super-shift.png
 heroImageAlt: "Caps Lock remapped to Super+Shift"

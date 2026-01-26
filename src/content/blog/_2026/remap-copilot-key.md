@@ -1,5 +1,5 @@
 ---
-title: "Remap that useless copilot key!"
+title: "Remap That Useless Copilot Key!"
 description: "Use keyd to turn the Copilot key into a virtual F13 hotkey, then bind it to Voxtype dictation."
 pubDatetime: "2026-01-26"
 heroImage: copilot-to-dictation.png
@@ -23,6 +23,7 @@ On my laptop, the Copilot key doesn't send a single keycode. It sends:
 If you want to confirm what yours sends under Wayland/Hyprland, run this in a terminal and press the Copilot key:
 
 ```bash
+pacman -S wev
 wev
 ```
 
@@ -50,7 +51,7 @@ If pressing the Copilot key still "does nothing", that's expected: we created a 
 
 ## 2. Bind F13 to Voxtype Dictation
 
-Omarchy ships with [Voxtype](https://voxtype.io/) for dictation. By default, dictation uses a hold shortcut (**Ctrl + Super + X**).
+Omarchy ships with [Voxtype](https://voxtype.io/) for dictation. By default, dictation uses an hyprland shortcut (**Ctrl + Super + X**).
 
 That's fine, but if you use dictation often, a single key is nicer.
 

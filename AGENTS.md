@@ -14,6 +14,11 @@
 - `gsed` provides GNU sed features that are more consistent across Linux and macOS
 - If editing files with sed-like operations, use `gsed` to ensure reliable results
 
+### SECRETS / ENV VARS
+
+- Never commit secrets (API keys, tokens). Use environment variables or a local `.env` (already gitignored).
+- For GitHub API calls during `npm run build`, prefer `GITHUB_TOKEN` (fallback: `GH_TOKEN`).
+
 ### ALWAYS USE LATEST DEPENDENCIES
 
 - **NEVER DOWNGRADE DEPENDENCIES** - Always use the latest stable versions
@@ -56,8 +61,7 @@ npm run preview
 
    - Create a new markdown file in `/src/content/blog/`
    - Include proper frontmatter (title, description, pubDate, etc.)
-   - Format dates in ISO-8601 format: `YYYY-MM-DDTHH:MM:SS+HH:MM`
-   - Format tags as arrays: `tags: ["tag1", "tag2"]`
+   - Format dates in ISO-8601 format: `YYYY-MM-DD`
 
 2. **Modifying site configuration**:
 
@@ -103,5 +107,5 @@ npm run preview
 
 - **Astro** (latest version) - Main framework
 - **TailwindCSS** - For styling
-- **React** - For interactive components (v18.2.0)
+- **React** - For interactive components (v19.2.x)
 - **MDX** - For enhanced markdown support

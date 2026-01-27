@@ -1,0 +1,201 @@
+---
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import Layout from "@/layouts/Layout.astro";
+import { SITE } from "@/config";
+
+type PrStatus = "open" | "merged" | "closed";
+
+type PrItem = {
+  number: number;
+  title: string;
+  url: string;
+  createdAt: string;
+  status: PrStatus;
+};
+
+const OWNER = "basecamp";
+const REPO = "omarchy";
+const AUTHOR = "pomartel";
+
+const perPage = 100;
+
+const search = async (q: string, page: number) => {
+  const url = new URL("https://api.github.com/search/issues");
+  url.searchParams.set("q", q);
+  url.searchParams.set("sort", "created");
+  url.searchParams.set("order", "desc");
+  url.searchParams.set("per_page", String(perPage));
+  url.searchParams.set("page", String(page));
+
+  const res = await fetch(url, {
+    headers: {
+      Accept: "application/vnd.github+json",
+      "User-Agent": `${SITE.title} (build)`
+    },
+  });
+
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    throw new Error(`GitHub API error ${res.status}: ${body || res.statusText}`);
+  }
+
+  return res.json() as Promise<{
+    total_count: number;
+    items: Array<{
+      number: number;
+      title: string;
+      html_url: string;
+      created_at: string;
+      pull_request?: unknown;
+    }>;
+  }>;
+};
+
+const fetchAll = async (q: string) => {
+  const items: Awaited<ReturnType<typeof search>>["items"] = [];
+
+  for (let page = 1; page <= 10; page++) {
+    const data = await search(q, page);
+    items.push(...data.items);
+
+    if (data.items.length < perPage) break;
+    if (page * perPage >= data.total_count) break;
+  }
+
+  return items;
+};
+
+let prs: PrItem[] = [];
+let fetchError: string | null = null;
+
+try {
+  const base = `repo:${OWNER}/${REPO} type:pr author:${AUTHOR}`;
+
+  const [open, merged, closed] = await Promise.all([
+    fetchAll(`${base} is:open`),
+    fetchAll(`${base} is:merged`),
+    fetchAll(`${base} is:closed -is:merged`),
+  ]);
+
+  const byNumber = new Map<number, PrItem>();
+
+  const add = (items: typeof open, status: PrStatus) => {
+    for (const pr of items) {
+      if (!pr.pull_request) continue;
+      byNumber.set(pr.number, {
+        number: pr.number,
+        title: pr.title,
+        url: pr.html_url,
+        createdAt: pr.created_at,
+        status,
+      });
+    }
+  };
+
+  add(closed, "closed");
+  add(merged, "merged");
+  add(open, "open");
+
+  prs = Array.from(byNumber.values()).sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  );
+} catch (e) {
+  fetchError = e instanceof Error ? e.message : String(e);
+}
+
+const statusLabel = (status: PrStatus) => {
+  switch (status) {
+    case "open":
+      return "Open";
+    case "merged":
+      return "Merged";
+    case "closed":
+      return "Closed";
+  }
+};
+
+const statusDotClass = (status: PrStatus) => {
+  switch (status) {
+    case "open":
+      return "bg-emerald-500";
+    case "merged":
+      return "bg-sky-500";
+    case "closed":
+      return "bg-zinc-400 dark:bg-zinc-500";
+  }
+};
+---
+
+<Layout
+  title={`My Omarchy PRs | ${SITE.title}`}
+  description={`Pull requests by ${AUTHOR} to ${OWNER}/${REPO}, updated at build time.`}
+>
+  <Header />
+  <main id="main-content" class="mx-auto w-full max-w-3xl px-4">
+    <section class="mt-8 mb-20">
+      <header class="mb-6">
+        <h1 class="text-2xl tracking-wider sm:text-3xl">My Omarchy PRs</h1>
+        <p class="mt-2 text-foreground/80">
+          My modest contribution to
+          <a
+            class="underline decoration-dashed underline-offset-8 hover:text-accent"
+            href={`https://github.com/${OWNER}/${REPO}`}
+            target="_blank"
+            rel="noreferrer"
+          >{OWNER}/{REPO}</a>.
+        </p>
+      </header>
+
+      {
+        fetchError ? (
+          <div class="rounded-lg border border-border bg-background p-4">
+            <p class="font-semibold">Could not load PRs</p>
+            <p class="mt-1 text-sm text-foreground/80 break-words">{fetchError}</p>
+          </div>
+        ) : prs.length === 0 ? (
+          <div class="rounded-lg border border-border bg-background p-4">
+            <p class="text-foreground/80">No pull requests found.</p>
+          </div>
+        ) : (
+          <div class="overflow-x-auto rounded-lg border border-border bg-background">
+            <table class="w-full table-fixed text-sm">
+              <thead class="bg-muted/40">
+                <tr>
+                  <th class="w-32 px-4 py-3 text-left font-semibold sm:w-40">Status</th>
+                  <th class="px-4 py-3 text-left font-semibold">Title</th>
+                </tr>
+              </thead>
+              <tbody>
+                {prs.map((pr) => (
+                  <tr class="border-t border-border/60 hover:bg-muted/25">
+                    <td class="px-4 py-3">
+                      <span class="inline-flex items-center gap-2">
+                        <span
+                          class:list={["inline-block size-2.5 rounded-full", statusDotClass(pr.status)]}
+                          aria-hidden="true"
+                        />
+                        <span class="font-medium">{statusLabel(pr.status)}</span>
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 max-w-0 break-words">
+                      <a
+                        class="font-medium break-words hover:text-accent"
+                        href={pr.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {pr.title}
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )
+      }
+    </section>
+  </main>
+  <Footer />
+</Layout>

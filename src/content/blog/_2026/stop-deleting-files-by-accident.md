@@ -1,5 +1,5 @@
 ---
-title: "Stop deleting files by accident!"
+title: "Stop deleting files by accident"
 description: "Make rm safer by sending deleted files to the Trash."
 pubDatetime: "2026-01-20"
 draft: false

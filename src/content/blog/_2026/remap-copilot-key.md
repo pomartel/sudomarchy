@@ -1,5 +1,5 @@
 ---
-title: "Remap That Useless Copilot Key!"
+title: "Remap That Useless Copilot Key"
 description: "Use keyd to turn the Copilot key into a virtual F13 hotkey, then bind it to Voxtype dictation."
 pubDatetime: "2026-01-26"
 heroImage: copilot-to-dictation.png
@@ -39,7 +39,12 @@ Add this mapping to `/etc/keyd/default.conf` (inside the `[main]` section):
 [main]
 # Map the Windows Copilot key combo to F13
 leftshift+leftmeta+f23 = f13
+
+# If you don't have a Copilot key (or want both laptop + external keyboard)
+rightcontrol = f13
 ```
+
+If your keyboard doesn't have a Copilot key, you can remap the right Ctrl key instead. I actually use both mappings since I use the laptop keyboard and an external keyboard.
 
 Reload keyd:
 

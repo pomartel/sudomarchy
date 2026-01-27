@@ -23,7 +23,9 @@ On my laptop, the Copilot key doesn't send a single keycode. It sends:
 If you want to confirm what yours sends under Wayland/Hyprland, run this in a terminal and press the Copilot key:
 
 ```bash
-pacman -S wev
+# Install wev if you don't have it
+sudo pacman -S wev
+# Run web and press the Copilot key
 wev
 ```
 
@@ -33,6 +35,8 @@ We'll map that awkward combo to **F13**.
 
 But if you look at your keyboard, the F keys end at 12. There is no F13! And that's the point. We're creating a virtual key that we can bind in other programs.
 
+If your keyboard doesn't have a Copilot key, you can remap the **right Ctrl key** instead. I remap both keys since I use the laptop keyboard and an external keyboard that doesn't have a Copilot key.
+
 Add this mapping to `/etc/keyd/default.conf` (inside the `[main]` section):
 
 ```ini file=/etc/keyd/default.conf
@@ -40,11 +44,9 @@ Add this mapping to `/etc/keyd/default.conf` (inside the `[main]` section):
 # Map the Windows Copilot key combo to F13
 leftshift+leftmeta+f23 = f13
 
-# If you don't have a Copilot key (or want both laptop + external keyboard)
+# If you don't have a Copilot key (or use laptop + external keyboard)
 rightcontrol = f13
 ```
-
-If your keyboard doesn't have a Copilot key, you can remap the right Ctrl key instead. I actually use both mappings since I use the laptop keyboard and an external keyboard.
 
 Reload keyd:
 

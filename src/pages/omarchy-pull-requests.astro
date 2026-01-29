@@ -72,10 +72,9 @@ let fetchError: string | null = null;
 try {
   const base = `repo:${OWNER}/${REPO} type:pr author:${AUTHOR}`;
 
-  const [open, merged, closed] = await Promise.all([
+  const [open, merged] = await Promise.all([
     fetchAll(`${base} is:open`),
     fetchAll(`${base} is:merged`),
-    fetchAll(`${base} is:closed -is:merged`),
   ]);
 
   const byNumber = new Map<number, PrItem>();
@@ -93,7 +92,6 @@ try {
     }
   };
 
-  add(closed, "closed");
   add(merged, "merged");
   add(open, "open");
 
@@ -110,8 +108,6 @@ const statusLabel = (status: PrStatus) => {
       return "Open";
     case "merged":
       return "Merged";
-    case "closed":
-      return "Closed";
   }
 };
 
@@ -121,8 +117,6 @@ const statusDotClass = (status: PrStatus) => {
       return "bg-emerald-500";
     case "merged":
       return "bg-sky-500";
-    case "closed":
-      return "bg-zinc-400 dark:bg-zinc-500";
   }
 };
 ---

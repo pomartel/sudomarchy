@@ -4,7 +4,7 @@ import Header from "@/components/Header.astro";
 import Layout from "@/layouts/Layout.astro";
 import { SITE } from "@/config";
 
-type PrStatus = "open" | "merged";
+type PrStatus = "open" | "merged" | "closed";
 
 type PrItem = {
   number: number;
@@ -17,6 +17,8 @@ type PrItem = {
 const OWNER = "basecamp";
 const REPO = "omarchy";
 const AUTHOR = "pomartel";
+
+const EXCLUDED_PR_IDS = new Set<number>([4350,4388,4244]);
 
 const perPage = 100;
 
@@ -72,9 +74,10 @@ let fetchError: string | null = null;
 try {
   const base = `repo:${OWNER}/${REPO} type:pr author:${AUTHOR}`;
 
-  const [open, merged] = await Promise.all([
+  const [open, merged, closed] = await Promise.all([
     fetchAll(`${base} is:open`),
     fetchAll(`${base} is:merged`),
+    fetchAll(`${base} is:closed -is:merged`),
   ]);
 
   const byNumber = new Map<number, PrItem>();
@@ -94,10 +97,11 @@ try {
 
   add(merged, "merged");
   add(open, "open");
+  add(closed, "closed");
 
-  prs = Array.from(byNumber.values()).sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  );
+  prs = Array.from(byNumber.values())
+    .filter((pr) => !EXCLUDED_PR_IDS.has(pr.number))
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 } catch (e) {
   fetchError = e instanceof Error ? e.message : String(e);
 }
@@ -108,6 +112,8 @@ const statusLabel = (status: PrStatus) => {
       return "Open";
     case "merged":
       return "Merged";
+    case "closed":
+      return "Closed";
   }
 };
 
@@ -116,7 +122,9 @@ const statusDotClass = (status: PrStatus) => {
     case "open":
       return "bg-emerald-500";
     case "merged":
-      return "bg-sky-500";
+      return "bg-purple-500";
+    case "closed":
+      return "bg-slate-500";
   }
 };
 ---

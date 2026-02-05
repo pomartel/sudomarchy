@@ -9,7 +9,7 @@ heroImageAlt: "A laptop connected to a trusted wifi network"
 
 > [!WARNING]
 >
-> This procedure lowers the default security of your Omarchy installation. Make sure you understand the security risks involved before trying this.
+> This procedure lowers the default security of your Omarchy installation. Make sure you understand the security risks involved before attempting this.
 
 So this might be my most controversial post yet.
 
@@ -17,7 +17,7 @@ Computer security is often about finding the right balance between convenience a
 
 With that said, I wanted to see if I could configure Hypridle to bypass the lock screen when I'm on my home network. This means that when my laptop wakes up from sleep, it will only show the lock screen if the laptop is not connected to my home wifi.
 
-This is very convenient as I don't have to type my password most of the time. I also don't have any work related stuff on that specific laptop. But again, make sure you understand the security risk involved before proceeding.
+This is very convenient as I don't have to type my password most of the time. I also don't have any important work related stuff on that secondary laptop. But again, make sure you understand the security risk involved before proceeding.
 
 > [!IMPORTANT]
 > This uses the Wi-Fi network name (SSID) as the trust signal. SSIDs can be spoofed, so treat this as a convenience tweak, not a high-assurance security control.
@@ -68,7 +68,6 @@ You can also pass multiple trusted SSIDs:
 ```bash
 lock-unless-ssid my-home-ssid my-other-ssid
 ```
-
 
 ## 2. Edit `hypridle.conf`
 

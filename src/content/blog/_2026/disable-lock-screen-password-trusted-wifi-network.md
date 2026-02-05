@@ -22,7 +22,7 @@ This is very convenient as I don't have to type my password most of the time. I 
 > [!IMPORTANT]
 > This uses the Wi-Fi network name (SSID) as the trust signal. SSIDs can be spoofed, so treat this as a convenience tweak, not a high-assurance security control.
 
-## 1 . Create the script
+## 1. Create the script
 
 Here is the small bash script I use to check the current network and lock the computer if it's not connected to one of the network passed as an argument.
 

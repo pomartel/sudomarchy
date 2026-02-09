@@ -73,8 +73,11 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx,json}": [
+    "*.{js,ts,tsx}": [
       "biome check --write --files-ignore-unknown=true"
+    ],
+    "*.json": [
+      "node scripts/lint-staged-biome.mjs"
     ]
   }
 }

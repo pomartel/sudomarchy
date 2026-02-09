@@ -1,20 +1,18 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import mdx from "@astrojs/mdx";
-import sitemap, { ChangeFreqEnum } from "@astrojs/sitemap";
-import react from "@astrojs/react";
-import tailwindcss from "@tailwindcss/vite";
-import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
-import remarkGithubBlockquoteAlert, { remarkAlert } from "remark-github-blockquote-alert";
+
+import sitemap from "@astrojs/sitemap";
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
-import { transformerFileName } from "./src/utils/transformers/fileName";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
+import remarkCollapse from "remark-collapse";
+import remarkAlert from "remark-github-blockquote-alert";
+import remarkToc from "remark-toc";
 import { SITE } from "./src/config";
-import AstroPWA from "@vite-pwa/astro";
+import { transformerFileName } from "./src/utils/transformers/fileName";
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,7 +22,7 @@ export default defineConfig({
     remarkPlugins: [
       remarkAlert,
       remarkToc,
-      // @ts-ignore - TypeScript has issues with remark plugin tuple syntax
+      // @ts-expect-error - TypeScript has issues with remark plugin tuple syntax
       [remarkCollapse, { test: "Table of contents" }],
     ],
     shikiConfig: {
@@ -40,142 +38,7 @@ export default defineConfig({
       ],
     },
   },
-  integrations: [
-    mdx(),
-    sitemap({
-      filter: (page) => {
-        return true;
-      },
-      serialize: (item) => {
-        // Remove trailing slash from URL if present (except for root)
-        if (item.url.endsWith("/") && item.url !== SITE.website + "/") {
-          item.url = item.url.slice(0, -1);
-        }
-
-        const url = item.url;
-
-        // Set defaults
-        item.changefreq = ChangeFreqEnum.MONTHLY;
-        item.priority = 0.5;
-
-        // Homepage - highest priority, frequent updates
-        if (url === SITE.website || url === SITE.website + "/") {
-          item.priority = 1.0;
-          item.changefreq = ChangeFreqEnum.DAILY;
-          item.lastmod = new Date().toISOString();
-        }
-        // Main section pages
-        else if (url.endsWith("/posts") || url.endsWith("/about") || url.endsWith("/search")) {
-          item.priority = 0.9;
-          item.changefreq = ChangeFreqEnum.WEEKLY;
-        }
-        // Recent blog posts (2024-2025)
-        else if (url.includes("/posts/2025") || url.includes("/posts/2024")) {
-          item.priority = 0.8;
-          item.changefreq = ChangeFreqEnum.WEEKLY;
-        }
-        // Somewhat recent posts (2020-2023)
-        else if (
-          url.includes("/posts/2023") ||
-          url.includes("/posts/2022") ||
-          url.includes("/posts/2021") ||
-          url.includes("/posts/2020")
-        ) {
-          item.priority = 0.6;
-          item.changefreq = ChangeFreqEnum.MONTHLY;
-        }
-        // Older posts (2010-2019)
-        else if (url.includes("/posts/201")) {
-          item.priority = 0.4;
-          item.changefreq = ChangeFreqEnum.YEARLY;
-        }
-        // Tag pages - low priority
-        else if (url.includes("/tags/")) {
-          item.priority = 0.1;
-          item.changefreq = ChangeFreqEnum.YEARLY;
-        }
-
-        // Note: lastmod dates for individual posts would need to be set
-        // from the actual post data, which requires more complex integration
-
-        return item;
-      },
-    }),
-    react(),
-    AstroPWA({
-      registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "avatar.jpg"],
-      manifest: {
-        name: "sudomarchy",
-        short_name: "sudomarchy",
-        description: "My Omarchy & Hyprland tweaks",
-        theme_color: "#006cac",
-        background_color: "#fdfdfd",
-        display: "standalone",
-        orientation: "portrait",
-        scope: "/",
-        start_url: "/",
-        icons: [
-          {
-            src: "favicon.ico",
-            sizes: "48x48",
-            type: "image/x-icon",
-          },
-          {
-            src: "avatar.jpg",
-            sizes: "192x192",
-            type: "image/jpeg",
-            purpose: "any",
-          },
-          {
-            src: "avatar.jpg",
-            sizes: "512x512",
-            type: "image/jpeg",
-            purpose: "any maskable",
-          },
-        ],
-      },
-      workbox: {
-        navigateFallback: "/404",
-        globPatterns: ["**/*.{css,js,html,svg,png,jpg,jpeg,gif,webp,woff,woff2,ttf,eot,ico}"],
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "google-fonts-cache",
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-          {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "images-cache",
-              expiration: {
-                maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
-              },
-            },
-          },
-        ],
-      },
-      devOptions: {
-        enabled: true,
-        suppressWarnings: true,
-        navigateFallbackAllowlist: [/^\//],
-      },
-      experimental: {
-        directoryAndTrailingSlashHandler: true,
-      },
-    }),
-  ],
+  integrations: [sitemap()],
   vite: {
     resolve: {
       alias: {
@@ -186,5 +49,9 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
+  },
+  image: {
+    responsiveStyles: true,
+    layout: "constrained",
   },
 });

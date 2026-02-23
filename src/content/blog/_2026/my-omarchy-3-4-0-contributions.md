@@ -3,7 +3,7 @@ title: "4 small quality-of-life tweaks I contributed to Omarchy 3.4.0"
 description: "Open a Ghostty terminal from Nautilus, automatically change power profile on battery and more..."
 pubDatetime: "2026-02-17"
 draft: true
-heroImage: open-in-ghostty.png
+heroImage: my-omarchy-3-4-0-contributions.png
 heroImageAlt: "Nautilus right-click menu showing an Open in Ghostty item"
 ---
 

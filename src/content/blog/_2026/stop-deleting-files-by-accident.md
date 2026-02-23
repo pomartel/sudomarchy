@@ -3,7 +3,7 @@ title: "Stop deleting files by accident"
 description: "Make rm safer by sending deleted files to the Trash."
 pubDatetime: "2026-01-20"
 draft: false
-heroImage: simpsons-meme.jpg
+heroImage: stop-deleting-files-by-accident.jpg
 heroImageAlt: "0 days without deleting a file by acident"
 ---
 

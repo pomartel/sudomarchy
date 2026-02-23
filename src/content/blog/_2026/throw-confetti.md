@@ -2,7 +2,7 @@
 title: "Feeling happy? Let's throw confetti!"
 description: "A totally useless trick that brings me joy: throw confetti on your desktop."
 pubDatetime: "2026-02-09"
-ogImage: "../../../assets/images/2026/throw-confetti/og.jpg"
+ogImage: "../../../assets/images/throw-confetti.jpg"
 heroImageAlt: "Confetti bursts over the desktop"
 draft: false
 ---

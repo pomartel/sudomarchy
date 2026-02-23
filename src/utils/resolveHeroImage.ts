@@ -28,19 +28,18 @@ const heroImageModules = (import.meta as unknown as ViteImportMeta).glob<{
   default: ImageMetadata;
 }>("../assets/images/**/*.{avif,gif,jpg,jpeg,png,webp}", { eager: true });
 
-function findHeroImageAssetByBasename(options: {
-  year: string;
-  slug: string;
-  basename: string;
-}): ImageMetadata | undefined {
-  const folderSuffix = `/assets/images/${options.year}/${options.slug}/`;
-  const match = Object.entries(heroImageModules).find(([path]) => {
-    if (!path.includes(folderSuffix)) return false;
+function findHeroImageAssetByBasename(basename: string): ImageMetadata | undefined {
+  const hasExtension = basename.includes(".");
 
+  const match = Object.entries(heroImageModules).find(([path]) => {
     const filename = path.split("/").pop();
     if (!filename) return false;
 
-    return filename === options.basename || filename.startsWith(`${options.basename}.`);
+    if (filename === basename) return true;
+    if (hasExtension) return false;
+
+    // Allow specifying a basename without extension.
+    return filename.startsWith(`${basename}.`);
   });
 
   return match ? match[1].default : undefined;
@@ -64,15 +63,7 @@ export function resolveHeroImage(options: {
     return { kind: "url", url: heroImage };
   }
 
-  const year = String(pubDatetime.getFullYear());
-  const idSegments = id.split("/");
-  const slug = idSegments.length > 0 ? idSegments[idSegments.length - 1] : id;
-
-  const asset = findHeroImageAssetByBasename({
-    year,
-    slug,
-    basename: heroImage,
-  });
+  const asset = findHeroImageAssetByBasename(heroImage);
 
   if (asset) return { kind: "asset", asset };
 

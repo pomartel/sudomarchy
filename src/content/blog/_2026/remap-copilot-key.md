@@ -2,7 +2,7 @@
 title: "Remap That Useless Copilot Key"
 description: "Use keyd to turn the Copilot key into a virtual F13 hotkey, then bind it to Voxtype dictation."
 pubDatetime: "2026-01-26"
-heroImage: copilot-to-dictation.png
+heroImage: remap-copilot-key.png
 heroImageAlt: "Copilot key remapped to dictation key"
 ---
 

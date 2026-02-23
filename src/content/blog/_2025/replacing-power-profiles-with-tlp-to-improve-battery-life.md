@@ -61,7 +61,7 @@ systemctl status tlp-pd
 
 Omarchy **Setup > Power Profile** menu expects the `powerprofilesctl` command. Now you could fiddle with the menu script to make it work but there is an easier way. Simply symlink `tlpctl` to `powerprofilesctl`. The command is meant as drop-in replacement and offers the same api.
 
- ```bash
+```bash
 sudo ln -s /usr/bin/tlpctl /usr/local/bin/powerprofilesctl
 ```
 
@@ -82,4 +82,4 @@ tlp-stat -p
 
 Verify that the power profiles are still available when you click the battery icon in the waybar or use the **Setup > Power Profile** menu. You should be able to change the power profile manually. The power profile will now also change automatically when you plug or unplug your laptop.
 
-You can do a lot of tweakings with TLP. I encourage you to read the [official documentation](https://linrunner.de/tlp/docs/tlp-configuration.html) to learn more about the available settings. Personnaly I found that just sticking with the default settings worked great and allowed me to improve my battery life by about 20%.
+You can do a lot of tweakings with TLP. I encourage you to read the [official documentation](https://linrunner.de/tlp/settings/index.html) to learn more about the available settings.

@@ -18,7 +18,7 @@ const OWNER = "basecamp";
 const REPO = "omarchy";
 const AUTHOR = "pomartel";
 
-const EXCLUDED_PR_IDS = new Set<number>([4350,4388,4244,4480,4485,4585]);
+const EXCLUDED_PR_IDS = new Set<number>([4350,4388,4244,4480,4485,4585,4645,4656]);
 
 const perPage = 100;
 
@@ -130,34 +130,34 @@ const statusDotClass = (status: PrStatus) => {
 ---
 
 <Layout
-  title={`My Omarchy PRs | ${SITE.title}`}
-  description={`Pull requests by ${AUTHOR} to ${OWNER}/${REPO}, updated at build time.`}
+  title={`My Omarchy Contributions | ${SITE.title}`}
+  description={`Contributions by ${AUTHOR} to ${OWNER}/${REPO}, updated at build time.`}
 >
   <Header />
   <main id="main-content" class="mx-auto w-full max-w-3xl px-4">
     <section class="mt-8 mb-20">
       <header class="mb-6">
-        <h1 class="text-2xl tracking-wider sm:text-3xl">My Omarchy PRs</h1>
+        <h1 class="text-2xl tracking-wider sm:text-3xl">My Omarchy Contributions</h1>
         <p class="mt-2 text-foreground/80">
-          My modest contribution to
+            Here is a curated list of Pull Requests I contributed to for
           <a
             class="underline decoration-dashed underline-offset-8 hover:text-accent"
             href={`https://github.com/${OWNER}/${REPO}`}
             target="_blank"
             rel="noreferrer"
-          >{OWNER}/{REPO}</a>.
+          >{REPO}</a>.
         </p>
       </header>
 
       {
         fetchError ? (
           <div class="rounded-lg border border-border bg-background p-4">
-            <p class="font-semibold">Could not load PRs</p>
+            <p class="font-semibold">Could not load contributions</p>
             <p class="mt-1 text-sm text-foreground/80 break-words">{fetchError}</p>
           </div>
         ) : prs.length === 0 ? (
           <div class="rounded-lg border border-border bg-background p-4">
-            <p class="text-foreground/80">No pull requests found.</p>
+            <p class="text-foreground/80">No contributions found.</p>
           </div>
         ) : (
           <div class="overflow-x-auto rounded-lg border border-border bg-background">

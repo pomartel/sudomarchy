@@ -50,6 +50,13 @@ Whenever I installed a new web app, I used to struggle to add the appropriate ic
 
 Oh my god! I [worked so hard](https://github.com/basecamp/omarchy/pull/4742) to get rid of that pesky little useless keyboard icon (fcitx5) from the waybar. Probably more than I should have but now its gone! It's funny because I think that was my [first post](https://www.reddit.com/r/omarchy/comments/1p8xmgi/can_i_remove_the_fcit5_package_safely_keyboard/) on [r/omarchy](https://www.reddit.com/r/omarchy/).
 
+Unfortunately my second [PR](https://github.com/basecamp/omarchy/pull/4752/) to remove the autostart desktop file was not submitted in time for the release. If you still see the icon, remove this file and restart XCompose.
+
+```bash
+sudo rm -f /etc/xdg/autostart/org.fcitx.Fcitx5.desktop
+omarchy-restart-xcompose
+```
+
 ## More to come...
 
 There are a lot more goodies and fixes in this new release. I'm having fun learning [tmux](https://github.com/tmux/tmux/wiki), which also shipped with Omarchy 3.4.0. That will probably be the subject of a future blog post.

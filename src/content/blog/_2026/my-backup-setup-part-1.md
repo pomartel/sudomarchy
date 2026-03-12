@@ -2,10 +2,13 @@
 title: "My backup setup (Part 1): documents, projects, and configs"
 description: "A lightweight backup strategy: Dropbox for documents, Git for code, yadm for dotfiles."
 pubDatetime: "2026-02-23"
+modDatetime: 2026-03-12
 heroImage: my-backup-setup-part-1.webp
 heroImageAlt: "Dropbox, GitHub, and yadm logos"
 draft: false
 ---
+
+_Update (2026-03-12): After hearing good things about restic, I added it to my backup strategy._
 
 Prior to Omarchy, I was a Mac user for 15 years. I used Time Machine to back up my system to an external drive and, every few years when I got a new Mac, I would do a fresh install and download and reconfigure all my apps.
 
@@ -13,7 +16,7 @@ But as time went by, it became more and more tedious to configure new machines a
 
 With Omarchy, I was inspired by DHH's philosophy of a stateless, disposable machine (see [No backup, no cry](https://world.hey.com/dhh/no-backup-no-cry-274e0c31)). Instead of relying on a full-disk backup, I wanted to set things up so that I could spin up a new machine and have it ready within an hour.
 
-This is the first of a series of two posts where I cover my backup strategy. It relies on Dropbox, Git, yadm, and a few Bash install scripts.
+This is the first of a series of two posts where I cover my backup strategy. It relies on Dropbox, Git, yadm, restic, and a few Bash install scripts.
 
 ## 1. Syncing documents with Dropbox
 
@@ -43,7 +46,9 @@ I read about chezmoi but it felt a bit too much for what I needed. I didn't give
 
 I ended up choosing yadm, which is lightweight and works with plain Git commands. It treats your home folder like a Git repository and adds some niceties on top of it. You can encrypt files and use per-machine configurations. Overall it's just like managing a Git repository that you can push to GitHub, except that you use the `yadm` command instead of `git`.
 
-If you need to track config files outside your home folder, you can symlink them. That's what I do for my keyd configuration.
+My main use case for yadm is syncing config files across my two laptops. I have a few dotfiles that I want to keep in sync, and yadm makes it easy to do so.
+
+Another use case is to keep track files affected by Omarchy updates. Technically, Omarchy should leave your dotfiles alone, but that's not always the case and I want to know what changed.
 
 I use yadm so much that I ended up creating a `y` alias in my `.bashrc` file to not have to type the full 4 characters!
 
@@ -51,7 +56,17 @@ I use yadm so much that I ended up creating a `y` alias in my `.bashrc` file to 
 alias y=yadm
 ```
 
-## 4. Owning a secondary machine
+## 4. Backing up my `.config` with restic
+
+After hearing good things about [restic](https://restic.net/), I added it to my backup strategy as well.
+
+I use it for a complete backup of my `.config` directory to an S3 bucket. That gives me an extra layer of protection beyond yadm, since it also covers config files and application state that I do not explicitly track in Git.
+
+The backup runs automatically every day through a systemd timer unit, so once it is set up I do not need to think about it.
+
+I found it was easy to set up using codex but any agentic AI would work.
+
+## 5. Owning a secondary machine
 
 Since I contribute to Omarchy's development, I'm running my laptop on the [dev channel](https://learn.omacom.io/2/the-omarchy-manual/68/updates?search=channel#three-channels). So far, everything has been running smoothly.
 
@@ -59,4 +74,4 @@ But Arch Linux being a rolling release distro, you need to understand that thing
 
 ## Part 2 - Apps and services
 
-In my next post, I'll show you how I manage setting up a new machine in just a few minutes with Bash scripts. I was heavily inspired by the way Omarchy works under the hood.
+In [Part 2](/posts/my-backup-setup-part-2-installation-scripts), I'll show you how I manage setting up a new machine in just a few minutes with Bash scripts. I was heavily inspired by the way Omarchy works under the hood.

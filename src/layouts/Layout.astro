@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import { SITE } from "@/config";
 import "@/styles/global.css";
 import Analytics from "@/components/Analytics.astro";
@@ -131,11 +131,11 @@ const structuredData = {
       )
     }
 
-    <ViewTransitions />
+    <ClientRouter />
 
     <script is:inline set:html={toggleTheme} />
 
-    
+
     <!-- Twitter Widget Script -->
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </head>

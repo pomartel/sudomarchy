@@ -78,7 +78,7 @@ general {
     lock_cmd = omarchy-lock-screen                         # lock screen and 1password
     before_sleep_cmd = loginctl lock-session # [!code --]
     after_sleep_cmd = sleep 2; lock-unless-ssid my-home-ssid # [!code highlight]
-    inhibit_sleep = 3                                      # wait until screen is locked
+    inhibit_sleep = 0 # [!code highlight]
 }
 
 listener {  # [!code --]
@@ -91,6 +91,7 @@ listener {  # [!code --]
 Here are the changes we made:
 
 - Remove the `before_sleep_cmd` that locks the session.
+- Set `inhibit_sleep = 0` since we don't have to wait for the screen to lock.
 - Lock the session once the computer resumes from sleep only if it's not connected to the SSID passed as an argument. We also wait 2 seconds to give it time to connect to the wifi (you might need to adjust that number).
 - Remove the default listener that locks the session.
 

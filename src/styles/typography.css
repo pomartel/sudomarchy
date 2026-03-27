@@ -7,10 +7,19 @@
   .prose a {
     @apply break-words hover:!text-accent;
   }
+  .prose th,
+  .prose td {
+    @apply px-3 py-2 align-top;
+  }
   .prose thead th:first-child,
   .prose tbody td:first-child,
   .prose tfoot td:first-child {
-    padding-inline-start: 0.5714286em;
+    padding-inline-start: 0.75rem !important;
+  }
+  .prose thead th:last-child,
+  .prose tbody td:last-child,
+  .prose tfoot td:last-child {
+    padding-inline-end: 0.75rem !important;
   }
   .prose h2#table-of-contents {
     @apply mb-2;
@@ -24,5 +33,4 @@
   .prose h2#table-of-contents + p {
     @apply hidden;
   }
-
 }

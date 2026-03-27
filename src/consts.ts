@@ -9,6 +9,7 @@ interface SocialLink {
 interface Site {
   website: string;
   author: string;
+  pseudo: string;
   profile: string;
   desc: string;
   longDesc: string;
@@ -30,10 +31,12 @@ interface Site {
 // Site configuration
 export const SITE: Site = {
   website: "https://sudomarchy.com/",
-  author: "Pierre Olivier Martel",
+  author: "PO Martel",
+  pseudo: "Sudomarchy",
   profile: "https://sudomarchy.com/about",
   desc: "My Omarchy & Hyprland tweaks",
-  longDesc: "A blog where I share my Omarchy & Hyprland tips and customizations.",
+  longDesc:
+    "A blog where I share my Omarchy & Hyprland tips and customizations.",
   title: "sudomarchy",
   ogImage: "avatar.jpg",
   lightAndDarkMode: true,

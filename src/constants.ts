@@ -11,7 +11,7 @@ export const SOCIALS = [
   {
     name: "X",
     href: "https://x.com/sudomarchy",
-    linkTitle: `${SITE.author} on X`,
+    linkTitle: `${SITE.pseudo} on X`,
     icon: "twitter",
     active: true,
   },
@@ -20,6 +20,13 @@ export const SOCIALS = [
     href: "https://www.linkedin.com/in/pomartel/",
     linkTitle: `${SITE.author} on LinkedIn`,
     icon: "linkedin",
+    active: true,
+  },
+  {
+    name: "Reddit",
+    href: "https://www.reddit.com/user/sudomarchy/",
+    linkTitle: `${SITE.pseudo} on Reddit`,
+    icon: "reddit",
     active: true,
   },
   {

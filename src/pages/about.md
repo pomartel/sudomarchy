@@ -15,16 +15,26 @@ description: "Father of two, Teacher, Sub-3 Marathoner and Linux Omarchy enthusi
   <div class="flex-1 min-w-0">
     <p>Father of two, sub-3 marathoner and software engineer.</p>
     <p>
-      I'm the creator of [Polls for Pages](https://poll-app.com), a popular Ruby
-      on Rails app to run polls and surveys on Facebook.
+      I'm the creator of
+      <a href="https://poll-app.com" target="_blank" rel="noopener noreferrer"
+        >Polls for Pages</a
+      >, a popular Ruby on Rails app to run polls and surveys on Facebook.
     </p>
     <p>
-      I teach computer science at [Cégep de
-      Rosemont](https://www.crosemont.qc.ca/) in Montreal.
+      I teach computer science at
+      <a
+        href="https://www.crosemont.qc.ca/"
+        target="_blank"
+        rel="noopener noreferrer">Cégep de Rosemont</a
+      > in Montreal.
     </p>
     <p>
-      This site's theme and code is a fork of the [AstroPaper
-      theme](https://github.com/satnaing/astro-paper).
+      This site's theme and code is a fork of the
+      <a
+        href="https://github.com/satnaing/astro-paper"
+        target="_blank"
+        rel="noopener noreferrer">AstroPaper theme</a
+      >.
     </p>
   </div>
 </div>

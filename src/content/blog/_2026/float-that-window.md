@@ -67,7 +67,7 @@ The [window rules documentation](https://wiki.hypr.land/Configuring/Window-Rules
 For this case, we want to match windows with the `Typora` class and `Print` title, then apply the `float` and `center` effects:
 
 ```ini file=~/.config/hypr/windows.conf
-windowrule = match:class ^Typora$, match:title ^Print$, float on, center on
+windowrule = float on, center on, match:class ^Typora$, match:title ^Print$
 ```
 
 Notice the `^` and `$` characters. Those are regular expression anchors. They make sure we match the exact strings and not something broader like `Print Settings`.
@@ -83,7 +83,7 @@ If this is the only window you want to float, you can stop here.
 But if you want to reuse the same behavior for other dialogs later, it is cleaner to tag matching windows and then apply the effect through that tag:
 
 ```ini file=~/.config/hypr/windows.conf
-windowrule = match:tag centered-floating-window, float on, center on
+windowrule = float on, center on, match:tag centered-floating-window
 windowrule = tag +centered-floating-window, match:class ^Typora$, match:title ^Print$
 ```
 

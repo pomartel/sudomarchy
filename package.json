@@ -12,6 +12,7 @@
     "add-source-metadata": "node scripts/add-source-metadata.mjs",
     "remove-tags": "node scripts/remove-tags-from-posts.mjs",
     "sync": "astro sync",
+    "test": "node --test tests/*.test.mjs",
     "lint": "biome lint src",
     "lint:fix": "biome lint --write src",
     "format": "biome format --write src",

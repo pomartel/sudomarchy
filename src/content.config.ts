@@ -14,11 +14,15 @@ const blog = defineCollection({
       // Site-absolute/public paths are not src assets.
       if (value.startsWith("/")) return false;
 
-      // Only resolve as an asset if it's clearly path-like.
-      return value.includes("/") || value.startsWith(".");
+      // Only explicit relative paths should resolve through Astro's asset loader.
+      // Bare filenames and folder-qualified paths default to src/assets/images.
+      return value.startsWith(".");
     };
 
-    const imagePath = z.string().refine(shouldResolveAsAsset).pipe(image());
+    const imagePath = z
+      .string()
+      .refine(shouldResolveAsAsset)
+      .transform((value) => image().parse(value));
 
     return z.object({
       author: z.string().default(SITE.author),
@@ -28,7 +32,7 @@ const blog = defineCollection({
       featured: z.boolean().optional(),
       draft: z.boolean().optional(),
       unlisted: z.boolean().optional(),
-      ogImage: image().or(z.string()).optional(),
+      ogImage: imagePath.or(z.string()).optional(),
       heroImage: imagePath.or(z.string()).optional(),
       heroImageAlt: z.string().optional(),
       description: z.string(),

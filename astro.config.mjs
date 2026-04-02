@@ -12,6 +12,7 @@ import remarkCollapse from "remark-collapse";
 import remarkAlert from "remark-github-blockquote-alert";
 import remarkToc from "remark-toc";
 import { SITE } from "./src/config";
+import { remarkDefaultImagePaths } from "./src/utils/remarkDefaultImagePaths.js";
 import { transformerFileName } from "./src/utils/transformers/fileName";
 
 // https://astro.build/config
@@ -20,6 +21,7 @@ export default defineConfig({
   trailingSlash: "never",
   markdown: {
     remarkPlugins: [
+      remarkDefaultImagePaths,
       remarkAlert,
       remarkToc,
       // @ts-expect-error - TypeScript has issues with remark plugin tuple syntax
@@ -55,4 +57,3 @@ export default defineConfig({
     layout: "constrained",
   },
 });
-

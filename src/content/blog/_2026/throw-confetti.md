@@ -2,9 +2,8 @@
 title: "Feeling happy? Let's throw confetti!"
 description: "A totally useless trick that brings me joy: throw confetti on your desktop."
 pubDatetime: "2026-02-09"
-ogImage: "../../../assets/images/throw-confetti.jpg"
+ogImage: throw-confetti.jpg
 heroImageAlt: "Confetti bursts over the desktop"
-draft: false
 ---
 
 <video controls autoplay playsinline loop muted preload="metadata" style="width: 100%; border-radius: 12px;">

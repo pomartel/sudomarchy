@@ -2,7 +2,6 @@
 title: "Disable Lock Screen Password When On a Trusted Wifi Network"
 description: "Configure Hypridle to skip locking after sleep when you're connected to a trusted SSID."
 pubDatetime: "2026-02-05"
-draft: false
 heroImage: disable-lock-screen-password-trusted-wifi-network.png
 heroImageAlt: "A laptop connected to a trusted wifi network"
 ---

@@ -2,7 +2,6 @@
 title: "Safely Override Any Omarchy Command"
 description: "Here is how you can safely override any Omarchy command with your own bash script."
 pubDatetime: "2026-01-15"
-draft: false
 ---
 
 At its core, Omarchy is a Git repository living in the `~/.local/share/omarchy` directory. When you update your system, Omarchy pulls the latest changes from the [GitHub repo](https://github.com/basecamp/omarchy/) into that folder.

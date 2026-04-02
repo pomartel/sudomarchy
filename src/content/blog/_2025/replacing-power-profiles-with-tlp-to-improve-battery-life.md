@@ -2,7 +2,6 @@
 title: "Improve Battery Life on your Omarchy Laptop with TLP"
 description: "A quick procedure to replace power-profiles-daemon with TLP in Omarchy to improve battery life."
 pubDatetime: "2025-12-16"
-draft: false
 ---
 
 Omarchy ships with power-profiles-daemon which is a power management daemon that allows users to switch between different power profiles. This is super useful for preserving battery life on laptops.

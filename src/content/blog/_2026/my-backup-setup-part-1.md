@@ -5,7 +5,6 @@ pubDatetime: "2026-02-23"
 modDatetime: 2026-03-12
 heroImage: my-backup-setup-part-1.webp
 heroImageAlt: "Dropbox, GitHub, and yadm logos"
-draft: false
 ---
 
 _Update (2026-03-12): After hearing good things about restic, I added it to my backup strategy._

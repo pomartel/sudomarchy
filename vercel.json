@@ -7,6 +7,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
+    },
+    {
       "source": "/omarchy-pull-requests",
       "destination": "/omarchy-contributions",
       "permanent": true

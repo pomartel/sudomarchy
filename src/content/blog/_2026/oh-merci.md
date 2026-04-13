@@ -2,7 +2,8 @@
 title: "Oh-merci!"
 description: "Sprinkle a little French, Italian, German, or any other language into Omarchy."
 pubDatetime: "2026-04-13"
-heroImage: oh-merci.webp
+heroImage: oh-merci.png
+ogImage: oh-merci.png
 heroImageAlt: "Hyprlock screen with a localised password prompt"
 ---
 

@@ -2,7 +2,7 @@
 title: "My Backup Setup (Part 2): Installation Scripts"
 description: "How I use Omarchy bash scripts to automate app installs, system tweaks, and machine setup."
 pubDatetime: "2026-02-27"
-heroImage: my-backup-setup-part-2.webp
+heroImage: my-backup-setup-part-2.png
 heroImageAlt: "Terminal window showing a generic bash setup script"
 draft: false
 ---

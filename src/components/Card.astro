@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getPath } from "@/utils/getPath";
 import {
@@ -53,16 +52,14 @@ const headerProps = {
           class="flex-shrink-0 hidden sm:block group"
         >
           {resolvedCardImage.kind === "asset" ? (
-            <Image
-              src={resolvedCardImage.asset}
+            <img
+              src={resolvedCardImage.asset.src}
               alt={title}
               width={140}
               height={79}
               class="rounded shadow-sm transition-all duration-200 group-hover:shadow-md group-hover:scale-105 object-cover"
-              format="webp"
-              quality={80}
               loading="lazy"
-              densities={[1, 2]}
+              decoding="async"
             />
           ) : (
             <img

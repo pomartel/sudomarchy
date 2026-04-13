@@ -3,7 +3,7 @@ title: "My backup setup (Part 1): documents, projects, and configs"
 description: "A lightweight backup strategy: Dropbox for documents, Git for code, yadm for dotfiles."
 pubDatetime: "2026-02-23"
 modDatetime: 2026-03-12
-heroImage: my-backup-setup-part-1.webp
+heroImage: my-backup-setup-part-1.png
 heroImageAlt: "Dropbox, GitHub, and yadm logos"
 ---
 

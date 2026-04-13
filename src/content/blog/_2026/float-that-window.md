@@ -2,7 +2,7 @@
 title: "Float that window!"
 description: "Use Hyprland window rules to float and center dialogs, like Typora's Print window."
 pubDatetime: "2026-04-02"
-ogImage: typora-print-dialog-floating.webp
+ogImage: typora-print-dialog-floating.png
 heroImageAlt: "Typora's Print dialog floating and centered on the screen"
 ---
 
@@ -16,7 +16,7 @@ I really like Typora for writing. If you haven't tried it yet, it comes preinsta
 
 From time to time, I like to print documents for proofreading. Here's what happens when I open Typora's Print dialog:
 
-![Typora's Print dialog opening as a tiled window](typora-print-dialog-tiled.webp)
+![Typora's Print dialog opening as a tiled window](/assets/images/typora-print-dialog-tiled.png)
 
 That's not terrible, but it is a bit silly. A print dialog is exactly the kind of thing that makes more sense as a small floating window on top of the editor.
 
@@ -74,7 +74,7 @@ Notice the `^` and `$` characters. Those are regular expression anchors. They ma
 
 Save the file then open the Print dialog again. The result is much nicer:
 
-![Typora's Print dialog floating above the editor](typora-print-dialog-floating.webp)
+![Typora's Print dialog floating above the editor](/assets/images/typora-print-dialog-floating.png)
 
 ## Reuse the effect with a tag
 

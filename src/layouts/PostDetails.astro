@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { type CollectionEntry, render } from "astro:content";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
@@ -125,16 +124,14 @@ const nextPost =
       {
         resolvedHeroImage.kind !== "none" &&
           (resolvedHeroImage.kind === "asset" ? (
-            <Image
-              src={resolvedHeroImage.asset}
+            <img
+              src={resolvedHeroImage.asset.src}
               alt={heroImageAlt || title}
               width={1200}
               height={675}
               class="mb-8 aspect-video w-full rounded-md object-cover"
-              format="webp"
-              quality={80}
               loading="lazy"
-              sizes="(min-width: 1024px) 768px, 100vw"
+              decoding="async"
             />
           ) : (
             <img

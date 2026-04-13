@@ -64,7 +64,7 @@ Restart the system so that applications can pick up the updated locale.
 
 ## Will Omarchy ever be internationalised?
 
-I doubt it!
+[I doubt it!](https://github.com/basecamp/omarchy/issues/1187#issuecomment-3229657454)
 
 Omarchy is not a mainstream distro trying to please just about everybody. It's [marketed](https://learn.omacom.io/2/the-omarchy-manual/91/welcome-to-omarchy) as an opinionated distribution (omakase!) that _ships with everything a modern software developer needs to be productive immediately_.
 

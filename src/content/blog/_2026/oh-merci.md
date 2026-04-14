@@ -17,7 +17,28 @@ Most of Omarchy's strings are located in the Omarchy menu (**SUPER + ALT + SPACE
 
 Instead, let's focus on three small areas that spark a little bit of joy.
 
-## 1. Oggi è lunedì!
+But first, let's make sure the locale exists.
+
+## 1. Olá, mundo!
+
+As explained in the [ArchWiki locale page](https://wiki.archlinux.org/title/Locale), Arch needs to know which locales it should generate.
+
+Open `/etc/locale.gen` and uncomment the UTF-8 locale you want to use:
+
+```diff file=/etc/locale.gen
+-#pt_BR.UTF-8 UTF-8
++pt_BR.UTF-8 UTF-8
+```
+
+Then generate the locale:
+
+```bash
+sudo locale-gen
+```
+
+Keep that locale name handy. We will reuse it in the examples below.
+
+## 2. Oggi è lunedì!
 
 The first thing I localised when I switched to Omarchy was the day of the week in the Waybar. Although I am perfectly able to understand the date in English, it just feels more natural to read it in French.
 
@@ -41,7 +62,7 @@ Don't forget to restart Waybar afterwards:
 omarchy-restart-waybar
 ```
 
-## 2. Was ist das Passwort?
+## 3. Was ist das Passwort?
 
 One screen you end up seeing often is the login screen. You can customise the look of that screen in the `~/.config/hypr/hyprlock.conf` file. As with everything Hyprland, there is a comprehensive [wiki page](https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/) detailing all the options.
 
@@ -49,7 +70,7 @@ If you only want to translate the default strings, change the `placeholder_text`
 
 This is a tiny change, but it makes the lock screen feel a little more yours.
 
-## 3. Zorro de fuego
+## 4. Zorro de fuego
 
 If you want to go all in on localisation, you might want to change the system language as well.
 
@@ -58,7 +79,7 @@ This informs your applications of your preferred language. Any application that 
 You can set it with a simple command:
 
 ```bash
-sudo localectl set-locale LANG=fr_CA.UTF-8
+sudo localectl set-locale LANG=es_MX.UTF-8
 ```
 
 Restart the system so that applications can pick up the updated locale.

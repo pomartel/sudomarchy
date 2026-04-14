@@ -64,7 +64,7 @@ omarchy-restart-waybar
 
 ## 3. Was ist das Passwort?
 
-One screen you end up seeing often is the login screen. You can customise the look of that screen in the `~/.config/hypr/hyprlock.conf` file. As with everything Hyprland, there is a comprehensive [wiki page](https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/) detailing all the options.
+One screen you end up seeing often is the lock screen. You can customise the look of that screen in the `~/.config/hypr/hyprlock.conf` file. As with everything Hyprland, there is a comprehensive [wiki page](https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/) detailing all the options.
 
 If you only want to translate the default strings, change the `placeholder_text` and `fail_text` in the `input-field` block.
 

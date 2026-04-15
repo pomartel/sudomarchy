@@ -47,49 +47,56 @@ html[data-theme="dark"] {
   --color-border: var(--border);
 }
 
-
 @layer base {
   * {
     @apply border-border outline-accent/75;
     scrollbar-width: auto;
     scrollbar-color: var(--color-muted) transparent;
   }
-  
+
   /* View Transitions API for smooth theme switching (Safari 18+, Chrome 111+) */
   :root {
     view-transition-name: root;
   }
-  
+
   /* Apply to html element as well for better compatibility */
   html {
     view-transition-name: root;
   }
-  
+
   /* Ensure smooth transition between light and dark themes */
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation-duration: 0.25s;
   }
-  
+
   /* Customize the transition style */
   ::view-transition-old(root) {
     animation: fade-out 0.25s ease-out;
   }
-  
+
   ::view-transition-new(root) {
     animation: fade-in 0.25s ease-out;
   }
-  
+
   @keyframes fade-out {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
-  
+
   @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-  
+
   html {
     @apply overflow-y-scroll scroll-smooth;
   }
@@ -104,12 +111,22 @@ html[data-theme="dark"] {
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
-  section,
-  footer {
-    @apply mx-auto max-w-3xl px-4;
-  }
+}
+
+@utility max-w-app {
+  @apply max-w-3xl;
+}
+
+@utility app-layout {
+  @apply mx-auto w-full max-w-app px-4;
 }
 
 .active-nav {
   @apply underline decoration-wavy decoration-2 underline-offset-4;
+}
+
+/* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 1rem;
 }

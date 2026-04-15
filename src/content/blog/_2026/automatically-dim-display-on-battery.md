@@ -30,10 +30,12 @@ Run this command to create a new rule file named `99-display-brightness.rules`:
 
 ```bash
 sudo tee /etc/udev/rules.d/99-display-brightness.rules >/dev/null <<EOF
-ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/bin/brightnessctl -c backlight set 30%"
-ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/bin/brightnessctl -c backlight set 90%"
+ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/bin/brightnessctl -c backlight set 30%%"
+ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/bin/brightnessctl -c backlight set 90%%"
 EOF
 ```
+
+The double percent signs are intentional. `udev` treats `%` as a special expansion character, so `%%` is how we pass a literal `%` to `brightnessctl`.
 
 When you unplug your laptop, it dims the brightness to 30%. When you plug it back in, it restores the brightness to 90%. You can of course adjust these two percentage values to your liking.
 

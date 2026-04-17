@@ -24,6 +24,7 @@ const {
   author,
   description,
   ogImage: initOgImage,
+  ogImageAlt,
   canonicalURL,
   pubDatetime,
   modDatetime,
@@ -79,7 +80,7 @@ const layoutProps = {
   modDatetime,
   canonicalURL: computedCanonicalURL,
   ogImage,
-  ogImageAlt: heroImageAlt,
+  ogImageAlt: ogImageAlt || heroImageAlt,
   scrollSmooth: true,
 };
 

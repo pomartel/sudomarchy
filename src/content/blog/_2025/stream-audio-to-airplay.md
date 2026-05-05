@@ -45,7 +45,7 @@ sudo ufw allow 6002/udp comment "Stream to Airplay"
 Finally you will want to restart pipewire for the changes to take effect. Omarchy provide a command that you can use to do just that:
 
 ```bash
-omarchy-restart-pipewire
+omarchy restart pipewire
 ```
 
 Now when you click the speaker icon in the waybar or use the `SUPER + CTRL + A` shortcut and go to the Output Devices tab of wiremix, you should see your Ariplay speakers listed there.

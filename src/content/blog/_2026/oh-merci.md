@@ -59,7 +59,7 @@ You only need to add a `locale` property to the Waybar `clock` configuration to 
 Don't forget to restart Waybar afterwards:
 
 ```bash
-omarchy-restart-waybar
+omarchy restart waybar
 ```
 
 ## 3. Was ist das Passwort?

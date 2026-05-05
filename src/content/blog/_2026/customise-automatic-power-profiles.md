@@ -26,8 +26,8 @@ But first, let's rewrite the `udev` rule to change the script location from `~/.
 
 ```bash
 cat <<EOF | sudo tee "/etc/udev/rules.d/99-power-profile.rules" >/dev/null
-SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/bin/systemd-run --no-block --collect --unit=omarchy-power-profile-battery --property=After=power-profiles-daemon.service $HOME/bin/omarchy-powerprofiles-set battery"
-SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/bin/systemd-run --no-block --collect --unit=omarchy-power-profile-ac --property=After=power-profiles-daemon.service $HOME/bin/omarchy-powerprofiles-set ac"
+SUBSYSTEM=="power_supply", ATTR{type}=="Mains", RUN+="/usr/bin/systemd-run --no-block --collect --unit=omarchy-power-profile --property=After=power-profiles-daemon.service $HOME/bin/omarchy-powerprofiles-set"
+SUBSYSTEM=="power_supply", ATTR{type}=="USB", RUN+="/usr/bin/systemd-run --no-block --collect --unit=omarchy-power-profile --property=After=power-profiles-daemon.service $HOME/bin/omarchy-powerprofiles-set"
 EOF
 ```
 
@@ -38,15 +38,36 @@ Now we need to create the `omarchy-powerprofiles-set` script in `~/bin`. That sc
 ```bash file=~/bin/omarchy-powerprofiles-set
 #!/bin/bash
 
-# Usage: omarchy-powerprofiles-set <ac|battery>
+# omarchy:summary=Set the power profile to the requested level, falling back to balanced
+# omarchy:args=[autodetect|ac|battery]
 
-case "$1" in
-  ac)
-    powerprofilesctl set balanced
-    ;;
-  battery)
-    powerprofilesctl set power-saver
-    ;;
+action="${1-}"
+
+# Auto-detect when called with no argument: treat any Mains or USB
+# power-supply device reporting online=1 as "on AC". This handles
+# USB-C only laptops where the legacy AC device may not fire udev
+# events, and also avoids false negatives from per-port USB-C devices
+# that are present-but-empty (online=0) while another port supplies power.
+if [[ -z $action || $action == "autodetect" ]]; then
+  action=battery
+  for ps in /sys/class/power_supply/*; do
+    [[ -r $ps/online && -r $ps/type ]] || continue
+    type=$(cat "$ps/type")
+    [[ $type == "Mains" || $type == "USB" ]] || continue
+    if [[ $(cat "$ps/online") == "1" ]]; then
+      action=ac
+      break
+    fi
+  done
+fi
+
+case "$action" in
+ac)
+  powerprofilesctl set balanced
+  ;;
+battery)
+  powerprofilesctl set power-saver
+  ;;
 esac
 ```
 

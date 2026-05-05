@@ -8,7 +8,7 @@ At its core, Omarchy is a Git repository living in the `~/.local/share/omarchy` 
 
 You should avoid editing the Omarchy directory. Otherwise, future updates can fail due to merge conflicts. But what if you need to change how Omarchy behaves? Fortunately, Omarchy is fully extensible and you can override almost any setting.
 
-In this post, we'll focus on overriding Omarchy's Bash scripts. Each **SUPER + ALT** menu item maps to an `omarchy-*` command. To list them, open a terminal and type `omarchy` followed by the **TAB** key. You can also browse them in `~/.local/share/omarchy/bin` or on the [GitHub repo](https://github.com/basecamp/omarchy/tree/master/bin).
+In this post, we'll focus on overriding Omarchy's Bash scripts. Each **SUPER + ALT** menu item maps to an `omarchy` command. To list them, open a terminal and type `omarchy commands`. You can also browse them in `~/.local/share/omarchy/bin` or on the [GitHub repo](https://github.com/basecamp/omarchy/tree/master/bin).
 
 ## Why override Omarchy commands?
 

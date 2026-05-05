@@ -83,4 +83,3 @@ windowrule = match:workspace special:music, float on, size 1200 750, center on
 ## Is this useful at all?
 
 Personally, I like it but it's easy to overdo it. I only use it for music and todos to keep the apps opened at all times but out of sight. A single keybinding lets me quickly toggle them on and off.
- 

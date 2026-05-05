@@ -32,7 +32,7 @@ SSID="$(iw dev wlan0 link 2>/dev/null | sed -n 's/^.*SSID: //p')"
 
 # Not connected to Wi-Fi => unsafe (lock).
 if [[ -z "$SSID" ]]; then
-    omarchy-lock-screen
+    omarchy-system-lock
     exit 0
 fi
 
@@ -44,7 +44,7 @@ for safe_ssid in "${SAFE_SSIDS[@]}"; do
     fi
 done
 
-omarchy-lock-screen
+omarchy-system-lock
 ```
 
 > [!NOTE]
@@ -74,7 +74,7 @@ Next we have to make some tweaks to our hypridle configuration:
 
 ```toml file=~/.config/hypr/hypridle.conf
 general {
-    lock_cmd = omarchy-lock-screen                         # lock screen and 1password
+    lock_cmd = omarchy-system-lock                         # lock screen and 1password
     before_sleep_cmd = loginctl lock-session # [!code --]
     after_sleep_cmd = sleep 2; lock-unless-ssid my-home-ssid # [!code highlight]
     inhibit_sleep = 0 # [!code highlight]
@@ -99,7 +99,7 @@ Here are the changes we made:
 Restart hypridle for the changes to take effect:
 
 ```bash
-omarchy-restart-hypridle
+omarchy restart hypridle
 ```
 
 Make sure you test all possible scenarios — on a trusted network, on an untrusted network and not connected to any network — before you enable this for good.

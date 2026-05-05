@@ -16,13 +16,13 @@ What happens when you install or update Omarchy? A ton of Bash scripts are execu
 For example, let's say you're setting up a new machine and want to install Dropbox. You could open the Omarchy menu and select **Install > Service > Dropbox**. Or you can open a terminal and run:
 
 ```bash
-omarchy-install-dropbox
+omarchy install dropbox
 ```
 
 How about removing a pre-installed web app like Basecamp? Again, you can do it from the Omarchy menu or with a single command:
 
 ```bash
-omarchy-webapp-remove "Basecamp"
+omarchy webapp remove "Basecamp"
 ```
 
 Ask yourself:

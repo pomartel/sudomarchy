@@ -42,7 +42,7 @@ initial_volume = 100
 
 You can find all the available options on the [spotifyd documentation page](https://docs.spotifyd.rs/configuration/index.html).
 
-I set `pulseaudio` as the backend. The device name will show up as *Laptop* in Spotify Connect with a computer icon. I set the `bitrate` to the maximum value. I also keep Spotify's volume at 100% and control the volume at the system level instead.
+I set `pulseaudio` as the backend. The device name will show up as _Laptop_ in Spotify Connect with a computer icon. I set the `bitrate` to the maximum value. I also keep Spotify's volume at 100% and control the volume at the system level instead.
 
 ## 3. Enable the service and test it
 
@@ -58,6 +58,6 @@ If you tweak the configuration after starting the service, restart it for the ch
 systemctl --user restart spotifyd.service
 ```
 
-Now open the Spotify app on your computer or phone, click the *Connect to a device* icon, and you should see *Laptop*, or whatever name you gave it. Select it, start some music, and close the app.
+Now open the Spotify app on your computer or phone, click the _Connect to a device_ icon, and you should see _Laptop_, or whatever name you gave it. Select it, start some music, and close the app.
 
 Turn up the volume and turn down the fan noise!

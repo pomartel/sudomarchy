@@ -33,7 +33,7 @@ ln -s ~/Dropbox/Documents ~/Documents
 
 ## 2. Syncing projects with Git
 
-Well, this is another one that does not need explaining. All my Git projects are in the `~/Work` directory and are synced as long as I don't forget to push the latest changes to GitHub!
+Well, this is another one that does not need explaining. All my Git projects are in the `~/Projects` directory and are synced as long as I don't forget to push the latest changes to GitHub!
 
 ## 3. Syncing config files with yadm
 

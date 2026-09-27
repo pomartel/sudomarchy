@@ -1,58 +1,78 @@
-# Pierre Olivier Martel's Personal Website
+# Sudomarchy
 
-This is the source code for my personal website, built with [Astro](https://astro.build) and deployed on [Vercel](https://vercel.com).
+Le blog personnel de **PO Martel**, enseignant en informatique à Montréal,
+développeur et passionné de Linux : **<https://sudomarchy.com>**.
 
-## About
+Les articles, rédigés en anglais, partagent des astuces et des personnalisations
+d’Omarchy et de Hyprland : raccourcis clavier, gestion des fenêtres, outils en
+ligne de commande, autonomie, audio, sauvegardes et scripts d’installation.
 
-I'm Pierre Olivier Martel, an entrepreneur, teacher and Linux enthusiast. This blog hosts my personal Omarchy and Hyprland customizations.
+Le site repose sur **Astro**, **TypeScript** et **Tailwind CSS**, à partir du thème
+[AstroPaper](https://github.com/satnaing/astro-paper). Il comprend une recherche
+Pagefind, un [flux RSS](https://sudomarchy.com/rss.xml), des thèmes clair et sombre
+et une page consacrée aux contributions Omarchy de l’auteur.
 
-.
+## Développement local
 
-## Project Structure
+Prérequis : Node.js compatible avec la version d’Astro verrouillée dans
+`package-lock.json`, et npm.
 
-```text
-├── public/               # Static assets (images, fonts, favicon)
-│   ├── assets/          # Images for blog posts
-│   └── fonts/           # Web fonts
-├── src/
-│   ├── assets/          # Icons and images used in components
-│   ├── components/      # Reusable UI components
-│   │   └── ui/          # React components
-│   ├── content/         # Content collections
-│   │   └── blog/        # Blog posts in Markdown format (organized by year)
-│   ├── layouts/         # Page layouts and templates
-│   ├── pages/           # Routes and pages
-│   ├── styles/          # Global styles and CSS
-│   └── utils/           # Utility functions
-├── astro.config.mjs     # Astro configuration
-├── vercel.json          # Vercel deployment and CSP configuration
-├── package.json         # Project dependencies and scripts
-├── tailwind.config.mjs  # Tailwind CSS configuration
-└── LICENSE              # Dual license (CC BY 4.0 + MIT)
+```bash
+npm ci
+npm run dev
 ```
 
-## Commands
+Le serveur de développement est accessible par défaut à <http://localhost:4321>.
 
-| Command                | Action                                      |
-| :--------------------- | :------------------------------------------ |
-| `npm install`          | Installs dependencies                       |
-| `npm run dev`          | Starts local dev server at `localhost:4321` |
-| `npm run build`        | Build the production site to `./dist/`      |
-| `npm run preview`      | Preview the build locally, before deploying |
+| Commande | Fonction |
+| --- | --- |
+| `npm run build` | Générer le site dans `dist/` et l’index de recherche Pagefind |
+| `npm run build:check` | Vérifier les types Astro, construire et indexer le site |
+| `npm run preview` | Prévisualiser la dernière construction |
+| `npm test` | Exécuter les tests Node |
+| `npm run lint` | Vérifier le code de `src/` avec Biome |
+| `npm run check` | Vérifier le code et le formatage de `src/` avec Biome |
 
-## Deployment
+Pour vérifier la recherche Pagefind, construire le site puis utiliser l’aperçu.
+La page des contributions Omarchy consulte l’API publique GitHub à la construction ;
+son contenu dépend de l’accès réseau et des limites de cette API.
 
-This site is set up for easy deployment on Vercel. Just connect your GitHub repository to Vercel, and it will automatically build and deploy the site when changes are pushed.
+## Organisation
 
-## License
+```text
+src/
+  content/blog/_YYYY/  Articles Markdown classés par année
+  content.config.ts   Schéma des métadonnées des articles
+  assets/images/      Images des articles
+  pages/              Pages, routes, RSS et recherche
+  layouts/            Gabarits de pages
+  components/         Composants Astro
+  styles/             Styles et typographie
+  utils/              Traitement du contenu et des images
+  consts.ts           Identité et options du site
+public/               Fichiers statiques, vidéos et polices
+tests/                Tests des utilitaires d’images
+astro.config.mjs      Configuration Astro et Markdown
+vercel.json           Configuration Vercel et redirections
+```
 
-This repository uses dual licensing:
+Les articles utilisent les champs `title`, `description` et `pubDatetime`.
+Les dossiers `_YYYY` servent au classement et n’apparaissent pas dans les URLs :
+`src/content/blog/_2026/colour-the-cat.md` correspond à `/posts/colour-the-cat`.
+Les images peuvent être référencées par leur nom depuis `src/assets/images/`.
+Les conventions éditoriales et les consignes pour les agents sont dans
+[AGENTS.md](AGENTS.md).
 
-- **Documentation & Blog Posts**: Licensed under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
-- **Code & Code Snippets**: Licensed under the [MIT License](LICENSE)
+## Hébergement
 
-See the [LICENSE](LICENSE) file for full details.
+Le dépôt contient une configuration Vercel qui utilise `npm run build` et publie
+le dossier `dist/`. Les redirections et les en-têtes HTTP sont définis dans
+`vercel.json`. Le script `npm run deploy` référence un fichier absent du dépôt ;
+il ne constitue pas une procédure de déploiement utilisable en l’état.
 
-## Special Thanks
+## Licences
 
-Special thanks to [Sat Naing](https://github.com/satnaing) for creating the excellent [AstroPaper theme](https://astro-paper.pages.dev/) that served as the foundation for this website. Their thoughtful design and clean architecture made it a joy to build upon.
+- Documentation et articles : **CC BY 4.0**.
+- Code : **MIT**. Les exemples de code des articles sont utilisables sous l’une ou l’autre licence.
+
+Voir [LICENSE](LICENSE) pour les conditions complètes.

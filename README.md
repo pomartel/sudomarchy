@@ -9,13 +9,12 @@ ligne de commande, autonomie, audio, sauvegardes et scripts d’installation.
 
 Le site repose sur **Astro**, **TypeScript** et **Tailwind CSS**, à partir du thème
 [AstroPaper](https://github.com/satnaing/astro-paper). Il comprend une recherche
-Pagefind, un [flux RSS](https://sudomarchy.com/rss.xml), des thèmes clair et sombre
-et une page consacrée aux contributions Omarchy de l’auteur.
+Pagefind, un [flux RSS](https://sudomarchy.com/rss.xml) et des thèmes clair et sombre.
 
 ## Développement local
 
-Prérequis : Node.js compatible avec la version d’Astro verrouillée dans
-`package-lock.json`, et npm.
+Prérequis : Node.js 22.12.0 ou supérieur, et npm.
+TypeScript reste en version 6, compatible avec `@astrojs/check`.
 
 ```bash
 npm ci
@@ -34,8 +33,6 @@ Le serveur de développement est accessible par défaut à <http://localhost:432
 | `npm run check` | Vérifier le code et le formatage de `src/` avec Biome |
 
 Pour vérifier la recherche Pagefind, construire le site puis utiliser l’aperçu.
-La page des contributions Omarchy consulte l’API publique GitHub à la construction ;
-son contenu dépend de l’accès réseau et des limites de cette API.
 
 ## Organisation
 

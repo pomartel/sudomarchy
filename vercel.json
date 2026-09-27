@@ -12,11 +12,6 @@
       "permanent": true
     },
     {
-      "source": "/omarchy-pull-requests",
-      "destination": "/omarchy-contributions",
-      "permanent": true
-    },
-    {
       "source": "/posts/2025/:slug*",
       "destination": "/posts/:slug*",
       "permanent": true

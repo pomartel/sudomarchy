@@ -30,7 +30,7 @@ Le site statique utilise Astro, TypeScript et Tailwind CSS, sur une base AstroPa
 | `src/consts.ts` | Identité du site, langue, fuseau horaire et options globales |
 | `src/constants.ts` | Liens sociaux complémentaires |
 | `src/config.ts` | Réexportation des constantes |
-| `src/pages/` | Pages, routes des articles, RSS, recherche et contributions Omarchy |
+| `src/pages/` | Pages, routes des articles, RSS et recherche |
 | `src/layouts/`, `src/components/` | Gabarits et composants Astro |
 | `src/styles/` | Styles globaux, typographie, code et alertes |
 | `src/assets/images/` | Images des articles traitées par Astro |
@@ -72,11 +72,6 @@ Signaler les échecs et leurs limites sans les présenter comme des validations 
 Ne pas lancer de serveur persistant en mode agent par défaut ; privilégier la
 construction et ne lancer un aperçu que si demandé. Éviter les commandes de
 formatage global qui modifieraient des fichiers hors périmètre.
-
-La page `omarchy-contributions.astro` interroge l’API GitHub pendant la construction.
-Ces requêtes sont actuellement non authentifiées : définir `GITHUB_TOKEN` ou
-`GH_TOKEN` ne suffit pas à les authentifier. Une erreur réseau ou une limite API
-peut produire une page avec un message d’erreur malgré une construction réussie.
 
 Ne pas mettre à jour les dépendances pour une simple édition de contenu. Si une
 mise à jour est demandée, vérifier les versions avec `npm outdated` et

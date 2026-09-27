@@ -6,7 +6,7 @@ heroImage: my-omarchy-3-4-0-contributions.png
 heroImageAlt: "Nautilus right-click menu showing an Open in Ghostty item"
 ---
 
-I was looking forward to Omarchy 3.4.0 because quite a few [pull requests](/omarchy-contributions) I made were included. They are little things, but I think they improve the quality of life for those using this wonderful Linux distro.
+I was looking forward to Omarchy 3.4.0 because quite a few pull requests I made were included. They are little things, but I think they improve the quality of life for those using this wonderful Linux distro.
 
 ## 1. Open a Ghostty terminal from the file manager
 

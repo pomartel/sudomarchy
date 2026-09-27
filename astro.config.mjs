@@ -3,6 +3,7 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { basename, extname, join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
+import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import {
   transformerNotationDiff,
@@ -22,6 +23,7 @@ import { transformerFileName } from "./src/utils/transformers/fileName";
 
 const blogDir = fileURLToPath(new URL("./src/content/blog", import.meta.url));
 
+/** @param {string} pathname */
 const normalizePathname = pathname => {
   if (pathname !== "/" && pathname.endsWith("/")) {
     return pathname.slice(0, -1);
@@ -30,9 +32,14 @@ const normalizePathname = pathname => {
   return pathname;
 };
 
+/** @param {string} relativePath */
 const getFileLastmod = relativePath =>
   new Date(statSync(fileURLToPath(new URL(relativePath, import.meta.url))).mtime);
 
+/**
+ * @param {string} directory
+ * @returns {string[]}
+ */
 const collectFiles = directory =>
   readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
     const fullPath = join(directory, entry.name);
@@ -76,7 +83,7 @@ const blogEntries = collectFiles(blogDir)
 
     return { pathname, lastmod };
   })
-  .filter(Boolean);
+  .filter(entry => entry !== undefined);
 
 const latestPostLastmod =
   blogEntries.length > 0
@@ -89,20 +96,24 @@ const latestPostLastmod =
 const sitemapLastmodByPathname = new Map([
   ["/", latestPostLastmod],
   ["/about", getFileLastmod("./src/pages/about.md")],
-  ["/omarchy-contributions", getFileLastmod("./src/pages/omarchy-contributions.astro")],
   ["/posts", latestPostLastmod],
-  ...blogEntries.map(entry => [entry.pathname, entry.lastmod]),
 ]);
 
+for (const entry of blogEntries) {
+  sitemapLastmodByPathname.set(entry.pathname, entry.lastmod);
+}
+
+/** @param {string} page */
 const sitemapFilter = page => normalizePathname(new URL(page).pathname) !== "/search";
 
+/** @param {import("@astrojs/sitemap").SitemapItem} item */
 const sitemapSerialize = item => {
   const pathname = normalizePathname(new URL(item.url).pathname);
   const lastmod = sitemapLastmodByPathname.get(pathname);
 
   return {
     ...item,
-    ...(lastmod ? { lastmod } : {}),
+    ...(lastmod ? { lastmod: lastmod.toISOString() } : {}),
   };
 };
 
@@ -110,14 +121,16 @@ const sitemapSerialize = item => {
 export default defineConfig({
   site: SITE.website,
   trailingSlash: "never",
+  compressHTML: true,
   markdown: {
-    remarkPlugins: [
-      remarkDefaultImagePaths,
-      remarkAlert,
-      remarkToc,
-      // @ts-expect-error - TypeScript has issues with remark plugin tuple syntax
-      [remarkCollapse, { test: "Table of contents" }],
-    ],
+    processor: unified({
+      remarkPlugins: [
+        remarkDefaultImagePaths,
+        remarkAlert,
+        remarkToc,
+        [remarkCollapse, { test: "Table of contents" }],
+      ],
+    }),
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },

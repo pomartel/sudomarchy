@@ -1,81 +1,79 @@
-# Consignes pour les agents
+# Agent instructions
 
-## Projet et périmètre
+## Project and scope
 
-Sudomarchy est le blog personnel de PO Martel, publié sur <https://sudomarchy.com>.
-Il présente ses astuces et personnalisations d’Omarchy et de Hyprland : raccourcis,
-fenêtres, outils Bash, autonomie, audio, sauvegardes et installation de ses machines.
-Le site statique utilise Astro, TypeScript et Tailwind CSS, sur une base AstroPaper.
+Sudomarchy is PO Martel's personal blog at <https://sudomarchy.com>.
+It covers his Omarchy and Hyprland tips and customizations: shortcuts, windows,
+Bash tools, battery life, audio, backups, and machine setup.
+The static site uses Astro, TypeScript, and Tailwind CSS, based on AstroPaper.
 
-- Ne créer ni proposer de nouvel article sans demande explicite. Modifier les articles uniquement dans le cadre demandé.
-- Les commandes et chemins présents dans les articles sont des exemples pour les lecteurs. Leur édition n’autorise pas à les exécuter ni à modifier la configuration de la machine.
-- Limiter les changements au besoin exprimé ; préserver le travail déjà présent dans le dépôt.
-- Après les changements, committer et pousser uniquement les fichiers concernés. Présenter les différences importantes et un lien vers le commit GitHub.
-- Ne jamais ajouter de secrets ou de fichiers `.env` au dépôt.
+- Keep the entire project in English, including posts, UI text, documentation, code comments, and agent instructions. The language of a user request does not change the project's language.
+- Do not create or propose new posts without an explicit request. Edit existing posts only within the requested scope.
+- Commands and paths in posts are examples for readers. Editing them does not authorize running them or changing the local machine's configuration.
+- Keep changes focused on the request and preserve unrelated work already in the repository.
+- After making changes, commit and push only the relevant files. Show the important diffs and a link to the GitHub commit.
+- Never commit secrets or `.env` files.
 
-## Voix et contenu
+## Voice and content
 
-- Conserver l’anglais des articles et de l’interface, sauf demande de traduction.
-- Préserver la voix personnelle à la première personne : ton direct, amical, concret, parfois humoristique, sans discours promotionnel.
-- Les tutoriels partent généralement d’un problème vécu, expliquent la solution et donnent de courts exemples de configuration ou de commandes.
-- Ne pas inventer d’expérience personnelle, de résultat de test ou de compatibilité avec une version d’Omarchy ou de Hyprland. Vérifier les affirmations techniques modifiées à partir des sources pertinentes.
-- Conserver les crédits, liens vers les sources et notes de mise à jour. Éviter une réécriture générale pour une correction ponctuelle.
+- Preserve the personal, first-person voice: direct, friendly, practical, occasionally humorous, and free of promotional language.
+- Tutorials typically start with a real problem, explain the solution, and provide short configuration or command examples.
+- Do not invent personal experiences, test results, or compatibility claims about Omarchy or Hyprland versions. Verify changed technical claims against relevant sources.
+- Preserve credits, source links, and update notes. Avoid rewriting an entire post for a targeted correction.
 
-## Repères dans le dépôt
+## Repository map
 
-| Chemin | Rôle |
+| Path | Purpose |
 | --- | --- |
-| `src/content/blog/_YYYY/` | Articles Markdown classés par année |
-| `src/content.config.ts` | Collection et schéma des métadonnées |
-| `src/consts.ts` | Identité du site, langue, fuseau horaire et options globales |
-| `src/constants.ts` | Liens sociaux complémentaires |
-| `src/config.ts` | Réexportation des constantes |
-| `src/pages/` | Pages, routes des articles, RSS et recherche |
-| `src/layouts/`, `src/components/` | Gabarits et composants Astro |
-| `src/styles/` | Styles globaux, typographie, code et alertes |
-| `src/assets/images/` | Images des articles traitées par Astro |
-| `public/` | Fichiers servis tels quels, dont vidéos, polices et favicon |
-| `src/utils/` | URLs, filtrage des articles, images et transformations Markdown |
-| `tests/` | Tests Node de résolution des images et de transformation Markdown |
-| `astro.config.mjs` | Intégrations, Markdown, Shiki et sitemap |
-| `vercel.json` | Construction, redirections et en-têtes HTTP pour Vercel |
+| `src/content/blog/_YYYY/` | Markdown posts organized by year |
+| `src/content.config.ts` | Content collection and metadata schema |
+| `src/consts.ts` | Site identity, language, timezone, and global settings |
+| `src/constants.ts` | Additional social links |
+| `src/config.ts` | Constant re-exports |
+| `src/pages/` | Pages, post routes, RSS, and search |
+| `src/layouts/`, `src/components/` | Astro layouts and components |
+| `src/styles/` | Global styles, typography, code blocks, and alerts |
+| `src/assets/images/` | Post images processed by Astro |
+| `public/` | Files served as-is, including videos, fonts, and favicon |
+| `src/utils/` | URLs, post filtering, images, and Markdown transformations |
+| `tests/` | Node tests for image resolution and Markdown transformations |
+| `astro.config.mjs` | Integrations, Markdown, Shiki, and sitemap |
+| `vercel.json` | Vercel build settings, redirects, and HTTP headers |
 
-## Conventions des articles
+## Post conventions
 
-- Utiliser un fichier `.md` au nom descriptif en kebab-case dans `src/content/blog/_YYYY/`.
-- Les champs obligatoires sont `title`, `description` et `pubDatetime` — pas `pubDate`. Le schéma de `src/content.config.ts` fait autorité.
-- Employer des dates ISO 8601. `pubDatetime` accepte une chaîne ; écrire `modDatetime` comme une date YAML non citée, par exemple `modDatetime: 2026-09-27`.
-- Préserver la date de publication ; utiliser `modDatetime` pour une mise à jour substantielle. Ne pas changer `draft` ou `unlisted` sans raison liée à la demande.
-- `draft: true` exclut l’article de la production. `unlisted: true` le masque des listes et du RSS, mais laisse sa page accessible ; ce n’est pas une protection d’accès.
-- Les répertoires préfixés par `_` sont omis de l’URL : `_2026/colour-the-cat.md` donne `/posts/colour-the-cat`. Éviter les noms identiques entre années et préserver les URLs publiées ; prévoir une redirection dans `vercel.json` si un renommage est nécessaire.
-- Une date future filtre les listes en production via `postFilter.ts`, mais n’empêche pas la génération de la page. Ne pas la considérer comme équivalente à un brouillon.
-- Placer les nouvelles images d’articles dans `src/assets/images/`. Dans le Markdown, `![Texte alternatif](image.png)` est résolu depuis ce dossier ; `heroImage: image.png` et `ogImage: image.png` utilisent aussi cette convention. Fournir les textes alternatifs appropriés.
-- Les chemins commençant par `/` désignent des fichiers de `public/` ; les chemins relatifs explicites et les URLs distantes restent possibles. Ne pas déplacer les médias existants sans mettre à jour leurs références.
-- Conserver les langages des blocs de code, l’attribut `file=...` et les annotations Shiki (`[!code ++]`, `[!code --]`, `[!code highlight]`). Le brouillon `code-block-highlights.md` fournit des exemples.
+- Use a descriptive kebab-case `.md` filename in `src/content/blog/_YYYY/`.
+- Required metadata fields are `title`, `description`, and `pubDatetime`. Do not use `pubDate`. The schema in `src/content.config.ts` is authoritative.
+- Use ISO 8601 dates. `pubDatetime` accepts a string; write `modDatetime` as an unquoted YAML date, such as `modDatetime: 2026-09-27`.
+- Preserve the publication date and use `modDatetime` for substantial updates. Change `draft` or `unlisted` only when the request calls for it.
+- `draft: true` excludes a post from production. `unlisted: true` hides it from listings and RSS but leaves its page accessible; it does not provide access control.
+- Directories prefixed with `_` are omitted from URLs: `_2026/colour-the-cat.md` becomes `/posts/colour-the-cat`. Avoid duplicate filenames across years and preserve published URLs. Add a redirect in `vercel.json` if a rename is necessary.
+- A future publication date filters production listings through `postFilter.ts`, but does not prevent page generation. It is not equivalent to marking a post as a draft.
+- Put new post images in `src/assets/images/`. Markdown references such as `![Alternative text](image.png)` resolve from that directory, as do `heroImage: image.png` and `ogImage: image.png`. Provide appropriate alternative text.
+- Paths starting with `/` refer to files in `public/`; explicit relative paths and remote URLs are also supported. Update all references when moving existing media.
+- Preserve code fence languages, the `file=...` attribute, and Shiki annotations (`[!code ++]`, `[!code --]`, `[!code highlight]`). The `code-block-highlights.md` draft contains examples.
 
-## Commandes et validation
+## Commands and validation
 
-Utiliser npm et conserver `package-lock.json` cohérent avec `package.json`.
+Use npm and keep `package-lock.json` consistent with `package.json`.
 
-- `npm ci` : installer les dépendances verrouillées.
-- `npm test` : exécuter les tests existants.
-- `npm run build` : construire le site dans `dist/`, puis son index Pagefind.
-- `npm run build:check` : vérifier les types Astro avant la construction et l’indexation.
-- `npm run lint` / `npm run check` : contrôles Biome sur `src/`.
+- `npm ci`: install locked dependencies.
+- `npm test`: run the existing tests.
+- `npm run build`: build the site into `dist/`, then generate its Pagefind index.
+- `npm run build:check`: run Astro type checks before building and indexing.
+- `npm run lint` / `npm run check`: run Biome checks on `src/`.
 
-Pour une modification de contenu ou de rendu, lancer la construction. Pour une
-modification de logique, lancer aussi les tests concernés ; utiliser
-`build:check` pour les changements Astro ou TypeScript. Pour de la documentation
-seule, relire les chemins, commandes et exemples, puis lancer `git diff --check`.
-Signaler les échecs et leurs limites sans les présenter comme des validations réussies.
+Build the site after content or rendering changes. For logic changes, also run
+relevant tests; use `build:check` for Astro or TypeScript changes. For documentation
+changes only, review paths, commands, and examples, then run `git diff --check`.
+Report failures and limitations without presenting them as successful validation.
 
-Ne pas lancer de serveur persistant en mode agent par défaut ; privilégier la
-construction et ne lancer un aperçu que si demandé. Éviter les commandes de
-formatage global qui modifieraient des fichiers hors périmètre.
+Do not start a persistent development server in agent mode by default. Prefer
+builds, and start a preview only when requested. Avoid global formatting commands
+that would change files outside the task's scope.
 
-Ne pas mettre à jour les dépendances pour une simple édition de contenu. Si une
-mise à jour est demandée, vérifier les versions avec `npm outdated` et
-`npm view <paquet> version`, viser les versions stables compatibles et ne pas
-rétrograder pour contourner une erreur. Certains scripts déclarés (`deploy`,
-`add-source-metadata`, `remove-tags`) pointent vers des fichiers absents : ne pas
-les recommander comme commandes opérationnelles.
+Do not update dependencies for a simple content edit. When an update is requested,
+check versions with `npm outdated` and `npm view <package> version`, target the
+latest compatible stable releases, and do not downgrade to work around an error.
+Some declared scripts (`deploy`, `add-source-metadata`, `remove-tags`) reference
+missing files; do not recommend them as working commands.

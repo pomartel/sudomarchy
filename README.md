@@ -1,75 +1,75 @@
 # Sudomarchy
 
-Le blog personnel de **PO Martel**, enseignant en informatique à Montréal,
-développeur et passionné de Linux : **<https://sudomarchy.com>**.
+The personal blog of **PO Martel**, a computer science teacher in Montreal,
+software developer, and Linux enthusiast: **<https://sudomarchy.com>**.
 
-Les articles, rédigés en anglais, partagent des astuces et des personnalisations
-d’Omarchy et de Hyprland : raccourcis clavier, gestion des fenêtres, outils en
-ligne de commande, autonomie, audio, sauvegardes et scripts d’installation.
+The articles share practical Omarchy and Hyprland tips and customizations:
+keyboard shortcuts, window management, command-line tools, battery life, audio,
+backups, and installation scripts. All project content and documentation are
+written in English.
 
-Le site repose sur **Astro**, **TypeScript** et **Tailwind CSS**, à partir du thème
-[AstroPaper](https://github.com/satnaing/astro-paper). Il comprend une recherche
-Pagefind, un [flux RSS](https://sudomarchy.com/rss.xml) et des thèmes clair et sombre.
+The site uses **Astro**, **TypeScript**, and **Tailwind CSS**, based on the
+[AstroPaper](https://github.com/satnaing/astro-paper) theme. It includes Pagefind
+search, an [RSS feed](https://sudomarchy.com/rss.xml), and light and dark themes.
 
-## Développement local
+## Local development
 
-Prérequis : Node.js 22.12.0 ou supérieur, et npm.
-TypeScript reste en version 6, compatible avec `@astrojs/check`.
+Requirements: Node.js 22.12.0 or later, and npm.
+TypeScript stays on version 6 for compatibility with `@astrojs/check`.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Le serveur de développement est accessible par défaut à <http://localhost:4321>.
+The development server is available at <http://localhost:4321> by default.
 
-| Commande | Fonction |
+| Command | Purpose |
 | --- | --- |
-| `npm run build` | Générer le site dans `dist/` et l’index de recherche Pagefind |
-| `npm run build:check` | Vérifier les types Astro, construire et indexer le site |
-| `npm run preview` | Prévisualiser la dernière construction |
-| `npm test` | Exécuter les tests Node |
-| `npm run lint` | Vérifier le code de `src/` avec Biome |
-| `npm run check` | Vérifier le code et le formatage de `src/` avec Biome |
+| `npm run build` | Generate the site in `dist/` and the Pagefind search index |
+| `npm run build:check` | Run Astro type checks, build the site, and index it |
+| `npm run preview` | Preview the latest build locally |
+| `npm test` | Run the Node tests |
+| `npm run lint` | Lint `src/` with Biome |
+| `npm run check` | Check code and formatting in `src/` with Biome |
 
-Pour vérifier la recherche Pagefind, construire le site puis utiliser l’aperçu.
+To check Pagefind search, build the site and then run the preview.
 
-## Organisation
+## Project structure
 
 ```text
 src/
-  content/blog/_YYYY/  Articles Markdown classés par année
-  content.config.ts   Schéma des métadonnées des articles
-  assets/images/      Images des articles
-  pages/              Pages, routes, RSS et recherche
-  layouts/            Gabarits de pages
-  components/         Composants Astro
-  styles/             Styles et typographie
-  utils/              Traitement du contenu et des images
-  consts.ts           Identité et options du site
-public/               Fichiers statiques, vidéos et polices
-tests/                Tests des utilitaires d’images
-astro.config.mjs      Configuration Astro et Markdown
-vercel.json           Configuration Vercel et redirections
+  content/blog/_YYYY/  Markdown posts organized by year
+  content.config.ts   Post metadata schema
+  assets/images/      Post images
+  pages/              Pages, routes, RSS, and search
+  layouts/            Page layouts
+  components/         Astro components
+  styles/             Styles and typography
+  utils/              Content and image utilities
+  consts.ts           Site identity and settings
+public/               Static files, videos, and fonts
+tests/                Image utility tests
+astro.config.mjs      Astro and Markdown configuration
+vercel.json           Vercel configuration and redirects
 ```
 
-Les articles utilisent les champs `title`, `description` et `pubDatetime`.
-Les dossiers `_YYYY` servent au classement et n’apparaissent pas dans les URLs :
-`src/content/blog/_2026/colour-the-cat.md` correspond à `/posts/colour-the-cat`.
-Les images peuvent être référencées par leur nom depuis `src/assets/images/`.
-Les conventions éditoriales et les consignes pour les agents sont dans
-[AGENTS.md](AGENTS.md).
+Posts require `title`, `description`, and `pubDatetime` metadata.
+The `_YYYY` directories organize files without appearing in URLs:
+`src/content/blog/_2026/colour-the-cat.md` maps to `/posts/colour-the-cat`.
+Images in `src/assets/images/` can be referenced by filename.
+See [AGENTS.md](AGENTS.md) for editorial conventions and agent instructions.
 
-## Hébergement
+## Hosting
 
-Le dépôt contient une configuration Vercel qui utilise `npm run build` et publie
-le dossier `dist/`. Les redirections et les en-têtes HTTP sont définis dans
-`vercel.json`. Le script `npm run deploy` référence un fichier absent du dépôt ;
-il ne constitue pas une procédure de déploiement utilisable en l’état.
+The repository includes Vercel configuration that runs `npm run build` and
+publishes `dist/`. Redirects and HTTP headers are defined in `vercel.json`.
+The `npm run deploy` script references a missing file and is not currently a
+working deployment command.
 
-## Licences
+## Licenses
 
-- Documentation et articles : **CC BY 4.0**.
-- Code : **MIT**. Les exemples de code des articles sont utilisables sous l’une ou l’autre licence.
+- Documentation and blog posts: **CC BY 4.0**.
+- Code: **MIT**. Code examples within posts may be used under either license.
 
-Voir [LICENSE](LICENSE) pour les conditions complètes.
+See [LICENSE](LICENSE) for the full terms.

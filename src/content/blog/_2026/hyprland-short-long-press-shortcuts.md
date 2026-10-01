@@ -1,5 +1,5 @@
 ---
-title: "Two Actions, One Shortcut: Short and Long Presses in Hyprland"
+title: "Give Your Omarchy Shortcuts a Second Action"
 description: "Use Lua callbacks to give a Hyprland shortcut separate tap and hold actions, without triggering both when you release the key."
 pubDatetime: "2026-10-01T12:00:00-04:00"
 draft: true

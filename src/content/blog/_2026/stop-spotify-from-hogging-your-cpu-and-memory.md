@@ -2,11 +2,12 @@
 title: "Stop Spotify from hogging your CPU and memory"
 description: "Use spotifyd as a lightweight Spotify Connect daemon and keep the full Spotify app closed while music plays."
 pubDatetime: "2026-05-05"
+modDatetime: 2026-10-01
 heroImage: stop-spotify-from-hogging-your-cpu-and-memory.png
 heroImageAlt: "Spotify Linux app showing Kendrick Lamar playback and Spotify Connect output."
 ---
 
-Spotify is my music streaming platform of choice and I love that they have a Linux client that comes bundled with Omarchy.
+Spotify is my music streaming platform of choice and I love that they have a Linux client. Omarchy Quattro installs it on demand through **Install > Service > Spotify**, or with `omarchy install service spotify`, rather than including it in a fresh installation.
 
 Unfortunately, that client is an Electron app and it's a memory and process hog, even when minimized to the system tray. So much so that it's the main reason my computer fan kicks in. Listening to music with the background noise of a fan, when I'm not wearing headphones, is not what I would call the best audiophile experience.
 

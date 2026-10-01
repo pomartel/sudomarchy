@@ -2,9 +2,12 @@
 title: "Stream Audio to Airplay Devices"
 description: "A guide on how to stream audio from Omarchy to AirPlay speakers like Sonos or HomePod."
 pubDatetime: "2025-12-19"
+modDatetime: 2026-10-01
 heroImage: stream-audio-to-airplay.png
 heroImageAlt: "Wiremix TUI showing Sonos speakers"
 ---
+
+_Update (2026-10-01): The restart command and audio controls below have been updated for Omarchy Quattro. The header image shows the older Wiremix interface._
 
 My Thinkpad X1 laptop speakers sound terrible and so I wanted to be able to stream audio to my Sonos speaker that stands on my desk next to my computer. This works out of the box on Omarchy with Spotify Connect but I wanted to make it work not just for music but for general usage as well like watching Youtube videos.
 
@@ -31,7 +34,7 @@ context.modules = [
 ]
 ```
 
-## 3.Open up firewall porst for incoming traffic.
+## 3. Open up firewall ports for incoming traffic
 
 Now I only use Sonos devices and I haven't tried this config with other devices such as Homepods. But for Sonos, you do need to open up some ports for incoming UDP traffic. That's the main reason why I haven't submitted a PR to Omarchy for this.
 
@@ -40,12 +43,12 @@ sudo ufw allow 6001/udp comment "Stream to Airplay"
 sudo ufw allow 6002/udp comment "Stream to Airplay"
 ```
 
-## 4. Restart pipewire
+## 4. Restart audio
 
-Finally you will want to restart pipewire for the changes to take effect. Omarchy provide a command that you can use to do just that:
+Finally, restart the audio services for the changes to take effect. Quattro's audio restart command handles PipeWire and WirePlumber:
 
 ```bash
-omarchy restart pipewire
+omarchy restart audio
 ```
 
-Now when you click the speaker icon in the waybar or use the `SUPER + CTRL + A` shortcut and go to the Output Devices tab of wiremix, you should see your Ariplay speakers listed there.
+Now click the speaker icon in the top bar or press **SUPER + CTRL + A** to open Quattro's Audio panel. Look for your AirPlay speakers among the available audio outputs and select the one you want to use.

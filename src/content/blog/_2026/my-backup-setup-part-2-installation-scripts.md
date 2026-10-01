@@ -2,6 +2,7 @@
 title: "My Backup Setup (Part 2): Installation Scripts"
 description: "How I use Omarchy bash scripts to automate app installs, system tweaks, and machine setup."
 pubDatetime: "2026-02-27"
+modDatetime: 2026-10-01
 heroImage: my-backup-setup-part-2.png
 heroImageAlt: "Terminal window showing a generic bash setup script"
 draft: false
@@ -9,14 +10,14 @@ draft: false
 
 In [my last post](/posts/my-backup-setup-part-1), I covered how I use Dropbox, Git, and yadm to back up and sync my documents, projects, and config files. In part 2, I want to focus on how I install apps and customize my system with Bash scripts.
 
-What happens when you install or update Omarchy? A ton of Bash scripts are executed to install software, configure the machine, and start services. What happens when you select something from the Omarchy menu (**Super + Alt + Space**)? A Bash script is executed.
+What happens when you install or update Omarchy? Packages and scripts work together to install software, configure the machine, and start services. Many actions in the Omarchy menu (**Super + Space** in Quattro) also have a command you can run from a terminal.
 
-[Omarchy's source code](https://github.com/basecamp/omarchy) is about 90% Bash scripts. The best way to understand how Omarchy works under the hood is to read the scripts in the [bin directory](https://github.com/basecamp/omarchy/tree/dev/bin). Once you understand how the commands work, you can leverage Omarchy's built-in scripts to customize and automate your setup.
+[Omarchy's source code](https://github.com/omacom/omarchy) now includes a Quickshell desktop and Lua configuration for Hyprland, alongside its Bash tools. The scripts in the [bin directory](https://github.com/omacom/omarchy/tree/v4.0.4/bin) are still a great place to understand how its commands work. You can use those commands to customize and automate your setup without editing Omarchy's packaged files.
 
 For example, let's say you're setting up a new machine and want to install Dropbox. You could open the Omarchy menu and select **Install > Service > Dropbox**. Or you can open a terminal and run:
 
 ```bash
-omarchy install dropbox
+omarchy install service dropbox
 ```
 
 How about removing a pre-installed web app like Basecamp? Again, you can do it from the Omarchy menu or with a single command:

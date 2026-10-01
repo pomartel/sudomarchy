@@ -2,6 +2,7 @@
 title: "Stop deleting files by accident"
 description: "Make rm safer by sending deleted files to the Trash."
 pubDatetime: "2026-01-20"
+modDatetime: 2026-10-01
 heroImage: stop-deleting-files-by-accident.jpg
 heroImageAlt: "0 days without deleting a file by acident"
 ---
@@ -44,14 +45,14 @@ The Trash doesn’t empty itself. You can purge items older than N days:
 trash-empty 30 # delete files older than 30 days
 ```
 
-You can run that manually, or automate it. On Hyprland, one simple option is to add it to `~/.config/hypr/autostart.conf`:
+You can run that manually, or automate it. On Omarchy Quattro, one simple option is to add it to `~/.config/hypr/autostart.lua`:
 
-```ini file=~/.config/hypr/autostart.conf
-# Empty the trash once every day
-exec-once = trash-empty 30
+```lua file=~/.config/hypr/autostart.lua
+-- Delete trash older than 30 days when the session starts
+o.launch_on_start("trash-empty 30")
 ```
 
 > [!NOTE]
-> `exec-once` only runs when Hyprland starts, so it won’t run daily unless you restart daily.
+> This runs when your Hyprland session starts, not on a daily schedule. Reloading the configuration does not run it again. Use a systemd user timer if you want daily cleanup regardless of when you log in.
 
 That’s it — safer deletes, and a much smaller chance of a “well… crap” moment.

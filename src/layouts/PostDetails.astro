@@ -8,6 +8,7 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
+import { getAdjacentPosts } from "@/utils/getAdjacentPosts.js";
 import { getPath } from "@/utils/getPath";
 import { resolveContentImage } from "@/utils/resolveContentImage";
 import { slugifyStr } from "@/utils/slugify";
@@ -86,19 +87,7 @@ const layoutProps = {
 
 /* ========== Prev/Next Posts ========== */
 
-const allPosts = posts.map(({ data: { title }, id, filePath }) => ({
-  id,
-  filePath,
-  title,
-}));
-
-const currentPostIndex = allPosts.findIndex((a) => a.id === post.id);
-
-const prevPost = currentPostIndex > 0 ? allPosts[currentPostIndex - 1] : null;
-const nextPost =
-  currentPostIndex >= 0 && currentPostIndex < allPosts.length - 1
-    ? allPosts[currentPostIndex + 1]
-    : null;
+const { prevPost, nextPost } = getAdjacentPosts(posts, post);
 
 ---
 
@@ -149,7 +138,12 @@ const nextPost =
     <hr class="my-8 border-dashed" />
 
     <!-- Previous/Next Post Buttons -->
-    <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+    <div
+      data-pagefind-ignore
+      data-prev-url={prevPost ? getPath(prevPost.id, prevPost.filePath) : undefined}
+      data-next-url={nextPost ? getPath(nextPost.id, nextPost.filePath) : undefined}
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2"
+    >
       {
         prevPost && (
           <a
@@ -159,7 +153,7 @@ const nextPost =
             <IconChevronLeft class="inline-block flex-none rtl:rotate-180" />
             <div>
               <span>Previous Post</span>
-              <div class="text-sm text-accent/85">{prevPost.title}</div>
+              <div class="text-sm text-accent/85">{prevPost.data.title}</div>
             </div>
           </a>
         )
@@ -172,7 +166,7 @@ const nextPost =
           >
             <div>
               <span>Next Post</span>
-              <div class="text-sm text-accent/85">{nextPost.title}</div>
+              <div class="text-sm text-accent/85">{nextPost.data.title}</div>
             </div>
             <IconChevronRight class="inline-block flex-none rtl:rotate-180" />
           </a>

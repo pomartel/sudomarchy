@@ -33,6 +33,10 @@ const { post } = Astro.props;
 
 const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
+// Include the current draft only in its development preview, never in public links.
+if (import.meta.env.DEV && post.data.draft && !post.data.unlisted) {
+  sortedPosts.push(post);
+}
 ---
 
 <PostDetails post={post} posts={sortedPosts} />

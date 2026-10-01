@@ -22,8 +22,34 @@ And since I [remapped Caps Lock to **SUPER + SHIFT**](/posts/keyd-capslock-escap
 
 ## Ask your agent
 
-Going forward, I am not going to post code snippets anymore since an agent can do the work. Instead, here is a prompt to start with:
+Your agent can do the configuration for you. Here is a prompt to start with:
 
 > Configure SUPER + SHIFT + G in my Omarchy bindings: tap for Signal, hold for WhatsApp, without triggering both. Keep the existing ALT shortcut and launcher behavior. Reload Hyprland and check for errors.
 
 Replace the keys and applications to use another pair. If you want to remove the old ALT shortcut, say so in the prompt.
+
+## Configure it yourself
+
+Add this to `~/.config/hypr/bindings.lua`, replacing any existing custom definition for the same shortcut. The original ALT shortcut remains available.
+
+```lua file=~/.config/hypr/bindings.lua
+hl.unbind("SUPER + SHIFT + G")
+
+do
+  local long_pressed = false
+
+  o.bind("SUPER + SHIFT + G", "WhatsApp", function()
+    long_pressed = true
+    hl.exec_cmd(o.launch_webapp_sole("WhatsApp", "https://web.whatsapp.com/"))
+  end, { long_press = true })
+
+  o.bind("SUPER + SHIFT + G", "Signal", function()
+    if not long_pressed then
+      hl.exec_cmd("omarchy-launch-signal")
+    end
+    long_pressed = false
+  end, { release = true })
+end
+```
+
+The short action runs on release, unless the long action already fired. After saving, run `hyprctl reload` and `hyprctl configerrors`.

@@ -3,6 +3,8 @@ title: "Give Your Omarchy Shortcuts a Second Action"
 description: "Use Lua callbacks to give a Hyprland shortcut separate tap and hold actions, without triggering both when you release the key."
 pubDatetime: "2026-10-01T12:00:00-04:00"
 draft: true
+heroImage: hyprland-short-long-press-shortcuts.png
+heroImageAlt: "SUPER, SHIFT, and G keycaps with glowing Tap and Hold cues for two shortcut actions."
 ---
 
 Omarchy gives several applications a **SUPER + SHIFT** shortcut, with **ALT** added for a related action. For example, **SUPER + SHIFT + G** launches Signal, while **SUPER + SHIFT + ALT + G** opens or focuses WhatsApp.

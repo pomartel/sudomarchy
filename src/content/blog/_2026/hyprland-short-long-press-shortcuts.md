@@ -7,9 +7,9 @@ heroImage: hyprland-short-long-press-shortcuts.png
 heroImageAlt: "A dark mechanical keyboard with the Super, Shift, and G keys highlighted in amber."
 ---
 
-Omarchy gives several applications a **SUPER + SHIFT** shortcut, with **ALT** added for a related action. For example, **SUPER + SHIFT + G** launches Signal, while **SUPER + SHIFT + ALT + G** opens or focuses WhatsApp.
+Omarchy gives several applications a **SUPER + SHIFT** shortcut, with **ALT** added for a related action. For example, **SUPER + SHIFT + B** opens your browser, while **SUPER + SHIFT + ALT + B** opens a private window.
 
-We can combine those into one shortcut: tap **SUPER + SHIFT + G** for Signal, hold it for WhatsApp. No extra finger gymnastics.
+We can combine those into one shortcut: tap **SUPER + SHIFT + B** for your browser, hold it for a private window. No extra finger gymnastics.
 
 Here are a few pairs from [Omarchy's stock application bindings](https://github.com/omacom/omarchy/blob/v4.0.4/default/hypr/bindings/applications.lua):
 

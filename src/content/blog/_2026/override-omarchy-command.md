@@ -12,7 +12,7 @@ In this post, we'll focus on overriding Omarchy's Bash scripts. Each **SUPER + A
 
 ## Why override Omarchy commands?
 
-Let me give you an example. I switched to [NetworkManager](https://networkmanager.dev/) and its TUI for managing my Wi-Fi connections instead of the default Impala TUI that ships with Omarchy. The problem is that the [`omarchy-launch-wifi`](https://github.com/basecamp/omarchy/blob/master/bin/omarchy-launch-wifi) command invokes `impala`. This command is used by Waybar, the menu, and the **SUPER + CTRL + W** shortcut.
+Let me give you an example. I switched to [NetworkManager](https://networkmanager.dev/) and its TUI for managing my Wi-Fi connections instead of the default Impala TUI that ships with Omarchy. The problem is that the [`omarchy-launch-wifi`](https://github.com/omacom/omarchy/blob/v3.3.0/bin/omarchy-launch-wifi) command invokes `impala`. This command is used by Waybar, the menu, and the **SUPER + CTRL + W** shortcut.
 
 I could update the Waybar and Hyprland configs, but it feels cleaner to override the command instead.
 

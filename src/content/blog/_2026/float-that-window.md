@@ -62,7 +62,7 @@ Then create `windows.conf` in the same directory. This is where we'll keep our c
 
 ## Add the rule
 
-The [window rules documentation](https://wiki.hypr.land/Configuring/Window-Rules/) on the Hyprland wiki is worth bookmarking. There are a lot of options, but the syntax is well documented and full of examples.
+The [Hyprland 0.53 window rules documentation](https://wiki.hypr.land/0.53.0/Configuring/Window-Rules/) covers the syntax used in this post. There are a lot of options, but the syntax is well documented and full of examples.
 
 For this case, we want to match windows with the `Typora` class and `Print` title, then apply the `float` and `center` effects:
 

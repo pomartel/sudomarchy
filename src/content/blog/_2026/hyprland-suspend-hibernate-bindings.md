@@ -18,6 +18,6 @@ binddl = SUPER CTRL, Escape, Suspend system, exec, systemctl suspend
 binddl = SUPER CTRL ALT, Escape, Hibernate system, exec, systemctl hibernate
 ```
 
-Noticed the `l` at the end of the `binddl` setting? I learned that from the [hyprland documentation for binds](https://wiki.hypr.land/Configuring/Binds/). It stands for **lock** and that means the shortcut also works from the lock screen, so you can suspend or hibernate without unlocking first. Neat!
+Noticed the `l` at the end of the `binddl` setting? I learned that from the [Hyprland 0.53 documentation for binds](https://wiki.hypr.land/0.53.0/Configuring/Binds/). It stands for **lock** and that means the shortcut also works from the lock screen, so you can suspend or hibernate without unlocking first. Neat!
 
 I think these two bindings could make a good Pull Request to Omarchy if suspend and hibernate eventually become default features of Omarchy.

@@ -34,7 +34,7 @@ If you don't want your power profile to switch automatically, all you have to do
 sudo rm /etc/udev/rules.d/99-power-profile.rules
 ```
 
-If like me you prefer to use the `balanced` mode when plugged in to avoid annoying fan noise, you can edit the rules file to use `balanced` mode when plugged in and `power-saver` on the battery. I made this little [bash install script](https://github.com/pomartel/omarchy-install-scripts/blob/main/configs/set-power-profile-rule.sh) to automate the process.
+If like me you prefer to use the `balanced` mode when plugged in to avoid annoying fan noise, you can edit the rules file to use `balanced` mode when plugged in and `power-saver` on the battery.
 
 ## 3. Auto paste for the emoji picker
 

@@ -60,7 +60,7 @@ Don't forget to make the script executable:
 chmod +x ~/bin/lock-unless-ssid
 ```
 
-Since `~/bin` is in my [`PATH` variable](https://sudomarchy.com/posts/override-omarchy-command#add-the-bin-folder-to-the-uwsm-env-file), I can call the script directly:
+Since `~/bin` is in my [`PATH` variable](/posts/override-omarchy-command#add-the-bin-folder-to-the-path), I can call the script directly:
 
 ```bash
 lock-unless-ssid my-home-ssid

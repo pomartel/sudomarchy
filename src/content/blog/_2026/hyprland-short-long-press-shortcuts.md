@@ -16,7 +16,6 @@ Here are a few pairs from [Omarchy's stock application bindings](https://github.
 | SUPER + SHIFT + G | Signal | WhatsApp |
 | SUPER + SHIFT + B | Regular browser | Private browser window |
 | SUPER + SHIFT + A | ChatGPT | Grok |
-| SUPER + SHIFT + E | HEY email | Compose a new HEY email |
 
 Some of these applications belong to Omarchy's optional preinstalls. Pick a pair you actually use.
 
@@ -27,44 +26,3 @@ Your agent can inspect your current bindings and make the change. Here is a prom
 > In my Omarchy Hyprland Lua configuration, combine the stock SUPER + SHIFT + G (Signal) and SUPER + SHIFT + ALT + G (WhatsApp) actions into a tap-and-hold shortcut on SUPER + SHIFT + G. A short press should launch Signal; a long press should open or focus WhatsApp. Trigger the short action on release only if the long action did not fire. Preserve the existing launcher behavior, keep the ALT shortcut available, and leave unrelated bindings untouched. Edit my user configuration, then reload Hyprland and check for configuration errors.
 
 Replace the keys and applications to use another pair. If you want to remove the old ALT shortcut, say so in the prompt.
-
-## How it works
-
-Hyprland's [`long_press` and `release` flags](https://wiki.hypr.land/configuring/core/binds/flags/) handle the timing. The short action waits for release; a shared Lua variable prevents it from running after a long press.
-
-For readers who prefer to edit the configuration themselves, add this to `~/.config/hypr/bindings.lua`, replacing any existing custom definition for the same shortcut:
-
-```lua file=~/.config/hypr/bindings.lua
-hl.unbind("SUPER + SHIFT + G")
-
-do
-  local long_pressed = false
-
-  o.bind("SUPER + SHIFT + G", "WhatsApp", function()
-    long_pressed = true
-    hl.exec_cmd(o.launch_webapp_sole("WhatsApp", "https://web.whatsapp.com/"))
-  end, { long_press = true })
-
-  o.bind("SUPER + SHIFT + G", "Signal", function()
-    if not long_pressed then
-      hl.exec_cmd("omarchy-launch-signal")
-    end
-    long_pressed = false
-  end, { release = true })
-end
-```
-
-This uses Omarchy's Lua helpers and keeps the original ALT shortcut available. It is not a snippet for an older `bindings.conf` setup.
-
-Hyprland uses the active keyboard's [repeat delay](https://github.com/hyprwm/Hyprland/blob/main/src/keybinds/Manager.cpp) as the hold threshold. Mine is 300 ms. Increasing `input.repeat_delay` gives you more time to tap, but also delays keyboard autorepeat.
-
-## Try it
-
-After saving, reload and check for errors:
-
-```bash
-hyprctl reload
-hyprctl configerrors
-```
-
-Tap **SUPER + SHIFT + G** for Signal, then hold it for WhatsApp. Release **G** before the modifiers. Releasing after a hold should not launch Signal; another quick tap should work normally.

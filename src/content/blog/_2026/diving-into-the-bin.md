@@ -45,8 +45,6 @@ Here are a few especially useful commands you can use in `bindings.conf`:
 | `omarchy-launch-or-focus-webapp` | Launch or focus (if an instance is already active) a web app from a URL                     |
 | `omarchy-launch-or-focus-tui`    | Launch a terminal app from the command you pass as an argument                              |
 
-Take a look at my [`bindings.conf`](https://github.com/pomartel/config-files/blob/master/.config/hypr/bindings.conf) for inspiration.
-
 ## 3. `omarchy refresh ...`
 
 Have you ever made a small change to your Waybar config and then watched it crash? Fear not, Omarchy has you covered. `omarchy refresh waybar` restores the default configuration file and backs up yours in the same directory with a `.bk.TIMESTAMP` suffix, where `TIMESTAMP` is the current Unix timestamp.
@@ -68,5 +66,3 @@ This is often faster than using the menu, and you can even [automate the process
 ## Create your own commands
 
 Once you understand the power of Bash scripts, you can start creating your own commands or safely overriding Omarchy's. I wrote a whole post about that [here](/posts/override-omarchy-command).
-
-And if you're curious, you can also dive into [my bin](https://github.com/pomartel/config-files/tree/master/bin).

@@ -4,7 +4,11 @@ description: "Open a Ghostty terminal from Nautilus, automatically change power 
 pubDatetime: "2026-02-26"
 heroImage: my-omarchy-3-4-0-contributions.png
 heroImageAlt: "Nautilus right-click menu showing an Open in Ghostty item"
+modDatetime: 2026-10-01
 ---
+
+> [!NOTE]
+> This is a historical post about Omarchy 3.4.0. Quattro (4.x) uses Lua configuration and its own desktop shell, and remembers separate AC and battery power profiles. The configuration snippets below describe 3.4.0; do not apply them as Quattro instructions. See the [Quattro release notes](https://github.com/omacom/omarchy/releases/tag/v4.0.0).
 
 I was looking forward to Omarchy 3.4.0 because quite a few pull requests I made were included. They are little things, but I think they improve the quality of life for those using this wonderful Linux distro.
 

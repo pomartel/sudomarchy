@@ -4,7 +4,11 @@ description: "Use Hyprland window rules to float and center dialogs, like Typora
 pubDatetime: "2026-04-02"
 ogImage: typora-print-dialog-floating.png
 heroImageAlt: "Typora's Print dialog floating and centered on the screen"
+modDatetime: 2026-10-01
 ---
+
+> [!NOTE]
+> Updated for Omarchy Quattro (4.0.4) and Lua window rules. The screenshots show the original Typora example.
 
 One thing I don't miss about macOS and Windows is the pile of floating windows stacked on top of one another. I much prefer the clarity of a tiling window manager paired with workspaces. No more hunting around and Alt-tabbing my way through a messy desktop.
 
@@ -12,7 +16,7 @@ But like any idea taken too far, there are times when a small floating window si
 
 ## Typora's print dialog
 
-I really like Typora for writing. If you haven't tried it yet, it comes preinstalled with Omarchy and you can launch it with **SUPER + SHIFT + W**.
+I really like Typora for writing. Quattro now ships Omawrite as its default writing app, so install Typora separately if you want to follow this particular example.
 
 From time to time, I like to print documents for proofreading. Here's what happens when I open Typora's Print dialog:
 
@@ -48,31 +52,34 @@ Window 55f20fbef620 -> Print:
 
 The most reliable way to target a window is usually with its class and title. In this case, the class is `Typora` and the title is `Print`.
 
-## Create a `windows.conf` file
+## Create a `windows.lua` file
 
-Your Hyprland config lives in `~/.config/hypr/`. The main file is `hyprland.conf`, which sources the rest of the configuration.
+Your Hyprland config lives in `~/.config/hypr/`. Quattro's main file is `hyprland.lua`, which loads the defaults and then your own overrides.
 
-We could add window rules directly there, but I prefer to keep things modular. Add this line to `hyprland.conf`:
+We could add window rules directly there, but I prefer to keep things modular. Add this line at the bottom of `hyprland.lua`, after the existing imports:
 
-```ini file=~/.config/hypr/hyprland.conf
-source = ~/.config/hypr/windows.conf
+```lua file=~/.config/hypr/hyprland.lua
+require("hypr.windows")
 ```
 
-Then create `windows.conf` in the same directory. This is where we'll keep our custom window rules.
+Then create `~/.config/hypr/windows.lua`. Omarchy's bootstrap adds this directory to Lua's module path; see the [default configuration](https://github.com/omacom/omarchy/blob/v4.0.4/config/hypr/hyprland.lua).
 
 ## Add the rule
 
-The [Hyprland 0.53 window rules documentation](https://wiki.hypr.land/0.53.0/Configuring/Window-Rules/) covers the syntax used in this post. There are a lot of options, but the syntax is well documented and full of examples.
+The [Lua window rules documentation](https://wiki.hypr.land/Configuring/Basics/Window-Rules/) covers the available matches and effects. Omarchy also provides an [`o.window` helper](https://github.com/omacom/omarchy/blob/v4.0.4/default/hypr/helpers.lua). There are a lot of options, but the syntax is well documented and full of examples.
 
 For this case, we want to match windows with the `Typora` class and `Print` title, then apply the `float` and `center` effects:
 
-```ini file=~/.config/hypr/windows.conf
-windowrule = float on, center on, match:class ^Typora$, match:title ^Print$
+```lua file=~/.config/hypr/windows.lua
+o.window({ class = "^Typora$", title = "^Print$" }, {
+  float = true,
+  center = true,
+})
 ```
 
 Notice the `^` and `$` characters. Those are regular expression anchors. They make sure we match the exact strings and not something broader like `Print Settings`.
 
-Save the file then open the Print dialog again. The result is much nicer:
+Save the files, run `hyprctl reload`, and check `hyprctl configerrors`. Close and reopen the Print dialog so its initial window rules can apply. The result is much nicer:
 
 ![Typora's Print dialog floating above the editor](/assets/images/typora-print-dialog-floating.png)
 
@@ -82,13 +89,15 @@ If this is the only window you want to float, you can stop here.
 
 But if you want to reuse the same behavior for other dialogs later, it is cleaner to tag matching windows and then apply the effect through that tag:
 
-```ini file=~/.config/hypr/windows.conf
-windowrule = float on, center on, match:tag centered-floating-window
-windowrule = tag +centered-floating-window, match:class ^Typora$, match:title ^Print$
+Replace the direct rule above with this version; assign the tag before matching it:
+
+```lua file=~/.config/hypr/windows.lua
+o.window({ class = "^Typora$", title = "^Print$" }, { tag = "+centered-floating-window" })
+o.window({ tag = "centered-floating-window" }, { float = true, center = true })
 ```
 
 ## Unleash the possibilities
 
 Floating a window is just the beginning. Once you get comfortable with Hyprland customisation, you can precisely control how windows open, where they land, and how they behave across workspaces.
 
-In an upcoming post, I'll show you how to use Hyprland special workspaces to do even more cool stuff. Subscribe to the RSS feed if you don't want to miss it.
+You can also use these rules with [special workspaces](/posts/hyprland-workspaces-are-special) to keep an app close at hand without leaving it on your main workspace.

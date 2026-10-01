@@ -1,23 +1,36 @@
 ---
 title: "Add Suspend and Hibernate Keybindings to Omarchy"
-description: "Two lines of code you can add to your Hyprland bindings.conf file to suspend or hibernate the system with a keyboard shortcut."
+description: "Add Lua keybindings for suspend and hibernate, including support for the lock screen."
 pubDatetime: "2026-01-13"
 draft: false
+modDatetime: 2026-10-01
 ---
 
-Recently, Omarchy maintainers removed the suspend option from the System menu. This caused a lot of complaints so they re-added it as an optional feature in the **Setup > System Sleep** menu in release 3.3. They also added an option to configure hibernation.
+> [!NOTE]
+> Updated for Omarchy Quattro (4.0.4) and Lua keybindings. Suspend and resume still depend on your hardware; test them before relying on a shortcut.
 
-Not all computers handle suspend and hibernate properly in Linux so that's why Omarchy does not enable it by default. That's probably also why there is no keybinding for these features. But you can easily add them yourself.
+The original version of this post covered Omarchy 3.3's optional sleep menu. Quattro's [system sleep documentation](https://github.com/omacom/omarchy/blob/v4.0.4/manual/36-system-sleep.md) now describes suspend and hibernation as enabled by default. Hibernation still requires the appropriate swap and boot setup; `omarchy hibernation setup` configures it on supported Limine installations.
 
-Since Omarchy reserves **SUPER + CTRL** for utilities bindings, it would be an appropriate modifier for suspend instead of **SUPER + SHIFT** which is reserved for applications shortcuts. And since the **SUPER + Escape** binding already lets us access the system menu, the **Escape** key would make a good fit for suspend/hibernate shortcuts.
+Start by testing the sleep options in the **SUPER + Escape** system menu. If hibernation is not configured, follow that documentation first. A keyboard shortcut cannot make an unsupported sleep mode work.
 
-Add the following to `~/.config/hypr/bindings.conf`:
+Since Omarchy uses **SUPER + CTRL** for utility shortcuts and **SUPER + Escape** for the system menu, Escape still feels like a good fit.
 
-```ini file=~/.config/hypr/bindings.conf
-binddl = SUPER CTRL, Escape, Suspend system, exec, systemctl suspend
-binddl = SUPER CTRL ALT, Escape, Hibernate system, exec, systemctl hibernate
+Add the following to `~/.config/hypr/bindings.lua`:
+
+```lua file=~/.config/hypr/bindings.lua
+hl.unbind("SUPER + CTRL + Escape")
+hl.unbind("SUPER + CTRL + ALT + Escape")
+o.bind("SUPER + CTRL + Escape", "Suspend system", "systemctl suspend", { locked = true })
+o.bind("SUPER + CTRL + ALT + Escape", "Hibernate system", "systemctl hibernate", { locked = true })
 ```
 
-Noticed the `l` at the end of the `binddl` setting? I learned that from the [Hyprland 0.53 documentation for binds](https://wiki.hypr.land/0.53.0/Configuring/Binds/). It stands for **lock** and that means the shortcut also works from the lock screen, so you can suspend or hibernate without unlocking first. Neat!
+The `{ locked = true }` option replaces the old `l` in `binddl`. It allows the binding to run while the session is locked. Omarchy uses the same option for its [power and lid bindings](https://github.com/omacom/omarchy/blob/v4.0.4/default/hypr/bindings/utilities.lua).
 
-I think these two bindings could make a good Pull Request to Omarchy if suspend and hibernate eventually become default features of Omarchy.
+Reload and check for configuration errors:
+
+```bash
+hyprctl reload
+hyprctl configerrors
+```
+
+Save your work, then test suspend and resume first. Test hibernation separately after setup, and finally test both shortcuts from the lock screen. They call systemd directly, so hiding a sleep option in Omarchy's menu does not disable these bindings. Remove a binding if that mode is unreliable on your machine.

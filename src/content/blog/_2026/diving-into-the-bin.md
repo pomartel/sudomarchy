@@ -4,9 +4,13 @@ description: "A tour of Omarchy's bin folder and a few of the commands that powe
 pubDatetime: "2026-03-27"
 heroImage: diving-into-the-bin.png
 heroImageAlt: "A full-screen field of omarchy command names from Omarchy's bin folder"
+modDatetime: 2026-10-01
 ---
 
-As of today, the [`bin` directory in the Omarchy repo](https://github.com/basecamp/omarchy/tree/dev/bin) contains 205 scripts, and that number keeps growing. A big part of Omarchy's core functionality lives in those small Bash scripts, so understanding how they work is one of the fastest ways to better understand your Linux distribution.
+> [!NOTE]
+> Updated for Omarchy Quattro (4.0.4). The header image shows an older command list; use `omarchy commands` for your installed version.
+
+The [`bin` directory in the Omarchy repo](https://github.com/omacom/omarchy/tree/v4.0.4/bin) contains the scripts that power much of the desktop. A big part of Omarchy's core functionality lives in those small Bash scripts, so understanding how they work is one of the fastest ways to better understand your Linux distribution.
 
 You often hear that to master Linux, you need to get comfortable with the terminal. That's especially true for a developer-oriented distro like Omarchy. So hit **SUPER + ENTER** and let's dive into the bin!
 
@@ -14,7 +18,7 @@ You often hear that to master Linux, you need to get comfortable with the termin
 
 Omarchy's commands are neatly prefixed with `omarchy`. To view them all, type `omarchy commands`. As you'll quickly notice, there are a lot of them.
 
-If you're new to the shell, you might wonder where those commands actually live. They are not in your current directory when you run `ls`. Omarchy stores them in `~/.local/share/omarchy/bin`, and that directory is added to the `PATH` environment variable.
+If you're new to the shell, you might wonder where those commands actually live. They are not in your current directory when you run `ls`. Quattro installs its commands in `/usr/bin` through system packages. Defaults and other shared files live in `/usr/share/omarchy`; your personal settings stay in `~/.config`. You can find a command with `command -v omarchy-launch-browser`.
 
 `PATH` is simply the list of directories your shell searches when you run a command without a full path. To inspect it on your system, run:
 
@@ -26,17 +30,26 @@ Now let's look at a few of my favourite Omarchy commands.
 
 ## 1. `omarchy restart ...`
 
-If you type `omarchy restart` and press **TAB**, you'll get a list of commands that restart specific apps and services.
+Run `omarchy restart --help` to see the available restart commands. The [CLI documentation](https://github.com/omacom/omarchy/blob/v4.0.4/manual/14-omarchy-cli.md) explains how help works for groups and individual commands.
 
-If you're into Linux ricing and fiddle with your Waybar config a lot, `omarchy restart waybar` is the fastest way to reload it and see your changes. If you edit `~/.config/hypr/hypridle.conf`, you will also want to run `omarchy restart hypridle`, otherwise your new idle timings (screensaver, sleep, etc.) will not apply until the next reboot.
+If you're into Linux ricing and fiddle with the desktop shell, `omarchy restart shell` restarts the bar, menus, and the rest of the shell. For audio trouble, `omarchy restart audio` restarts the audio services. Quattro replaced Waybar, Hypridle, and Hyprlock, so their old restart commands no longer apply.
+
+For Hyprland Lua edits, use `hyprctl reload`, then `hyprctl configerrors` to check for mistakes.
 
 There are plenty of other restart commands depending on your needs. At one point or another, they'll make your life easier.
 
 ## 2. `omarchy-launch-*`
 
-Have you taken a look at your `~/.config/hypr/bindings.conf` yet? This is where your keyboard shortcuts for launching apps are configured, and it's worth customising heavily so you almost never need the application launcher (**SUPER + SPACE**).
+Have you taken a look at your `~/.config/hypr/bindings.lua` yet? This is where your keyboard shortcuts for launching apps are configured, and it's worth customising heavily so you almost never need the application launcher (**SUPER + SPACE**).
 
-Here are a few especially useful commands you can use in `bindings.conf`:
+For example, after installing Spotify, this overrides its music shortcut:
+
+```lua file=~/.config/hypr/bindings.lua
+hl.unbind("SUPER + SHIFT + M")
+o.bind("SUPER + SHIFT + M", "Spotify", "omarchy-launch-or-focus spotify")
+```
+
+Here are a few especially useful commands you can call from `o.bind` in `bindings.lua`:
 
 | Command                          | What it does                                                                                |
 | -------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -47,13 +60,17 @@ Here are a few especially useful commands you can use in `bindings.conf`:
 
 ## 3. `omarchy refresh ...`
 
-Have you ever made a small change to your Waybar config and then watched it crash? Fear not, Omarchy has you covered. `omarchy refresh waybar` restores the default configuration file and backs up yours in the same directory with a `.bk.TIMESTAMP` suffix, where `TIMESTAMP` is the current Unix timestamp.
+Have you ever made a small change to your config and wanted to start over? `omarchy refresh config` copies one shipped configuration back into your home directory. For example:
 
-Omarchy usually leaves your config files alone, but refresh commands are sometimes forced when an update ships with a new default configuration. That happened with `hypridle.conf` in Omarchy 3.4.0. So if one of your files gets refreshed after an update, don't panic and don't curse just yet. Look for the backup file first.
+```bash
+omarchy refresh config hypr/bindings.lua
+```
+
+That **replaces your bindings file**, so use it when you actually want to reset that file. If its contents differ, the [refresh script](https://github.com/omacom/omarchy/blob/v4.0.4/bin/omarchy-refresh-config) keeps a backup named `bindings.lua.bak.TIMESTAMP` alongside it. Review the backup and restore any customisations you want to keep.
 
 ## 4. `omarchy webapp install`
 
-Every time you use the Omarchy menu (**SUPER + ALT + SPACE**) to trigger an action, you're running one of the scripts in the `bin` folder. Once you realize that, the distro starts to feel a lot less mysterious.
+Many actions in the Omarchy menu (**SUPER + SPACE**) call the same commands you can run in a terminal. Once you realize that, the distro starts to feel a lot less mysterious.
 
 `omarchy webapp install` is a great example. In Omarchy 3.4.0, installing a web app from the menu stopped prompting for a custom icon and started fetching the site's default one instead. That caused some frustration in this [Github issue](https://github.com/basecamp/omarchy/issues/4912), but the terminal still gives you the more flexible version:
 

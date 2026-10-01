@@ -30,26 +30,30 @@ Replace the keys and applications to use another pair. If you want to remove the
 
 ## Configure it yourself
 
-Add this to `~/.config/hypr/bindings.lua`, replacing any existing custom definition for the same shortcut. The original ALT shortcut remains available.
+Add this helper to `~/.config/hypr/bindings.lua`, then call it for each pair. Remove the original short-action binding before registering the pair; otherwise it can still fire immediately. The original ALT shortcut can remain available.
 
 ```lua file=~/.config/hypr/bindings.lua
-hl.unbind("SUPER + SHIFT + G")
-
-do
+local function bind_short_or_long(keys, short_description, short_command, long_description, long_command)
   local long_pressed = false
 
-  o.bind("SUPER + SHIFT + G", "WhatsApp", function()
+  o.bind(keys, long_description, function()
     long_pressed = true
-    hl.exec_cmd(o.launch_webapp_sole("WhatsApp", "https://web.whatsapp.com/"))
+    hl.exec_cmd(long_command)
   end, { long_press = true })
 
-  o.bind("SUPER + SHIFT + G", "Signal", function()
+  o.bind(keys, short_description, function()
     if not long_pressed then
-      hl.exec_cmd("omarchy-launch-signal")
+      hl.exec_cmd(short_command)
     end
     long_pressed = false
   end, { release = true })
 end
+
+bind_short_or_long(
+  "SUPER + SHIFT + G",
+  "Signal", "omarchy-launch-signal",
+  "WhatsApp", o.launch_webapp_sole("WhatsApp", "https://web.whatsapp.com/")
+)
 ```
 
 The short action runs on release, unless the long action already fired. After saving, run `hyprctl reload` and `hyprctl configerrors`.

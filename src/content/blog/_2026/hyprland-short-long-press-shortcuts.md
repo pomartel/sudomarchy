@@ -16,6 +16,7 @@ Here are a few pairs from [Omarchy's stock application bindings](https://github.
 | SUPER + SHIFT + G | Signal | WhatsApp |
 | SUPER + SHIFT + B | Regular browser | Private browser window |
 | SUPER + SHIFT + A | ChatGPT | Grok |
+| SUPER + SHIFT + X | X | Compose a post on X |
 
 Some of these applications belong to Omarchy's optional preinstalls. Pick a pair you actually use.
 

@@ -30,7 +30,7 @@ Replace the keys and applications to use another pair. If you want to remove the
 
 ## Configure it yourself
 
-Add this helper to `~/.config/hypr/bindings.lua`, then call it for each pair. Remove the original short-action binding before registering the pair; otherwise it can still fire immediately. The original ALT shortcut can remain available.
+Add this helper to `~/.config/hypr/bindings.lua`, then call it for each pair.
 
 ```lua file=~/.config/hypr/bindings.lua
 local function bind_short_or_long(keys, short_description, short_command, long_description, long_command)

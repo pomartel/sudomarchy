@@ -17,7 +17,6 @@ Here are a few pairs from [Omarchy's stock application bindings](https://github.
 | --- | --- | --- |
 | SUPER + SHIFT + G | Signal | WhatsApp |
 | SUPER + SHIFT + B | Regular browser | Private browser window |
-| SUPER + SHIFT + A | ChatGPT | Grok |
 | SUPER + SHIFT + X | X | Compose a post on X |
 
 Some of these applications belong to Omarchy's optional preinstalls. Pick a pair you actually use.
@@ -26,6 +25,6 @@ Some of these applications belong to Omarchy's optional preinstalls. Pick a pair
 
 Your agent can inspect your current bindings and make the change. Here is a prompt to start with:
 
-> In my Omarchy Hyprland Lua configuration, combine the stock SUPER + SHIFT + G (Signal) and SUPER + SHIFT + ALT + G (WhatsApp) actions into a tap-and-hold shortcut on SUPER + SHIFT + G. A short press should launch Signal; a long press should open or focus WhatsApp. Trigger the short action on release only if the long action did not fire. Preserve the existing launcher behavior, keep the ALT shortcut available, and leave unrelated bindings untouched. Edit my user configuration, then reload Hyprland and check for configuration errors.
+> Configure SUPER + SHIFT + G in my Omarchy bindings: tap for Signal, hold for WhatsApp, without triggering both. Keep the existing ALT shortcut and launcher behavior. Reload Hyprland and check for errors.
 
 Replace the keys and applications to use another pair. If you want to remove the old ALT shortcut, say so in the prompt.

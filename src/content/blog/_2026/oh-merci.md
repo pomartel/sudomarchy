@@ -2,10 +2,14 @@
 title: "Oh-merci!"
 description: "Sprinkle a little French, Italian, German, or any other language into Omarchy."
 pubDatetime: "2026-04-13"
+modDatetime: 2026-10-01
 heroImage: oh-merci.png
 ogImage: oh-merci.png
 heroImageAlt: "Hyprlock screen with a localised password prompt"
 ---
+
+> [!WARNING]
+> **Written for Omarchy 3.x.** The Waybar clock and Hyprlock password-prompt instructions in sections 2 and 3 are deprecated for Quattro (4.x), whose shell replaces both components. See the [Quattro release notes](https://github.com/omacom/omarchy/releases/tag/v4.0.0). The locale-generation and application-language sections remain useful. I'm keeping the original desktop examples here for reference.
 
 If you are a native English speaker, this is probably not for you.
 

@@ -2,9 +2,13 @@
 title: "How to Customise Automatic Power Profiles"
 description: "Change Omarchy's automatic power profile switching to use the profiles you actually want on AC and battery."
 pubDatetime: "2026-04-20"
+modDatetime: 2026-10-01
 heroImage: customise-automatic-power-profiles.png
 heroImageAlt: "A laptop with power profile controls"
 ---
+
+> [!WARNING]
+> **Deprecated for Omarchy Quattro (4.x).** This tutorial was written for Omarchy 3.x. Do not apply the custom script and `udev` rule below on Quattro: it already remembers separate power profiles for AC and battery. Use the built-in settings described in the [power-profile documentation](https://github.com/omacom/omarchy/blob/v4.0.4/manual/36-system-sleep.md) instead. I'm keeping the original instructions here for reference.
 
 Power profiles are predefined configurations that control how a laptop balances performance, power consumption, heat, and fan noise. There are typically 3 power profiles to choose from: `performance`, `balanced` and `power-saver`.
 

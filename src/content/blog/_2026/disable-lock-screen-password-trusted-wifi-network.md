@@ -2,9 +2,13 @@
 title: "Disable Lock Screen Password When On a Trusted Wifi Network"
 description: "Configure Hypridle to skip locking after sleep when you're connected to a trusted SSID."
 pubDatetime: "2026-02-05"
+modDatetime: 2026-10-01
 heroImage: disable-lock-screen-password-trusted-wifi-network.png
 heroImageAlt: "A laptop connected to a trusted wifi network"
 ---
+
+> [!WARNING]
+> **Deprecated for Omarchy Quattro (4.x).** This tutorial was written for Omarchy 3.x; these instructions do not apply to Quattro. Its shell replaces Hypridle and Hyprlock, so the `hypridle.conf` changes and restart command below no longer apply. See the [Quattro release notes](https://github.com/omacom/omarchy/releases/tag/v4.0.0). I'm keeping the original instructions and security caveats here for reference.
 
 > [!WARNING]
 >

@@ -34,19 +34,30 @@ Add this helper to `~/.config/hypr/bindings.lua`, then call it for each pair.
 
 ```lua file=~/.config/hypr/bindings.lua
 local function bind_short_or_long(keys, short_description, short_command, long_description, long_command)
-  local long_pressed = false
+  local active_press
 
   o.bind(keys, long_description, function()
-    long_pressed = true
-    hl.exec_cmd(long_command)
-  end, { long_press = true })
+    if active_press then return end
+    local press = { long_pressed = false }
+    active_press = press
+
+    -- A Lua timer survives modifier releases, unlike the native long_press timer.
+    hl.timer(function()
+      if active_press ~= press then return end
+      press.long_pressed = true
+      hl.exec_cmd(long_command)
+    end, { timeout = hl.get_config("input.repeat_delay"), type = "oneshot" })
+  end)
 
   o.bind(keys, short_description, function()
-    if not long_pressed then
+    local press = active_press
+    active_press = nil
+    if press and not press.long_pressed then
       hl.exec_cmd(short_command)
     end
-    long_pressed = false
-  end, { release = true })
+    -- Modifier releases shadow held keys; keep observing the main key release.
+    -- Non-consuming preserves ordinary typing when no shortcut is active.
+  end, { release = true, ignore_mods = true, non_consuming = true, transparent = true })
 end
 
 bind_short_or_long(

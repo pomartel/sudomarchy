@@ -2,7 +2,6 @@
 import { type CollectionEntry, render } from "astro:content";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
-import Comments from "@/components/Comments.astro";
 import Datetime from "@/components/Datetime.astro";
 import EditPost from "@/components/EditPost.astro";
 import Footer from "@/components/Footer.astro";
@@ -11,7 +10,6 @@ import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
 import { getAdjacentPosts } from "@/utils/getAdjacentPosts.js";
 import { getPath } from "@/utils/getPath";
-import { hasPostComments } from "@/utils/postComments.js";
 import { resolveContentImage } from "@/utils/resolveContentImage";
 import { slugifyStr } from "@/utils/slugify";
 
@@ -136,8 +134,6 @@ const { prevPost, nextPost } = getAdjacentPosts(posts, post);
       }
       <Content />
     </article>
-
-    {hasPostComments(postPath, post.data.comments) && <Comments />}
 
     <hr class="my-8 border-dashed" />
 

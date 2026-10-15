@@ -21,7 +21,7 @@ With that said, here are my 5 favorite plugins of 2026, in no particular order.
 
 Omacal is a rewrite of the stock Omarchy calendar that pops up when you click on the date. It adds support for Hey Calendar. I personally use Google Calendar, and fortunately there was a [PR on the repo](https://github.com/crmne/omacal/pull/2) to support it. So I asked my agent to create a fork of the plugin based on the PR. Although it was a bit cumbersome to get my account working, I really appreciate the aesthetics and functionality of being able to see my whole calendar and add or modify events.
 
-Check out all of Carmine's projects on his [website](https://plenty.is/). I also really enjoy the [Todoist plugin](https://github.com/crmne/omatasks).
+Check out all of Carmine's projects on his [website](https://paolino.me/projects/). I also really enjoy the [Todoist plugin](https://github.com/crmne/omatasks).
 
 ![Omacal's monthly calendar and day view with color-coded events.](favorite-plugins-2026-omacal.png)
 

@@ -58,4 +58,4 @@ Tray is a drop-in replacement for the Omarchy tray, that little `<` icon in the 
 
 The next version of Omarchy, Quattro RS, will probably take some inspiration from all these popular plugins flourishing right now. I would not be surprised if it makes a few of my plugins obsolete, and that will mean fewer things to maintain.
 
-What are your favorite plugins? Let me know on Reddit or X!
+What are your favorite plugins? Let me know on [Reddit](https://www.reddit.com/r/omarchy/comments/1x6wbgo/my_5_favorite_omarchy_plugins_of_2026/) or [X](https://x.com/sudomarchy/status/2110827008921878562)!

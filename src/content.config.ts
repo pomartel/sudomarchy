@@ -32,6 +32,7 @@ const blog = defineCollection({
       title: z.string(),
       featured: z.boolean().optional(),
       draft: z.boolean().optional(),
+      comments: z.boolean().optional(),
       unlisted: z.boolean().optional(),
       ogImage: imagePath.or(z.string()).optional(),
       ogImageAlt: z.string().optional(),

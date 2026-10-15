@@ -60,6 +60,22 @@ The `_YYYY` directories organize files without appearing in URLs:
 Images in `src/assets/images/` can be referenced by filename.
 See [AGENTS.md](AGENTS.md) for editorial conventions and agent instructions.
 
+## Comments
+
+New posts use [giscus](https://giscus.app/), backed by the repository's
+GitHub Discussions (Announcements category). Readers need a GitHub account to
+comment. The widget follows the site's theme and loads its iframe lazily.
+
+The 22 posts published before the October 15, 2026 rollout are excluded by their
+permanent paths in `src/utils/postComments.js`. Keep that list fixed; editing an
+old post does not enable comments. Existing drafts get comments when published,
+and new posts need no extra metadata. Set `comments: false` in a new post's
+frontmatter to disable its comments. Preserve an old post's exclusion if its URL
+is ever renamed.
+
+The giscus GitHub App must be installed for `pomartel/sudomarchy`, with Discussions
+enabled. Repository and category IDs are configured in `Comments.astro`.
+
 ## Hosting
 
 The repository includes Vercel configuration that runs `npm run build` and

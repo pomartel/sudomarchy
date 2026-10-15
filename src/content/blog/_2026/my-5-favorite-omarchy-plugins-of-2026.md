@@ -9,9 +9,9 @@ Omarchy Quattro was released only two months ago, and already there are over 5,5
 
 So I wanted to make a short list of a few of the plugins I find useful on an everyday basis. But first, here are a few principles I try to follow regarding plugins:
 
-1. Not everything needs to be a plugin. Plugins are great, but sometimes what I really need is an app, a script or even just a shortcut. I don't need to turn my Omarchy bar into a full array of little icons!
-2. If a plugin is really useful, it should have its own Hyprland keyboard shortcut. After all, Omarchy is a keyboard-first Linux distro. I shouldn't have to use my mouse to click on that little icon and use the plugin.
-3. A great plugin usually does 90% of what I want. For the remaining 10%, I can just fork it and tell my agent exactly how I want it to be. That can mean translating a plugin, adding features, or just using keyboard shortcuts that feel more natural. Then, once in a while, I ask my agent to check the upstream repository to see if there are any improvements worth merging.
+1. **Not everything needs to be a plugin.** Plugins are great, but sometimes what I really need is an app, a script or even just a shortcut. I don't need to turn my Omarchy bar into a full array of little icons!
+2. If a plugin is really useful, **it should have its own Hyprland keyboard shortcut.** After all, Omarchy is a keyboard-first Linux distro. I shouldn't have to use my mouse to click on that little icon and use the plugin.
+3. A great plugin usually does 90% of what I want. **For the remaining 10%, I can just fork it and tell my agent exactly how I want it to be.** That can mean translating a plugin, adding features, or just using keyboard shortcuts that feel more natural. Then, once in a while, I ask my agent to check the upstream repository to see if there are any improvements worth merging.
 
 With that said, here are my 5 favorite plugins of 2026, in no particular order.
 

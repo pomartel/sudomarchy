@@ -1,5 +1,5 @@
 ---
-title: "My 5 favorite Omarchy plugins of 2026"
+title: "My 5 Favorite Omarchy Plugins of 2026"
 description: "Five Omarchy plugins I use every day for calendars, backups, workspaces, monitors, and a tidier bar."
 pubDatetime: "2026-10-15"
 ---

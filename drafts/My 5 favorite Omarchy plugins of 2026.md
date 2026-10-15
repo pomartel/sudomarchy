@@ -1,6 +1,6 @@
 # My 5 favorite Omarchy plugins of 2026
 
-Omarchy Quattro was released only two months ago, and already there are over 5,500 plugins on plugins.omarchy.org. That's quite dizzying, and it can be hard to find a little gem in a pile of already unmaintained vibe-coded plugins.
+Omarchy Quattro was released only two months ago, and already there are over 5,500 plugins on [plugins.omarchy.org](https://plugins.omarchy.org/). That's quite dizzying, and it can be hard to find a little gem in a pile of already unmaintained vibe-coded plugins.
 
 So I wanted to make a short list of a few of the plugins I find useful on an everyday basis. But first, here are a few principles I try to follow regarding plugins:
 
@@ -10,30 +10,30 @@ So I wanted to make a short list of a few of the plugins I find useful on an eve
 
 With that said, here are my 5 favorite plugins of 2026, in no particular order.
 
-## 1. Omacal
-Carmine Paolino has been creating some of the best-looking plugins and apps for Omarchy. He's the creator of Zapfast and Spotifast, two apps you should check out if you use WhatsApp or Spotify on a regular basis.
+## 1. [Omacal](https://github.com/crmne/omacal)
+Carmine Paolino has been creating some of the best-looking plugins and apps for Omarchy. He's the creator of [Zapfast](https://github.com/crmne/zapfast) and [Spotifast](https://github.com/crmne/spotifast), two apps you should check out if you use WhatsApp or Spotify on a regular basis.
 
 Omacal is a rewrite of the stock Omarchy calendar that pops up when you click on the date. It adds support for Hey Calendar. I personally use Google Calendar, and fortunately there was a [PR on the repo](https://github.com/crmne/omacal/pull/2) to support it. So I asked my agent to create a fork of the plugin based on the PR. Although it was a bit cumbersome to get my account working, I really appreciate the aesthetics and functionality of being able to see my whole calendar and add or modify events.
 
-Check out all of Carmine's projects on his [website](https://plenty.is/). I also really enjoy the Todoist plugin.
+Check out all of Carmine's projects on his [website](https://plenty.is/). I also really enjoy the [Todoist plugin](https://github.com/crmne/omatasks).
 
-# 2. Time machine
+# 2. [Time machine](https://github.com/jankeesvw/omarchy-time-machine)
 
-Do you back up your computer? You'd better, and you have no reason not to with this plugin. It uses Restic to automate backing up your home directory to the cloud. I was already doing something similar for my backups, but now I have visual confirmation of my backup and I can restore files easily.
+Do you back up your computer? You'd better, and you have no reason not to with this plugin. It uses [Restic](https://restic.net/) to automate backing up your home directory to the cloud. I was already doing something similar for my backups, but now I have visual confirmation of my backup and I can restore files easily.
 
-Jankees van Woezik, the creator of this plugin, has been on a roll lately and I strongly recommend you check out his other plugins and apps for Omarchy.
+[Jankees van Woezik](https://github.com/jankeesvw), the creator of this plugin, has been on a roll lately and I strongly recommend you check out his other plugins and apps for Omarchy.
 
-## 3. Spaces
+## 3. [Spaces](https://github.com/tornikegomareli/omarchy-spaces)
 
 It's easy to get lost in your workspaces. Where did I put this app? Is it on workspace 5 or 6? Spaces turbocharges the default Omarchy workspace indicators in the bar to show you what's open in which workspace. There are tons of little customizations you can play with to get the right visual cues.
 
-## 4. hyprmoncfg
+## 4. [hyprmoncfg](https://hyprmoncfg.dev/omarchy/)
 
 Not sure how to pronounce this one, but it's a must-have if you work on more than one monitor. It replaces the default Omarchy display icon so you can manage monitor placement and associate workspaces with them. It's so nice to just plug my laptop into my external monitor and have all the workspaces arranged in the right place.
 
 Oh, and this is also a plugin from Carmine Paolino, so you know it's been developed with care and will be actively maintained.
 
-## 5. Tray
+## 5. [Tray](https://github.com/TyRichards/omarchy-tray)
 
 So are you starting to have a bit of plugin fatigue? Do you have more little icons in your bar than balls on a Christmas tree? Do not despair because this last plugin will help you tidy up!
 
